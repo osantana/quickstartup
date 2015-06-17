@@ -1,0 +1,8 @@
+{% extends "mails/activation-email.txt" %}
+foo
+
+{#     PLEASE DO NOT CHANGE THIS FILE!       #}
+{#     ===============================       #}
+{#                                           #}
+{# This file is a workaround for hardcoded   #}
+{# template path/name in django-registration #}

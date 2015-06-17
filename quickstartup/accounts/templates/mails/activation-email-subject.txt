@@ -1,0 +1,3 @@
+{% load i18n l10n pages %}{% autoescape off %}
+{% blocktrans with site_name=site.name %}Activate your account at {{ site_name }}{% endblocktrans %}
+{% endautoescape %}

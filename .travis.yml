@@ -1,0 +1,8 @@
+language: python
+
+python:
+  - "3.4"
+
+install: pip install -r requirements-test.txt
+script: coverage run --source quickstartup runtests.py
+after_success: coveralls

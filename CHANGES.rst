@@ -3,6 +3,11 @@
 History
 -------
 
+0.1.6
++++++
+
+* Update translations
+
 0.1.5
 +++++
 

@@ -3,6 +3,16 @@
 History
 -------
 
+0.1.4
++++++
+
+* Bump Release number to fix a release error
+
+0.1.3
++++++
+
+* Fix(?) again README.rst to enable rendering on PyPI
+
 0.1.2
 +++++
 

@@ -38,3 +38,18 @@ release: clean
 	git tag `python setup.py -q version`
 	git push origin `python setup.py -q version`
 	python setup.py sdist upload
+
+APPS = core \
+       accounts \
+       website \
+       contacts
+
+messages:
+	for app in $(APPS); do \
+		(cd quickstartup/$$app && echo "\n-- Processing $$app..." && django-admin.py makemessages); \
+	done
+
+compile:
+	for app in $(APPS); do \
+		(cd quickstartup/$$app && echo "\n-- Processing $$app..." && django-admin.py compilemessages); \
+	done

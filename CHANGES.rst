@@ -3,6 +3,11 @@
 History
 -------
 
+0.1.5
++++++
+
+* Include translations
+
 0.1.4
 +++++
 

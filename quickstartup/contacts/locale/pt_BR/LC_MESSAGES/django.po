@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-17 02:59+0000\n"
+"POT-Creation-Date: 2015-06-17 03:16-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,55 +18,55 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: quickstartup/contacts/forms.py:17 quickstartup/contacts/models.py:25
+#: forms.py:17 models.py:25
 msgid "name"
 msgstr ""
 
-#: quickstartup/contacts/forms.py:18 quickstartup/contacts/models.py:26
+#: forms.py:18 models.py:26
 msgid "email"
 msgstr ""
 
-#: quickstartup/contacts/forms.py:19 quickstartup/contacts/models.py:27
+#: forms.py:19 models.py:27
 msgid "phone"
 msgstr ""
 
-#: quickstartup/contacts/forms.py:20 quickstartup/contacts/models.py:28
+#: forms.py:20 models.py:28
 msgid "message"
 msgstr ""
 
-#: quickstartup/contacts/models.py:13
+#: models.py:13
 msgid "New"
 msgstr ""
 
-#: quickstartup/contacts/models.py:14
+#: models.py:14
 msgid "Ongoing"
 msgstr ""
 
-#: quickstartup/contacts/models.py:15
+#: models.py:15
 msgid "Resolved"
 msgstr ""
 
-#: quickstartup/contacts/models.py:16
+#: models.py:16
 msgid "Closed"
 msgstr ""
 
-#: quickstartup/contacts/models.py:17
+#: models.py:17
 msgid "Invalid"
 msgstr ""
 
-#: quickstartup/contacts/models.py:22
+#: models.py:22
 msgid "status"
 msgstr ""
 
-#: quickstartup/contacts/models.py:23
+#: models.py:23
 msgid "created at"
 msgstr ""
 
-#: quickstartup/contacts/models.py:24
+#: models.py:24
 msgid "updated at"
 msgstr ""
 
-#: quickstartup/contacts/models.py:40
+#: models.py:40
 #, python-brace-format
 msgid ""
 "Contact From: {instance.name} <{instance.email}>\n"
@@ -76,24 +76,23 @@ msgid ""
 "URL: http://{domain}{instance.admin_url}\n"
 msgstr ""
 
-#: quickstartup/contacts/models.py:49
+#: models.py:49
 #, python-format
 msgid "New Contact from %s"
 msgstr ""
 
-#: quickstartup/contacts/templates/contacts/contact.html:7
-#: quickstartup/contacts/templates/contacts/contact.html:15
+#: templates/contacts/contact.html:7 templates/contacts/contact.html.py:15
 msgid "Contact"
 msgstr ""
 
-#: quickstartup/contacts/templates/contacts/contact.html:34
+#: templates/contacts/contact.html:34
 msgid "Send"
 msgstr ""
 
-#: quickstartup/contacts/templates/contacts/contact.html:35
+#: templates/contacts/contact.html:35
 msgid "Back"
 msgstr ""
 
-#: quickstartup/contacts/views.py:20
+#: views.py:20
 msgid "Your message was sent successfully!"
 msgstr ""

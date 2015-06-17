@@ -3,6 +3,11 @@
 History
 -------
 
+0.1.2
++++++
+
+* Fix(?) README.rst to enable rendering on PyPI
+
 0.1.1
 +++++
 

@@ -1,6 +1,5 @@
-=============================
-quickstartup
-=============================
+Quickstartup
+============
 
 .. image:: https://badge.fury.io/py/quickstartup.png
     :target: https://badge.fury.io/py/quickstartup
@@ -11,25 +10,6 @@ quickstartup
 .. image:: https://coveralls.io/repos/osantana/quickstartup/badge.png?branch=master
     :target: https://coveralls.io/r/osantana/quickstartup?branch=master
 
-Quickstartup package used by Quickstartup Template
+Quickstartup package used by `Quickstartup Template`_
 
-Documentation
--------------
-
-The full documentation is at https://quickstartup.readthedocs.org.
-
-Quickstart
-----------
-
-Install quickstartup::
-
-    pip install quickstartup
-
-Then use it in a project::
-
-    import quickstartup
-
-Features
---------
-
-* TODO
+_ Quickstartup Template: https://github.com/osantana/quickstartup-template

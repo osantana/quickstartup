@@ -1,18 +1,17 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Brazilian Portuguese translations of django-quickstartup messages
+# Copyright (C) 2013 Osvaldo Santana Neto
+# This file is distributed under the same license as the django-quickstartup package.
+# Osvaldo Santana Neto <quickstartup@osantana.me>, 2013.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: quickstartup 0.1.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-17 03:16-0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2015-06-17 03:23-0300\n"
+"PO-Revision-Date: 2013-04-07 01:46-0300\n"
+"Last-Translator: Osvaldo Santana Neto <quickstartup@osantana.me>\n"
+"Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
+"Language: Brazilia Portuguese\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -21,52 +20,54 @@ msgstr ""
 #: fields.py:11
 msgid "You need to enable JavaScript to complete this form."
 msgstr ""
+"Você precisa habilitar o JavaScript do seu navegador para enviar este "
+"formulário."
 
 #: templates/_includes/field_password.html:6
 msgid "(forgot password)"
-msgstr ""
+msgstr "(esqueci a senha)"
 
 #: templates/_includes/social_options.html:6
 msgid "Or"
-msgstr ""
+msgstr "Ou"
 
 #: templates/_includes/social_options.html:8
 msgid "Login with"
-msgstr ""
+msgstr "Entrar com"
 
 #: templates/apps.html:28
 msgid "Profile"
-msgstr ""
+msgstr "Perfil"
 
 #: templates/apps.html:30
 msgid "Sign out"
-msgstr ""
+msgstr "Sair"
 
 #: templates/apps.html:49 templates/apps/index.html:4
 #: templates/apps/index.html.py:8
 msgid "Home"
-msgstr ""
+msgstr "Início"
 
 #: templates/apps/index.html:9
 msgid "This is the home."
-msgstr ""
+msgstr "Esta é a página principal."
 
 #: templates/pages.html:21
 msgid "Sign in"
-msgstr ""
+msgstr "Entrar"
 
 #: templates/pages.html:22
 msgid "Sign up"
-msgstr ""
+msgstr "Cadastrar"
 
 #: templates/pages.html:23
 msgid "Contact"
-msgstr ""
+msgstr "Contato"
 
 #: templates/pages.html:30
 msgid "Privacy"
-msgstr ""
+msgstr "Política de Privacidade"
 
 #: templates/pages.html:31
 msgid "Terms"
-msgstr ""
+msgstr "Termos de uso"

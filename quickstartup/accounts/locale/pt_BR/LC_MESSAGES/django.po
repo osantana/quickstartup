@@ -1,18 +1,17 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Brazilian Portuguese translations of django-quickstartup messages
+# Copyright (C) 2013 Osvaldo Santana Neto
+# This file is distributed under the same license as the django-quickstartup package.
+# Osvaldo Santana Neto <quickstartup@osantana.me>, 2013.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: quickstartup 0.1.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-17 03:16-0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2015-06-17 03:23-0300\n"
+"PO-Revision-Date: 2013-04-07 01:46-0300\n"
+"Last-Translator: Osvaldo Santana Neto <quickstartup@osantana.me>\n"
+"Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
+"Language: Brazilia Portuguese\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,163 +19,169 @@ msgstr ""
 
 #: forms.py:19 forms.py:44 forms.py:79
 msgid "Password"
-msgstr ""
+msgstr "Senha"
 
 #: forms.py:20 forms.py:45
 msgid "Password (verify)"
-msgstr ""
+msgstr "Senha (verificação)"
 
 #: forms.py:78 forms.py:83
 msgid "E-Mail"
-msgstr ""
+msgstr "E-Mail"
 
 #: forms.py:110
 msgid "New password"
-msgstr ""
+msgstr "Nova senha"
 
 #: forms.py:111
 msgid "New password confirmation"
-msgstr ""
+msgstr "Confirmação da nova senha"
 
 #: models.py:42
 msgid "email"
-msgstr ""
+msgstr "email"
 
 #: models.py:43
 msgid "date joined"
-msgstr ""
+msgstr "data de entrada"
 
 #: models.py:44
 msgid "active"
-msgstr ""
+msgstr "ativo"
 
 #: models.py:45
 msgid "staff"
-msgstr ""
+msgstr "gestor"
 
 #: templates/accounts/activation-error.html:3
 #: templates/accounts/signup-closed.html:3
 #: templates/accounts/signup-complete.html:4 templates/accounts/signup.html:6
 #: templates/accounts/signup.html.py:30
 msgid "Sign up"
-msgstr ""
+msgstr "Cadastrar"
 
 #: templates/accounts/activation-error.html:10
 msgid "Account activation failed"
-msgstr ""
+msgstr "Ativação da conta falhou"
 
 #: templates/accounts/activation-error.html:11
 msgid "Your account is already activated or your activation link is incorrect."
-msgstr ""
+msgstr "Sua conta já está ativada ou o link de ativação está incorreto."
 
 #: templates/accounts/activation-error.html:12
 #: templates/accounts/reset-complete.html:14
 #: templates/accounts/reset-done.html:14
 #: templates/accounts/signup-complete.html:14
 msgid "Back to Sign in"
-msgstr ""
+msgstr "Voltar"
 
 #: templates/accounts/base_profile.html:7 templates/accounts/profile.html:4
 msgid "Profile"
-msgstr ""
+msgstr "Perfil"
 
 #: templates/accounts/base_profile.html:8
 #: templates/accounts/profile-security.html:4
 #: templates/accounts/profile-security.html:9
 msgid "Security"
-msgstr ""
+msgstr "Segurança"
 
 #: templates/accounts/base_profile.html:10
 #: templates/accounts/profile-social.html:4
 #: templates/accounts/profile-social.html:9
 msgid "Social"
-msgstr ""
+msgstr "Social"
 
 #: templates/accounts/profile-security.html:20
 #: templates/accounts/profile.html:20
 msgid "Update"
-msgstr ""
+msgstr "Atualizar"
 
 #: templates/accounts/profile-social.html:12
 msgid "Social Networks"
-msgstr ""
+msgstr "Redes Sociais"
 
 #: templates/accounts/profile-social.html:23
 msgid "Connect"
-msgstr ""
+msgstr "Conectar"
 
 #: templates/accounts/profile-social.html:25
 msgid "Connected"
-msgstr ""
+msgstr "Conectado"
 
 #: templates/accounts/profile.html:10
 msgid "Profile Informations"
-msgstr ""
+msgstr "Informações de Perfil"
 
 #: templates/accounts/reset-complete.html:4
 #: templates/accounts/reset-confirm.html:4
 #: templates/accounts/reset-done.html:4 templates/accounts/reset.html:4
 #: templates/accounts/signin.html:8 templates/accounts/signin.html.py:29
 msgid "Sign in"
-msgstr ""
+msgstr "Entrar"
 
 #: templates/accounts/reset-complete.html:12
 msgid "Password reset complete"
-msgstr ""
+msgstr "Redefinição de senha completada"
 
 #: templates/accounts/reset-complete.html:13
 msgid "Your password has been set. You may go ahead and log in now."
-msgstr ""
+msgstr "A sua senha foi definida. Você pode entrar no sistema agora."
 
 #: templates/accounts/reset-confirm.html:13
 msgid "Enter new password"
-msgstr ""
+msgstr "Informe uma nova senha"
 
 #: templates/accounts/reset-confirm.html:15
 msgid ""
 "Please enter your new password twice so we can verify you typed it in "
 "correctly."
 msgstr ""
+"Por favor, informe a sua nova senha duas vezes para que possamos verificar "
+"se você a digitou corretamente."
 
 #: templates/accounts/reset-confirm.html:23
 msgid "Change my password"
-msgstr ""
+msgstr "Alterar minha senha"
 
 #: templates/accounts/reset-done.html:12
 msgid "Password reset successful"
-msgstr ""
+msgstr "Senha redefinida com sucesso"
 
 #: templates/accounts/reset-done.html:13
 msgid ""
 "We've emailed you instructions for setting your password to the email "
 "address you submitted. You should be receiving it shortly."
 msgstr ""
+"Nós lhe enviamos um email contendo instruções sobre como definir sua senha "
+"para o endereço solicitado. Você deve recebê-lo em breve."
 
 #: templates/accounts/reset.html:13
 msgid "Reset password"
-msgstr ""
+msgstr "Redefinir senha"
 
 #: templates/accounts/reset.html:15
 msgid ""
 "Forgotten your password? Enter your email address below, and we'll email "
 "instructions for setting a new one."
 msgstr ""
+"Esqueceu sua senha? Informe seu endereço de email abaixo e nós enviaremos as "
+"instruções sobre como definir uma nova senha."
 
 #: templates/accounts/reset.html:22
 msgid "Reset"
-msgstr ""
+msgstr "Redefinir"
 
 #: templates/accounts/reset.html:23
 msgid "Back"
-msgstr ""
+msgstr "Voltar"
 
 #: templates/accounts/signin.html:17
 msgid "Please sign in"
-msgstr ""
+msgstr "Entre"
 
 #: templates/accounts/signup-closed.html:10
 msgid "Signup is closed"
-msgstr ""
+msgstr "Cadastramento está fechado"
 
 #: templates/accounts/signup-closed.html:12
 msgid ""
@@ -184,47 +189,50 @@ msgid ""
 "If you want to be a beta tester of this service please contact us by contact "
 "form."
 msgstr ""
+"Este site está em fase de beta fechado.\n"
+"Se você deseja ser um testador deste serviço entre em contato pelo "
+"formulário de contato."
 
 #: templates/accounts/signup-closed.html:15
 msgid "Go to Contact"
-msgstr ""
+msgstr "Ir para Contato"
 
 #: templates/accounts/signup-complete.html:12
 msgid "Activation email sent"
-msgstr ""
+msgstr "Email de ativação enviado"
 
 #: templates/accounts/signup-complete.html:13
 msgid "Please check your email to complete the registration process."
-msgstr ""
+msgstr "Por favor, confira seu email para completar o processo de cadastro."
 
 #: templates/accounts/signup.html:16
 msgid "Signup for an account"
-msgstr ""
+msgstr "Cadastrar uma conta"
 
 #: templates/accounts/signup.html:35
 msgid "Sign up with"
-msgstr ""
+msgstr "Cadastrar com"
 
 #: templates/mails/activation-email-subject.txt:2
 #, python-format
 msgid "Activate your account at %(site_name)s"
-msgstr ""
+msgstr "Ative sua conta no %(site_name)s"
 
 #: templates/mails/activation-email.html:3
 msgid "Activate your account"
-msgstr ""
+msgstr "Ative sua conta"
 
 #: templates/mails/activation-email.html:7
 #: templates/mails/activation-email.txt:1
 #: templates/mails/password-reset.html:9 templates/mails/password-reset.txt:2
 msgid "Hi "
-msgstr ""
+msgstr "Olá "
 
 #: templates/mails/activation-email.html:9
 #: templates/mails/activation-email.txt:1
 #: templates/mails/password-reset.html:11 templates/mails/password-reset.txt:3
 msgid "Hi,"
-msgstr ""
+msgstr "Olá,"
 
 #: templates/mails/activation-email.html:13
 #, python-format
@@ -234,21 +242,25 @@ msgid ""
 "If this wasn't you, please ignore this email and your address will be "
 "removed from our records."
 msgstr ""
+"Você (ou alguém que quis se passar por você) solicitou uma conta no site "
+"%(site_name)s.\n"
+"Se não foi você, por favor, ignore este email e seu endereço será removido "
+"dos nossos registros."
 
 #: templates/mails/activation-email.html:18
 #, python-format
 msgid ""
 "You need to activate your account within the next %(expiration_days)s days."
-msgstr ""
+msgstr "Você precisa ativar a sua conta nos próximos %(expiration_days)s dias."
 
 #: templates/mails/activation-email.html:22
 msgid "To activate your account"
-msgstr ""
+msgstr "Para ativar sua conta"
 
 #: templates/mails/activation-email.html:23
 #: templates/mails/password-reset.html:21
 msgid "click here"
-msgstr ""
+msgstr "clique aqui"
 
 #: templates/mails/activation-email.html:27
 #: templates/mails/password-reset.html:31
@@ -257,6 +269,8 @@ msgid ""
 "Thanks,<br>\n"
 "The %(site_name)s team"
 msgstr ""
+"Obrigado,<br>\n"
+"Equipe %(site_name)s"
 
 #: templates/mails/activation-email.txt:2
 #, python-format
@@ -270,10 +284,17 @@ msgid ""
 "\n"
 "You need to activate your account within the next %(expiration_days)s days.\n"
 msgstr ""
+"\n"
+"Você (ou alguém que quis se passar por você) solicitou uma conta no site "
+"%(site_name)s.\n"
+"\n"
+"Se não foi você, por favor, ignore este email e seu endereço será removido "
+"dos nossos registros.\n"
+"Você precisa ativar a sua conta nos próximos %(expiration_days)s dias.\n"
 
 #: templates/mails/activation-email.txt:11
 msgid "To activate your account follow the link below:"
-msgstr ""
+msgstr "Para ativar sua conta siga o link abaixo:"
 
 #: templates/mails/activation-email.txt:15
 #, python-format
@@ -282,15 +303,18 @@ msgid ""
 "Thanks,\n"
 "The %(site_name)s team\n"
 msgstr ""
+"\n"
+"Obrigado,\n"
+"Equipe %(site_name)s\n"
 
 #: templates/mails/password-reset-subject.txt:2
 #, python-format
 msgid "Password reset on %(PROJECT_NAME)s"
-msgstr ""
+msgstr "Redefinição de senha no %(PROJECT_NAME)s"
 
 #: templates/mails/password-reset.html:4
 msgid "Password Reset"
-msgstr ""
+msgstr "Redefinir Senha"
 
 #: templates/mails/password-reset.html:15
 #, python-format
@@ -298,19 +322,23 @@ msgid ""
 "You're receiving this email because you\n"
 "requested a password reset for your user account at %(site_name)s."
 msgstr ""
+"Você está recebendo este email porque solicitou uma redefinição de senha\n"
+"para sua conta no %(site_name)s."
 
 #: templates/mails/password-reset.html:20
 msgid "To reset your password"
-msgstr ""
+msgstr "Para redefinir sua senha"
 
 #: templates/mails/password-reset.html:24
 msgid "Or you can copy & paste the following link in your browser address bar:"
 msgstr ""
+"Ou você pode copiar & colar o link a seguir na barra de endereço do seu "
+"navegador:"
 
 #: templates/mails/password-reset.html:28
 #: templates/mails/password-reset.txt:11
 msgid "If you did not request this change ignore this email."
-msgstr ""
+msgstr "Se você não solicitou essa alteração ignore este email."
 
 #: templates/mails/password-reset.txt:4
 #, python-format
@@ -319,10 +347,13 @@ msgid ""
 "You're receiving this email because you requested a password reset\n"
 "for your user account at %(site_name)s.\n"
 msgstr ""
+"\n"
+"Você está recebendo este email porque solicitou uma redefinição de senha\n"
+"para sua conta no %(site_name)s.\n"
 
 #: templates/mails/password-reset.txt:8
 msgid "Please go to the following page and choose a new password:"
-msgstr ""
+msgstr "Por favor, vá para a página a seguir e escolha uma nova senha:"
 
 #: templates/mails/password-reset.txt:12
 #, python-format
@@ -331,15 +362,18 @@ msgid ""
 "Thanks,\n"
 "The %(site.name)s team\n"
 msgstr ""
+"\n"
+"Obrigado,\n"
+"Equipe %(site.name)s\n"
 
 #: views.py:64
 msgid "Succesfully updated profile."
-msgstr ""
+msgstr "Perfil atualizado com sucesso."
 
 #: views.py:79
 msgid "Succesfully updated your password."
-msgstr ""
+msgstr "Senha atualizada com sucesso."
 
 #: views.py:122
 msgid "Welcome to {}! Your account was successfully activated."
-msgstr ""
+msgstr "Bem-vindo ao {}! Sua conta foi ativada com sucesso."

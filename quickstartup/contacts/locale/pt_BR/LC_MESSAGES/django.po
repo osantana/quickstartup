@@ -1,18 +1,17 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Brazilian Portuguese translations of django-quickstartup messages
+# Copyright (C) 2013 Osvaldo Santana Neto
+# This file is distributed under the same license as the django-quickstartup package.
+# Osvaldo Santana Neto <quickstartup@osantana.me>, 2013.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: quickstartup 0.1.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-17 03:16-0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2015-06-17 03:23-0300\n"
+"PO-Revision-Date: 2013-04-07 01:46-0300\n"
+"Last-Translator: Osvaldo Santana Neto <quickstartup@osantana.me>\n"
+"Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
+"Language: Brazilia Portuguese\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,51 +19,51 @@ msgstr ""
 
 #: forms.py:17 models.py:25
 msgid "name"
-msgstr ""
+msgstr "nome"
 
 #: forms.py:18 models.py:26
 msgid "email"
-msgstr ""
+msgstr "email"
 
 #: forms.py:19 models.py:27
 msgid "phone"
-msgstr ""
+msgstr "fone"
 
 #: forms.py:20 models.py:28
 msgid "message"
-msgstr ""
+msgstr "mensagem"
 
 #: models.py:13
 msgid "New"
-msgstr ""
+msgstr "Novo"
 
 #: models.py:14
 msgid "Ongoing"
-msgstr ""
+msgstr "Em Andamento"
 
 #: models.py:15
 msgid "Resolved"
-msgstr ""
+msgstr "Resolvido"
 
 #: models.py:16
 msgid "Closed"
-msgstr ""
+msgstr "Fechado"
 
 #: models.py:17
 msgid "Invalid"
-msgstr ""
+msgstr "Inválido"
 
 #: models.py:22
 msgid "status"
-msgstr ""
+msgstr "situação"
 
 #: models.py:23
 msgid "created at"
-msgstr ""
+msgstr "criado em"
 
 #: models.py:24
 msgid "updated at"
-msgstr ""
+msgstr "atualizado em"
 
 #: models.py:40
 #, python-brace-format
@@ -75,24 +74,29 @@ msgid ""
 "{instance.message}\n"
 "URL: http://{domain}{instance.admin_url}\n"
 msgstr ""
+"Contato de: {instance.name} <{instance.email}>\n"
+"Fone: {instance.phone}\n"
+"Mensagem:\n"
+"{instance.message}\n"
+"URL: http://{domain}{instance.admin_url}\n"
 
 #: models.py:49
 #, python-format
 msgid "New Contact from %s"
-msgstr ""
+msgstr "Novo Contato de %s"
 
 #: templates/contacts/contact.html:7 templates/contacts/contact.html.py:15
 msgid "Contact"
-msgstr ""
+msgstr "Contato"
 
 #: templates/contacts/contact.html:34
 msgid "Send"
-msgstr ""
+msgstr "Enviar"
 
 #: templates/contacts/contact.html:35
 msgid "Back"
-msgstr ""
+msgstr "Voltar"
 
 #: views.py:20
 msgid "Your message was sent successfully!"
-msgstr ""
+msgstr "Sua mensagem foi enviada!"

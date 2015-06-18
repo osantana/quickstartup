@@ -4,5 +4,5 @@ python:
   - "3.4"
 
 install: pip install -r requirements-test.txt
-script: coverage run --source quickstartup runtests.py
+script: coverage run --source quickstartup manage.py test
 after_success: coveralls

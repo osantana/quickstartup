@@ -23,13 +23,13 @@ clean-pyc:
 	find . -name '*~' -exec rm -f {} +
 
 test:
-	python runtests.py tests
+	./manage.py test
 
 test-all:
 	tox
 
 coverage:
-	coverage run --source quickstartup runtests.py tests
+	coverage run --source quickstartup manage.py test
 	coverage report -m
 	coverage html
 	open htmlcov/index.html

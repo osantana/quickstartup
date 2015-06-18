@@ -5,6 +5,8 @@
 
 
 import logging
+from django.core.exceptions import ImproperlyConfigured
+from django.db import OperationalError
 
 
 class CustomAdapter(logging.LoggerAdapter):
@@ -39,11 +41,14 @@ def get_loggers(level, loggers):
     return loggers
 
 
-def get_project_package(base_dir):
-    if (base_dir / "project_name").exists():
+def get_project_package(project_dir):
+    if (project_dir / "project_name").exists():
         project_name = "project_name"
     else:
-        project_name = "{{ project_name }}"  # rendered by django-admin.py startproject
+        settings_files = list(project_dir.glob("*/settings.py"))
+        if len(settings_files) != 1:
+            raise ImproperlyConfigured("settings.py not found or found more than one")
+        project_name = settings_files[0].parent.name
 
     return project_name
 
@@ -55,6 +60,8 @@ def get_site_id(domain, name):
         site = Site.objects.get(pk=1)
     except Site.DoesNotExist:
         site = Site.objects.create(domain=domain, name=name)
+    except OperationalError:
+        return 1
     except ProgrammingError:
         return 1
 

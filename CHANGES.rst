@@ -3,6 +3,13 @@
 History
 -------
 
+0.1.7
++++++
+
+* Use Django Nose test runner with a "testproject"
+* Fix a issue in template loader that forces quickstartup templates over application templates.
+* Fix a Site database loading error during tests (table missing)
+
 0.1.6
 +++++
 

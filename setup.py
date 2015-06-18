@@ -3,7 +3,6 @@
 
 
 import os
-import sys
 import re
 
 try:
@@ -11,9 +10,7 @@ try:
 except ImportError:
     from distutils.core import setup, Command
 
-
 here = os.path.abspath(os.path.dirname(__file__))
-
 
 version = "0.0.0"
 with open(os.path.join(here, "CHANGES.rst")) as changes:
@@ -39,7 +36,6 @@ class VersionCommand(Command):
 
 readme = open('README.rst').read()
 history = open('CHANGES.rst').read().replace('.. :changelog:', '')
-
 
 setup(
     name='quickstartup',

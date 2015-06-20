@@ -164,7 +164,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     # 3rd party libs
-    'django_nose',
     'widget_tweaks',
     'registration',
     'social.apps.django_app.default',
@@ -195,6 +194,3 @@ LOGGING = {
     },
     'loggers': get_loggers("INFO", ""),
 }
-
-
-TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'

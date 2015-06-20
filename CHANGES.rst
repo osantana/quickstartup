@@ -3,6 +3,17 @@
 History
 -------
 
+0.1.8
++++++
+
+* Remove django-nose requirement and use Django test runner instead.
+* Reorganize Form classes in files
+* Reorganize and split some test files
+* Code coverage: 89% (target: ~98%)
+* Remove unused code in BaseUserManager
+* PEP8 and cosmetic fixes
+* Fix some requirements(-test).txt errors
+
 0.1.7
 +++++
 

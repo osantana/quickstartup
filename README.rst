@@ -14,10 +14,7 @@ Quickstartup
 Documentation
 -------------
 
-Quickstartup package used by `Quickstartup Template`_
-
-_ Quickstartup Template: https://github.com/osantana/quickstartup-template
-
+Quickstartup package used by `Quickstartup Template <https://github.com/osantana/quickstartup-template>`_
 
 
 TODO

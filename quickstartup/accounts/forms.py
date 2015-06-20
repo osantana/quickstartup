@@ -8,7 +8,8 @@ from django.core.urlresolvers import reverse
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
 from django.utils.translation import ugettext_lazy as _
-from django.contrib.auth.forms import ReadOnlyPasswordHashField, AuthenticationForm, SetPasswordForm
+from django.contrib.auth.forms import (AuthenticationForm as DjangoAuthenticationForm,
+                                       SetPasswordForm as DjangoSetPasswordForm)
 
 from ..messages import send_transaction_mail
 from ..widgets import EmailInput
@@ -40,41 +41,7 @@ class SignupForm(forms.ModelForm):
         return user
 
 
-class UserAdminCreationForm(forms.ModelForm):
-    password1 = forms.CharField(label=_('Password'), widget=forms.PasswordInput)
-    password2 = forms.CharField(label=_('Password (verify)'), widget=forms.PasswordInput)
-
-    class Meta:
-        model = get_user_model()
-        fields = ('name', 'email', 'password1', 'password2', 'is_staff')
-
-    def clean_password2(self):
-        password1 = self.cleaned_data.get("password1")
-        password2 = self.cleaned_data.get("password2")
-
-        if password1 and password2 and password1 != password2:
-            raise forms.ValidationError("Passwords don't match")
-
-        return password2
-
-    def save(self, commit=True):
-        user = super().save(commit=False)
-        user.set_password(self.cleaned_data["password1"])
-        return user
-
-
-class UserAdminChangeForm(forms.ModelForm):
-    password = ReadOnlyPasswordHashField()
-
-    class Meta:
-        model = User
-        fields = ("name", "email", "password")
-
-    def clean_password(self):
-        return self.initial["password"]
-
-
-class CustomAuthenticationForm(AuthenticationForm):
+class AuthenticationForm(DjangoAuthenticationForm):
     username = forms.EmailField(label=_("E-Mail"), max_length=254, widget=EmailInput())
     password = forms.CharField(label=_("Password"), widget=forms.PasswordInput())
 
@@ -106,12 +73,12 @@ class CustomPasswordResetForm(forms.Form):
             send_transaction_mail(user, template_name, request=request, **context)
 
 
-class CustomSetPasswordForm(SetPasswordForm):
+class SetPasswordForm(DjangoSetPasswordForm):
     new_password1 = forms.CharField(label=_("New password"), widget=forms.PasswordInput())
     new_password2 = forms.CharField(label=_("New password confirmation"), widget=forms.PasswordInput())
 
 
-class CustomUserProfileForm(forms.ModelForm):
+class ProfileForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ("name", "email")

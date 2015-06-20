@@ -12,19 +12,11 @@ from django.utils.translation import ugettext_lazy as _
 
 class BaseUserManager(DjangoBaseUserManager):
     def _create_user(self, email, password, is_staff, is_superuser, **extra_fields):
-        if not email:
-            raise ValueError('Users must have an email address')
-
         email = self.normalize_email(email)
 
         user_model = get_user_model()
         user = user_model(email=email, is_active=True, is_staff=is_staff, is_superuser=is_superuser, **extra_fields)
         user.set_password(password)
-
-        for key, value in extra_fields.items():
-            if hasattr(user, key):
-                setattr(user, key, value)
-
         user.save()
         return user
 

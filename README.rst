@@ -18,3 +18,10 @@ Quickstartup package used by `Quickstartup Template`_
 
 _ Quickstartup Template: https://github.com/osantana/quickstartup-template
 
+
+
+TODO
+----
+
+  * Profile customization (profile form)
+  * Decorators similar to "@login_required" that redirect user for signup/setup conclusion.

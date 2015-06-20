@@ -7,7 +7,6 @@ from django.core import mail
 from django.core.urlresolvers import reverse
 
 from tests.base import BaseTestCase, TEST_ROOT_DIR
-
 from quickstartup.contacts.models import Contact
 
 

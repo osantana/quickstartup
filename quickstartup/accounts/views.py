@@ -1,5 +1,6 @@
 # coding: utf-8
 
+
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth.views import login as auth_login
@@ -12,6 +13,7 @@ from django.views.decorators.csrf import csrf_protect
 from django.views.generic import UpdateView, TemplateView
 from django.views.decorators.debug import sensitive_post_parameters
 from django.utils.translation import ugettext_lazy as _
+
 from braces.views import LoginRequiredMixin
 from registration.backends.default.views import ActivationView
 
@@ -52,6 +54,7 @@ def password_reset(request, template_name="accounts/reset.html", mail_template_n
     return TemplateResponse(request, template_name, context)
 
 
+# noinspection PyUnresolvedReferences
 class ProfileMixin(object):
     def get_object(self, *args, **kwargs):
         return self.request.user
@@ -87,6 +90,20 @@ class UserSecurityProfile(LoginRequiredMixin, ProfileMixin, UpdateView):
         return kwargs
 
 
+class SignupActivationView(ActivationView):
+    def activate(self, request, activation_key):
+        activated_user = super().activate(request, activation_key)
+
+        if activated_user:
+            site = get_current_site(request)
+            messages.success(request, _("Welcome to {}! Your account was successfully activated.".format(site.name)))
+
+        return activated_user
+
+    def get_success_url(self, request, user):
+        return settings.LOGIN_REDIRECT_URL, (), {}
+
+
 class UserSocialProfile(LoginRequiredMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super(UserSocialProfile, self).get_context_data(**kwargs)
@@ -111,17 +128,3 @@ def social_auth_errors(request, default_redirect='qs_accounts:signup'):
         url = '{}?{}'.format(url, args)
 
     return redirect(url)
-
-
-class SignupActivationView(ActivationView):
-    def activate(self, request, activation_key):
-        activated_user = super().activate(request, activation_key)
-
-        if activated_user:
-            site = get_current_site(request)
-            messages.success(request, _("Welcome to {}! Your account was successfully activated.".format(site.name)))
-
-        return activated_user
-
-    def get_success_url(self, request, user):
-        return settings.LOGIN_REDIRECT_URL, (), {}

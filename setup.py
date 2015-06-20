@@ -50,7 +50,6 @@ setup(
     ],
     include_package_data=True,
     install_requires=[
-        "wheel>=0.24,<0.25",
         "django>=1.8,<1.9",
         "django-widget-tweaks>=1.3,<1.4",
         "django-braces>=1.8,<1.9",

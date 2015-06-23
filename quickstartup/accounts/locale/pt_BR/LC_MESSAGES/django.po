@@ -3,11 +3,12 @@
 # This file is distributed under the same license as the django-quickstartup package.
 # Osvaldo Santana Neto <quickstartup@osantana.me>, 2013.
 #
+
 msgid ""
 msgstr ""
 "Project-Id-Version: quickstartup 0.1.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-23 00:21-0300\n"
+"POT-Creation-Date: 2015-06-23 00:42-0300\n"
 "PO-Revision-Date: 2013-04-07 01:46-0300\n"
 "Last-Translator: Osvaldo Santana Neto <quickstartup@osantana.me>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
@@ -24,6 +25,10 @@ msgstr "Senha"
 #: admin.py:16 forms.py:21
 msgid "Password (verify)"
 msgstr "Senha (verificação)"
+
+#: apps.py:10
+msgid "Accounts"
+msgstr "Contas"
 
 #: forms.py:45 forms.py:50
 msgid "E-Mail"
@@ -60,6 +65,14 @@ msgstr "usuário"
 #: models.py:56
 msgid "users"
 msgstr "usuários"
+
+#: templates/_includes/social_options.html:6
+msgid "Or"
+msgstr "Ou"
+
+#: templates/_includes/social_options.html:8
+msgid "Signin with"
+msgstr "Entrar com"
 
 #: templates/accounts/activation-error.html:3
 #: templates/accounts/signup-closed.html:3

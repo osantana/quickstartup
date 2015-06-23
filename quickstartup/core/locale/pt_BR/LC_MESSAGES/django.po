@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: quickstartup 0.1.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-23 00:21-0300\n"
+"POT-Creation-Date: 2015-06-23 00:42-0300\n"
 "PO-Revision-Date: 2013-04-07 01:46-0300\n"
 "Last-Translator: Osvaldo Santana Neto <quickstartup@osantana.me>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
@@ -26,14 +26,6 @@ msgstr ""
 #: templates/_includes/field_password.html:6
 msgid "(forgot password)"
 msgstr "(esqueci a senha)"
-
-#: templates/_includes/social_options.html:6
-msgid "Or"
-msgstr "Ou"
-
-#: templates/_includes/social_options.html:8
-msgid "Login with"
-msgstr "Entrar com"
 
 #: templates/apps.html:28
 msgid "Profile"

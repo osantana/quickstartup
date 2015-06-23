@@ -1,25 +1,23 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
+# coding: utf-8
+
 
 from django.db import models, migrations
 
 
 class Migration(migrations.Migration):
-
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
             name='Contact',
             fields=[
-                ('id', models.AutoField(serialize=False, verbose_name='ID', primary_key=True, auto_created=True)),
-                ('status', models.CharField(default='N', verbose_name='status', choices=[('N', 'New'), ('O', 'Ongoing'), ('R', 'Resolved'), ('C', 'Closed'), ('I', 'Invalid')], max_length=1)),
-                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='created at')),
-                ('updated_at', models.DateTimeField(auto_now=True, verbose_name='updated at')),
-                ('name', models.CharField(max_length=255, verbose_name='name')),
-                ('email', models.EmailField(max_length=255, verbose_name='email')),
-                ('phone', models.CharField(max_length=100, verbose_name='phone', blank=True)),
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('status', models.CharField(verbose_name='status', default='N', max_length=1, choices=[('N', 'New'), ('O', 'Ongoing'), ('R', 'Resolved'), ('C', 'Closed'), ('I', 'Invalid')])),
+                ('created_at', models.DateTimeField(verbose_name='created at', auto_now_add=True)),
+                ('updated_at', models.DateTimeField(verbose_name='updated at', auto_now=True)),
+                ('name', models.CharField(verbose_name='name', max_length=255)),
+                ('email', models.EmailField(verbose_name='email', max_length=255)),
+                ('phone', models.CharField(verbose_name='phone', max_length=100, blank=True)),
                 ('message', models.TextField(verbose_name='message')),
             ],
         ),

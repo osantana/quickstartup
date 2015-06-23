@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: quickstartup 0.1.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-23 00:21-0300\n"
+"POT-Creation-Date: 2015-06-23 00:42-0300\n"
 "PO-Revision-Date: 2013-04-07 01:46-0300\n"
 "Last-Translator: Osvaldo Santana Neto <quickstartup@osantana.me>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
@@ -18,8 +18,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:10
-msgid "Project Website"
-msgstr "Site do Projeto"
+msgid "Website Pages"
+msgstr "Páginas do Site"
 
 #: models.py:11
 msgid "URL Path. Example: about for /about/"

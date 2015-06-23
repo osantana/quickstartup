@@ -3,6 +3,12 @@
 History
 -------
 
+0.2.0
++++++
+
+* Consolidate migration scripts (break migration from projects with 0.1.X versions)
+* Update and compile pt_BR translations
+
 0.1.9
 +++++
 

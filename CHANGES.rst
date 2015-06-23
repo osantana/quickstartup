@@ -3,6 +3,11 @@
 History
 -------
 
+0.1.9
++++++
+
+* New settings for custom ProfileForm configuration
+
 0.1.8
 +++++
 

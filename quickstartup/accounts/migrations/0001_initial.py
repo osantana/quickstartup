@@ -7,6 +7,7 @@ from django.utils import timezone
 
 class Migration(migrations.Migration):
     dependencies = [
+        ('sites', '0001_initial'),
         ('auth', '0006_require_contenttypes_0002'),
     ]
 

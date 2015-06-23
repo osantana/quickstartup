@@ -62,26 +62,11 @@ urlpatterns = [
         name='signup_closed'),
 
     # Profile
-    url(r"^profile/$",
-        view=UserProfile.as_view(
-            template_name='accounts/profile.html',
-            form_class=ProfileForm,
-        ),
-        name="profile"),
-    url(r"^profile/security/$",
-        view=UserSecurityProfile.as_view(
-            template_name='accounts/profile-security.html',
-            form_class=PasswordChangeForm,
-            form_class_without_password=SetPasswordForm,
-        ),
-        name="profile-security"),
+    url(r"^profile/$", view=UserProfile.as_view(), name="profile"),
+    url(r"^profile/security/$", view=UserSecurityProfile.as_view(), name="profile-security"),
 
     # Social
-    url("^profile/social/$",
-        view=UserSocialProfile.as_view(
-            template_name='accounts/profile-social.html',
-        ),
-        name='profile-social'),
+    url(r"^profile/social/$", view=UserSocialProfile.as_view(), name='profile-social'),
     url("^social-auth-errors/$", "quickstartup.accounts.views.social_auth_errors",
         name='social-auth-errors'),
     url(r"^", include('social.apps.django_app.urls', namespace='social')),

@@ -8,6 +8,7 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.shortcuts import redirect, resolve_url
 from django.template.response import TemplateResponse
+from django.utils.module_loading import import_string
 from django.views.decorators.cache import never_cache
 from django.views.decorators.csrf import csrf_protect
 from django.views.generic import UpdateView, TemplateView
@@ -15,10 +16,20 @@ from django.views.decorators.debug import sensitive_post_parameters
 from django.utils.translation import ugettext_lazy as _
 
 from braces.views import LoginRequiredMixin
+
 from registration.backends.default.views import ActivationView
 
 from .forms import CustomPasswordResetForm
 from .utils import get_social_message_errors
+
+
+PROFILE_FORM_PATH = getattr(settings, "PROFILE_FORM", "quickstartup.accounts.forms.ProfileForm")
+PASSWORD_CHANGE_FORM_PATH = getattr(settings, "PASSWORD_CHANGE_FORM", "django.contrib.auth.forms.PasswordChangeForm")
+PASSWORD_FORM_PATH = getattr(settings, "PASSWORD_FORM", "quickstartup.accounts.forms.SetPasswordForm")
+
+PROFILE_FORM = import_string(PROFILE_FORM_PATH)
+PASSWORD_CHANGE_FORM = import_string(PASSWORD_CHANGE_FORM_PATH)
+PASSWORD_FORM = import_string(PASSWORD_FORM_PATH)
 
 
 @sensitive_post_parameters()
@@ -62,6 +73,8 @@ class ProfileMixin(object):
 
 class UserProfile(LoginRequiredMixin, ProfileMixin, UpdateView):
     success_url = reverse_lazy('qs_accounts:profile')
+    form_class = PROFILE_FORM
+    template_name = 'accounts/profile.html'
 
     def form_valid(self, form):
         messages.success(self.request, _(u'Succesfully updated profile.'))
@@ -70,7 +83,9 @@ class UserProfile(LoginRequiredMixin, ProfileMixin, UpdateView):
 
 class UserSecurityProfile(LoginRequiredMixin, ProfileMixin, UpdateView):
     success_url = reverse_lazy('qs_accounts:profile-security')
-    form_class_without_password = None
+    form_class = PASSWORD_CHANGE_FORM
+    form_class_without_password = PASSWORD_FORM
+    template_name = 'accounts/profile-security.html',
 
     def get_form_class(self):
         # Probably, user was authenticated with social auth
@@ -105,6 +120,8 @@ class SignupActivationView(ActivationView):
 
 
 class UserSocialProfile(LoginRequiredMixin, TemplateView):
+    template_name='accounts/profile-social.html',
+
     def get_context_data(self, **kwargs):
         context = super(UserSocialProfile, self).get_context_data(**kwargs)
         context['error_messages'] = get_social_message_errors(self.request)

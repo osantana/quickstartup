@@ -20,6 +20,6 @@ Quickstartup package used by `Quickstartup Template <https://github.com/osantana
 TODO
 ----
 
-  * Profile customization (profile form)
-  * Decorators similar to "@login_required" that redirect user for signup/setup conclusion.
-  * Recreate migration scripts for release 1.0 (only keep only 0001_initial.py for all apps)
+* Profile customization (profile form)
+* Decorators similar to "@login_required" that redirect user for signup/setup conclusion.
+* Recreate migration scripts for release 1.0 (only keep only 0001_initial.py for all apps)

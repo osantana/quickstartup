@@ -28,7 +28,7 @@ class BaseUserManager(DjangoBaseUserManager):
 
 
 # noinspection PyAbstractClass
-class BaseUser(DjangoAbstractBaseUser, PermissionsMixin):
+class AbstractBaseUser(DjangoAbstractBaseUser, PermissionsMixin):
     objects = BaseUserManager()
 
     email = models.EmailField(_("email"), max_length=255, unique=True, db_index=True)
@@ -38,7 +38,7 @@ class BaseUser(DjangoAbstractBaseUser, PermissionsMixin):
 
     USERNAME_FIELD = "email"
 
-    class Meta:
+    class Meta(DjangoAbstractBaseUser.Meta):
         abstract = True
 
     def get_short_name(self):
@@ -48,8 +48,18 @@ class BaseUser(DjangoAbstractBaseUser, PermissionsMixin):
         return self.email
 
 
-class User(BaseUser):
+class AbstractUser(AbstractBaseUser):
     name = models.CharField(max_length=255, blank=True, null=True)
+
+    class Meta(AbstractBaseUser.Meta):
+        verbose_name = _('user')
+        verbose_name_plural = _('users')
+        abstract = True
 
     def get_full_name(self):
         return self.name
+
+
+class User(AbstractUser):
+    class Meta(AbstractUser.Meta):
+        swappable = 'AUTH_USER_MODEL'

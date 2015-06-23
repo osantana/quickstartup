@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: quickstartup 0.1.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-17 03:23-0300\n"
+"POT-Creation-Date: 2015-06-23 00:21-0300\n"
 "PO-Revision-Date: 2013-04-07 01:46-0300\n"
 "Last-Translator: Osvaldo Santana Neto <quickstartup@osantana.me>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
@@ -17,41 +17,49 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: forms.py:19 forms.py:44 forms.py:79
+#: admin.py:15 forms.py:20 forms.py:46
 msgid "Password"
 msgstr "Senha"
 
-#: forms.py:20 forms.py:45
+#: admin.py:16 forms.py:21
 msgid "Password (verify)"
 msgstr "Senha (verificação)"
 
-#: forms.py:78 forms.py:83
+#: forms.py:45 forms.py:50
 msgid "E-Mail"
 msgstr "E-Mail"
 
-#: forms.py:110
+#: forms.py:77
 msgid "New password"
 msgstr "Nova senha"
 
-#: forms.py:111
+#: forms.py:78
 msgid "New password confirmation"
 msgstr "Confirmação da nova senha"
 
-#: models.py:42
+#: models.py:34
 msgid "email"
 msgstr "email"
 
-#: models.py:43
+#: models.py:35
 msgid "date joined"
 msgstr "data de entrada"
 
-#: models.py:44
+#: models.py:36
 msgid "active"
 msgstr "ativo"
 
-#: models.py:45
+#: models.py:37
 msgid "staff"
-msgstr "gestor"
+msgstr "equipe"
+
+#: models.py:55
+msgid "user"
+msgstr "usuário"
+
+#: models.py:56
+msgid "users"
+msgstr "usuários"
 
 #: templates/accounts/activation-error.html:3
 #: templates/accounts/signup-closed.html:3
@@ -366,14 +374,14 @@ msgstr ""
 "Obrigado,\n"
 "Equipe %(site.name)s\n"
 
-#: views.py:64
+#: views.py:80
 msgid "Succesfully updated profile."
 msgstr "Perfil atualizado com sucesso."
 
-#: views.py:79
+#: views.py:97
 msgid "Succesfully updated your password."
 msgstr "Senha atualizada com sucesso."
 
-#: views.py:122
+#: views.py:114
 msgid "Welcome to {}! Your account was successfully activated."
 msgstr "Bem-vindo ao {}! Sua conta foi ativada com sucesso."

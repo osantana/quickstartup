@@ -6,6 +6,7 @@ from django.core import mail
 from django.core.urlresolvers import reverse
 from django.contrib.auth import get_user_model
 from django.test import override_settings
+
 from registration.models import RegistrationProfile
 
 from tests.base import BaseTestCase

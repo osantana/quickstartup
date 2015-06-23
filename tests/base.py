@@ -10,6 +10,32 @@ from quickstartup.website.bootstrap import bootstrap_website_pages
 
 
 TEST_ROOT_DIR = Path(__file__).parent
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'APP_DIRS': True,
+        'DIRS': (
+            str(TEST_ROOT_DIR / "templates"),
+        ),
+        'OPTIONS': {
+            'debug': True,
+            'context_processors': (
+                "django.contrib.auth.context_processors.auth",
+                "django.core.context_processors.debug",
+                "django.core.context_processors.i18n",
+                "django.core.context_processors.media",
+                "django.core.context_processors.static",
+                "django.core.context_processors.request",
+                "django.core.context_processors.tz",
+                "django.contrib.messages.context_processors.messages",
+                "social.apps.django_app.context_processors.backends",
+                "social.apps.django_app.context_processors.login_redirect",
+                "quickstartup.context_processors.project_infos",
+                "quickstartup.context_processors.project_settings",
+            ),
+        },
+    },
+]
 
 
 class BaseTestCase(TestCase):

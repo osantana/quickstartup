@@ -20,9 +20,6 @@ def send_transaction_mail(user, template_name, request=None, site=None,
         context = RequestContext(request, context)
         site = get_current_site(request)
 
-    if site is None:
-        raise SendMailException("Cannot get current site.")
-
     context.update({'user': user, 'site': site})
 
     subject = render_to_string(subject_template_base.format(template_name, "txt"), context)

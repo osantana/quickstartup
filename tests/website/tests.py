@@ -2,39 +2,12 @@
 
 
 from django.core.urlresolvers import NoReverseMatch
+
 from django.test import override_settings
 
 from quickstartup.website.models import Page
 from quickstartup.website.urlresolver import page_reverse
-from tests.base import BaseTestCase, TEST_ROOT_DIR
-
-
-TEMPLATES = [
-    {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'APP_DIRS': True,
-        'DIRS': (
-            str(TEST_ROOT_DIR / "templates"),
-        ),
-        'OPTIONS': {
-            'debug': True,
-            'context_processors': (
-                "django.contrib.auth.context_processors.auth",
-                "django.core.context_processors.debug",
-                "django.core.context_processors.i18n",
-                "django.core.context_processors.media",
-                "django.core.context_processors.static",
-                "django.core.context_processors.request",
-                "django.core.context_processors.tz",
-                "django.contrib.messages.context_processors.messages",
-                "social.apps.django_app.context_processors.backends",
-                "social.apps.django_app.context_processors.login_redirect",
-                "quickstartup.context_processors.project_infos",
-                "quickstartup.context_processors.project_settings",
-            ),
-        },
-    },
-]
+from tests.base import BaseTestCase, TEMPLATES
 
 
 class PageTest(BaseTestCase):
@@ -56,6 +29,11 @@ class PageTest(BaseTestCase):
         self.assertEquals(Page.objects.get(slug="").get_absolute_url(), "/")
         self.assertEquals(Page.objects.get(slug="terms").get_absolute_url(), "/terms/")
         self.assertEquals(Page.objects.get(slug="privacy").get_absolute_url(), "/privacy/")
+
+    def test_path(self):
+        page = Page.objects.get(slug="terms")
+        self.assert_(page.path, "/terms/")
+        self.assert_(str(page), "/terms/")
 
     def test_filter_invalid_pages(self):
         pages = Page.objects.all()

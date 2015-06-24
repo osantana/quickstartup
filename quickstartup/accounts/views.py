@@ -85,7 +85,7 @@ class UserSecurityProfile(LoginRequiredMixin, ProfileMixin, UpdateView):
     success_url = reverse_lazy('qs_accounts:profile-security')
     form_class = PASSWORD_CHANGE_FORM
     form_class_without_password = PASSWORD_FORM
-    template_name = 'accounts/profile-security.html',
+    template_name = 'accounts/profile-security.html'
 
     def get_form_class(self):
         # Probably, user was authenticated with social auth
@@ -120,7 +120,7 @@ class SignupActivationView(ActivationView):
 
 
 class UserSocialProfile(LoginRequiredMixin, TemplateView):
-    template_name='accounts/profile-social.html',
+    template_name='accounts/profile-social.html'
 
     def get_context_data(self, **kwargs):
         context = super(UserSocialProfile, self).get_context_data(**kwargs)

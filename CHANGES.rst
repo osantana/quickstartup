@@ -3,6 +3,11 @@
 History
 -------
 
+0.2.2
++++++
+
+* Fix a bug on template_name configuration on profile-related views
+
 0.2.1
 +++++
 

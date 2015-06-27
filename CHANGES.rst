@@ -3,6 +3,11 @@
 History
 -------
 
+0.2.3
++++++
+
+* Include missing .txt mail templates in distribution file
+
 0.2.2
 +++++
 

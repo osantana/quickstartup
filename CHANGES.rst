@@ -3,6 +3,11 @@
 History
 -------
 
+0.2.3
++++++
+
+* Move logo image to static root
+
 0.2.2
 +++++
 

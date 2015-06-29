@@ -3,7 +3,12 @@
 History
 -------
 
-0.2.3
+0.2.5
++++++
+
+* Fix a release number issue
+
+0.2.4
 +++++
 
 * Move logo image to static root

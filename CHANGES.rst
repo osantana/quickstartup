@@ -3,6 +3,11 @@
 History
 -------
 
+0.2.4
++++++
+
+* CRITICAL: Add missing lib static files
+
 0.2.3
 +++++
 

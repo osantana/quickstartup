@@ -8,17 +8,7 @@
 *.egg-info
 dist
 build
-eggs
-parts
-bin
-var
 sdist
-develop-eggs
-.installed.cfg
-lib64
-
-# Installer logs
-pip-log.txt
 
 # Unit test / coverage reports
 .coverage
@@ -26,14 +16,7 @@ pip-log.txt
 nosetests.xml
 htmlcov
 
-# Mr Developer
-.mr.developer.cfg
-.project
-.pydevproject
-
-# Complexity
-output/*.html
-output/*/index.html
+.idea
 
 # Sphinx
 docs/_build

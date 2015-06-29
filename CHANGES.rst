@@ -3,6 +3,11 @@
 History
 -------
 
+0.2.7
++++++
+
+* Add block to allow bootstrap navbar CSS classes configuration
+
 0.2.6
 +++++
 

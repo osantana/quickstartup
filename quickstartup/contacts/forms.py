@@ -14,8 +14,8 @@ class ContactForm(forms.ModelForm):
         model = Contact
         fields = ("name", "email", "phone", "message", "antispam")
 
-    name = forms.CharField(label=_("name"), max_length=255)
-    email = forms.EmailField(label=_("email"), max_length=255, widget=EmailInput())
-    phone = forms.CharField(label=_("phone"), max_length=100, widget=PhoneInput(), required=False)
-    message = forms.CharField(label=_("message"), widget=forms.Textarea())
+    name = forms.CharField(label=_("Name"), max_length=255)
+    email = forms.EmailField(label=_("E-mail"), max_length=255, widget=EmailInput())
+    phone = forms.CharField(label=_("Phone"), max_length=100, widget=PhoneInput(), required=False)
+    message = forms.CharField(label=_("Message"), widget=forms.Textarea(attrs={'rows': 5}))
     antispam = AntiSpamField()

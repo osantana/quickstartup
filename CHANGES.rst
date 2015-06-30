@@ -3,6 +3,11 @@
 History
 -------
 
+0.3.0
++++++
+
+* New website visual
+
 0.2.7
 +++++
 

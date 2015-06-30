@@ -1,41 +1,52 @@
 {# Here we define the common layout used by website and app #}
-{% extends "base.html" %}{% load i18n l10n pages widget_tweaks %}
+{% extends "base.html" %}{% load i18n l10n pages widget_tweaks staticfiles %}
 
 {% block page_title %}{{ PROJECT_NAME }}{% endblock page_title %}
 
+{% block meta_tags %}
+<link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+{% endblock %}
+
 {% block html_body %}
-<div id="wrap">
-    {% block navbar %}
-    <div class="container">
-        <nav class="{% block navbar_class %}navbar navbar-default{% endblock %}">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                {% block brand %}<a class="navbar-brand" href="{% url "qs_pages:index" %}">{{ PROJECT_NAME }}</a>{% endblock %}
-            </div>
-            {% block navbar_menu %}{% endblock %}
-        </nav>
+    <div id="wrap">
+        {% block navbar %}
+            <nav class="{% block navbar_class %}navbar navbar-inverse navbar-static-top hero{% endblock %}">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        {% block brand %}<a class="navbar-brand" href="{% url "qs_pages:index" %}">
+                            <img src="{% static "logo-140x35.png" %}" alt="{{ PROJECT_NAME }}"></a>{% endblock %}
+                    </div>
+                    {% block navbar_menu %}{% endblock %}
+                </div>
+            </nav>
+        {% endblock %}
+
+        {% block container %}{% endblock %}
+
     </div>
-    {% endblock %}
 
-    {% block container %}{% endblock %}
-
-</div>
-
-{% block footer %}
-    <footer><div id="footer">
-        <div class="container">
-            <hr>
-            {% block footer_content %}
-            <p class="pull-left">&copy; {{ PROJECT_NAME }}</p>
-            {% block footer_links %}{% endblock footer_links %}
-            {% endblock footer_content %}
-        </div>
-    </div></footer>
-{% endblock footer %}
+    {% block footer %}
+        <footer>
+            <div class="footer">
+                <div class="container">
+                    {% block footer_content %}
+                        <p class="pull-left">{% block copyright %}
+                            &copy; 2015 Osvaldo Santana Neto /
+                            <small>Photo by <a href="https://www.flickr.com/photos/shawnhoke/">Shawn Hoke</a></small>
+                        {% endblock %}
+                        </p>
+                        {% block footer_links %}{% endblock footer_links %}
+                    {% endblock footer_content %}
+                </div>
+            </div>
+        </footer>
+    {% endblock footer %}
 
 {% endblock html_body %}

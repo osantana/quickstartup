@@ -1,6 +1,11 @@
 {% extends "pages.html" %}{% load i18n l10n pages widget_tweaks %}
 
 
+{% block meta_tags %}{{ block.super }}
+    <meta name="robots" content="noindex, nofollow">
+{% endblock %}
+
+
 {% block body_tag %}
     <body class="signin">{% endblock %}
 
@@ -9,26 +14,37 @@
 
 
 {% block container %}
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-md-offset-3 col-md-6">
-                <form action="" method="post" class="form-panel" role="form">
-                    {% csrf_token %}
-                    <h2>{% trans "Please sign in" %}</h2>
+            <div class="col-md-offset-4 col-md-4">
+                <div class="form-panel">
+                    <h2>{% trans "Sign in" %}</h2>
 
-                    {% if form.non_field_errors %}
-                        <div class="alert alert-warning">
-                            <span class="help-block">{{ form.non_field_errors|join:", " }}</span>
+                    <form action="" method="post" role="form">
+                        {% csrf_token %}
+
+                        {% if form.non_field_errors %}
+                            <div class="alert alert-warning">
+                                <span class="help-block">{{ form.non_field_errors|join:", " }}</span>
+                            </div>
+                        {% endif %}
+
+                        {% include "_includes/bigfield.html" with field=form.username|attr:"autofocus" %}
+                        {% include "_includes/bigfield_password.html" with field=form.password %}
+
+                        <div class="form-group">
+                            <a href="{% url "qs_accounts:password_reset" %}">{% trans "Forgot password?" %}</a>
                         </div>
-                    {% endif %}
 
-                    {% include "_includes/field.html" with field=form.username|attr:"autofocus" %}
-                    {% include "_includes/field_password.html" with field=form.password remember=True %}
+                        <div class="form-group">
+                            <button class="btn btn-primary btn-lg btn-block" type="submit">{% trans "Sign in" %}</button>
+                        </div>
 
-                    <div class="form-group">
-                        <button class="btn btn-primary" type="submit">{% trans "Sign in" %}</button>
-                    </div>
-                </form>
+                        <div class="form-group">
+                            {% trans "Don't have an account?" %} <a href="{% url "qs_accounts:signup" %}">{% trans "Sign up" %}.</a>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

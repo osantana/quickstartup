@@ -27,6 +27,11 @@ class AccountTest(BaseTestCase):
         response = self.client.post(url, data)
         self.assertStatusCode(response, 302)
 
+        message = self.getmessage(response)
+        self.assertEqual(message.tags, "success")
+        self.assertEqual(message.message, "We've emailed you instructions for setting a new password to the "
+                                          "email address you've submitted.")
+
         self.assertEqual(len(mail.outbox), 1)
         self.assertTemplateUsed(response, "mails/password-reset-subject.txt")
         self.assertTemplateUsed(response, "mails/password-reset.html")
@@ -35,15 +40,26 @@ class AccountTest(BaseTestCase):
         text, html = self.get_mail_payloads(mail.outbox[0])
         self.assertIn("Hi,", text)
         self.assertIn("<h3>Hi,</h3>", html)
-
         reset_token_url = response.context["path"]
+
+        self.client.get(reverse("qs_accounts:signin"))  # consume flash messages
+
         data = {"new_password1": "new-sekret", "new_password2": "new-sekret"}
         response = self.client.post(reset_token_url, data, follow=True)
         self.assertStatusCode(response, 200)
-        self.assertContains(response, "Password reset complete")
+
+        message = self.getmessage(response)
+        self.assertEqual(message.tags, "success")
+        self.assertEqual(message.message, "Password has been reset successfully.")
 
         user = self.user_model.objects.get(email="test@example.com")  # reload user
         self.assertTrue(user.check_password("new-sekret"), "Password unchanged")
+
+    def getmessage(self, response):
+        for c in response.context:
+            message = [m for m in c.get('messages')][0]
+            if message:
+                return message
 
     def test_reset_password_with_passwords_that_does_not_match(self):
         url = reverse("qs_accounts:password_reset")

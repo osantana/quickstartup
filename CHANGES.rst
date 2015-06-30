@@ -3,6 +3,12 @@
 History
 -------
 
+0.4.1
++++++
+
+* Fix broken test
+* Add some screenshots in README.rst
+
 0.4.0
 +++++
 

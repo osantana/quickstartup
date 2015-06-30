@@ -14,6 +14,13 @@ from tests.base import BaseTestCase
 STATIC_ROOT = str(settings.FRONTEND_DIR / "static")
 
 
+def getmessage(response):
+    for c in response.context:
+        message = [m for m in c.get('messages')][0]
+        if message:
+            return message
+
+
 @override_settings(STATIC_ROOT=STATIC_ROOT)
 class AccountTest(BaseTestCase):
     def setUp(self):
@@ -27,7 +34,7 @@ class AccountTest(BaseTestCase):
         response = self.client.post(url, data)
         self.assertStatusCode(response, 302)
 
-        message = self.getmessage(response)
+        message = getmessage(response)
         self.assertEqual(message.tags, "success")
         self.assertEqual(message.message, "We've emailed you instructions for setting a new password to the "
                                           "email address you've submitted.")
@@ -48,18 +55,12 @@ class AccountTest(BaseTestCase):
         response = self.client.post(reset_token_url, data, follow=True)
         self.assertStatusCode(response, 200)
 
-        message = self.getmessage(response)
+        message = getmessage(response)
         self.assertEqual(message.tags, "success")
         self.assertEqual(message.message, "Password has been reset successfully.")
 
         user = self.user_model.objects.get(email="test@example.com")  # reload user
         self.assertTrue(user.check_password("new-sekret"), "Password unchanged")
-
-    def getmessage(self, response):
-        for c in response.context:
-            message = [m for m in c.get('messages')][0]
-            if message:
-                return message
 
     def test_reset_password_with_passwords_that_does_not_match(self):
         url = reverse("qs_accounts:password_reset")

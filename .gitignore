@@ -17,6 +17,7 @@ nosetests.xml
 htmlcov
 
 .idea
+app-messages/
 
 # Sphinx
 docs/_build

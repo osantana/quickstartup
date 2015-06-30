@@ -35,7 +35,9 @@
                         {% include "_includes/bigfield_password.html" with field=form.password2 %}
 
                         <div class="form-group">
-                            <button class="btn btn-primary btn-lg btn-block" type="submit">{% trans "Sign up" %}</button>
+                            <button class="btn btn-primary btn-lg btn-block" type="submit">
+                                {% trans "Sign up" %}
+                            </button>
                         </div>
 
                         {% get_social_backends as social_auth_backends %}

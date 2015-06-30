@@ -7,56 +7,63 @@
 {% endblock %}
 
 
-{% block body_tag %}<body class="app">{% endblock %}
+{% block body_tag %}
+    <body class="app">{% endblock %}
 
 
 {% block navbar_menu %}
-<div class="navbar-collapse collapse">
-    <ul class="nav navbar-nav">
-        {% block navbar_options %}{% endblock %}
-    </ul>
+    <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+            {% block navbar_options %}{% endblock %}
+        </ul>
 
-    <ul class="nav navbar-nav navbar-right">
-        {% block navbar_right_options %}{% endblock %}
-        {% block menu_profile %}
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    {{ user.email }} <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu">
-                    {% block menu_profile_options %}
-                    <li><a href="{% url "qs_accounts:profile" %}">{% trans "Profile" %}</a></li>
-                    <li class="divider"></li>
-                    <li><a href="{% url "qs_accounts:signout" %}">{% trans "Sign out" %}</a></li>
-                    {% endblock %}
-                </ul>
-            </li>
-        {% endblock %}
-    </ul>
-</div>
+        <ul class="nav navbar-nav navbar-right">
+            {% block navbar_right_options %}{% endblock %}
+            {% block menu_profile %}
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        {{ user.email }} <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        {% block menu_profile_options %}
+                            <li><a href="{% url "qs_accounts:profile" %}">{% trans "Profile" %}</a></li>
+                            <li class="divider"></li>
+                            <li><a href="{% url "qs_accounts:signout" %}">{% trans "Sign out" %}</a></li>
+                        {% endblock %}
+                    </ul>
+                </li>
+            {% endblock %}
+        </ul>
+    </div>
 {% endblock %}
 
 
 {% block container %}
-<div class="container">
-    {% include "_includes/message_panels.html" %}
-    <div class="row">
-        <div class="col-md-3">
-            {% block sidebar %}
-            <div class="sidebar-nav list-group">
-                {% block sidebar_home %}<a class="list-group-item" href="{% url "app:index" %}">{% trans "Home" %}</a>{% endblock %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                {% include "_includes/message_panels.html" %}
             </div>
-            {% endblock %}
         </div>
+        <div class="row">
+            {% block sidebar %}
+                <div class="col-md-3">
+                    <div class="sidebar-nav list-group">
+                        {% block sidebar_home %}
+                            <a class="list-group-item" href="{% url "app:index" %}">{% trans "Home" %}</a>
+                        {% endblock %}
+                    </div>
+                </div>
+            {% endblock %}
 
-        <div class="col-md-9">
-            <div class="row">
-                <div class="col-md-12">
-                    {% block content %}{% endblock %}
+            <div class="col-md-9">
+                <div class="row">
+                    <div class="col-md-12">
+                        {% block content %}{% endblock %}
+                    </div>
                 </div>
             </div>
-        </div>
 
+        </div>
     </div>
-</div>
 {% endblock %}

@@ -2,12 +2,11 @@
 
 
 from django.conf.urls import url, include
-from django.contrib.auth.forms import PasswordChangeForm
 from django.views.generic import TemplateView
 
 from registration.backends.default.views import RegistrationView
 
-from .forms import AuthenticationForm, SetPasswordForm, ProfileForm
+from .forms import AuthenticationForm
 from .views import UserProfile, UserSecurityProfile, SignupActivationView, UserSocialProfile
 
 
@@ -22,18 +21,9 @@ urlpatterns = [
 
     # Password reset
     url(r"^password/reset/$", "quickstartup.accounts.views.password_reset", name="password_reset"),
-    url(r"^password/reset/done/$", "django.contrib.auth.views.password_reset_done",
-        {"template_name": "accounts/reset-done.html"},
-        name="password_reset_done"),
     url(r"^password/reset/(?P<uidb64>[0-9A-Za-z]{1,13})-(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$",
-        "django.contrib.auth.views.password_reset_confirm",
-        {"template_name": "accounts/reset-confirm.html",
-         "set_password_form": SetPasswordForm,
-         "post_reset_redirect": "qs_accounts:password_reset_complete"},
+        "quickstartup.accounts.views.password_reset_confirm",
         name="password_reset_confirm"),
-    url(r"^password/reset/complete/$", "django.contrib.auth.views.password_reset_complete",
-        {"template_name": "accounts/reset-complete.html"},
-        name="password_reset_complete"),
 
     # Password change
     url(r"^password/change/$", "django.contrib.auth.views.password_change", name="password_change"),

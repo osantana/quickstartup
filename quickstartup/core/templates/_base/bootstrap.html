@@ -3,15 +3,23 @@
 {% extends "_base/html5.html" %}{% load i18n %}{% load l10n %}{% load static %}
 
 
+{% block meta_tags %}
+<link rel="shortcut icon" href="{% static "favicon.ico" %}" type="image/x-icon">
+<link rel="icon" href="{% static "favicon.ico" %}" type="image/x-icon">
+{% endblock %}
+
+
 {% block styles %}
     <link rel="stylesheet" href="{% static "lib/bootstrap/css/bootstrap.css" %}">
 {% endblock %}
+
 
 {% block end_head %}
     <!--[if lt IE 9]>
       <script src="{% static "lib/respond/respond.min.js" %}"></script>
     <![endif]-->
 {% endblock %}
+
 
 {% block end_body %}
     <script src="{% static "lib/jquery/jquery.js" %}"></script>

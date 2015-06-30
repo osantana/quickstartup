@@ -3,6 +3,8 @@
 
 from pathlib import Path
 
+from django.contrib.messages import constants as message_constants
+
 from quickstartup.settings_utils import (get_project_package, get_loggers,
                                          get_site_id, get_static_root, get_media_root)
 
@@ -34,6 +36,9 @@ DATABASES = {
 
 # Email
 DEFAULT_FROM_EMAIL = PROJECT_CONTACT
+EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+EMAIL_FILE_PATH = "./app-messages"
+
 
 # Security & Signup/Signin
 ALLOWED_HOSTS = ["*"]
@@ -194,3 +199,5 @@ LOGGING = {
     },
     'loggers': get_loggers("INFO", ""),
 }
+
+MESSAGE_TAGS = {message_constants.ERROR: 'danger'}

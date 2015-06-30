@@ -3,15 +3,11 @@
 
 {% block page_title %}{{ PROJECT_NAME }}{% endblock page_title %}
 
-{% block meta_tags %}
-<link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
-<link rel="icon" href="/static/favicon.ico" type="image/x-icon">
-{% endblock %}
 
 {% block html_body %}
     <div id="wrap">
         {% block navbar %}
-            <nav class="{% block navbar_class %}navbar navbar-inverse navbar-static-top hero{% endblock %}">
+            <nav class="{% block navbar_class %}navbar navbar-inverse navbar-static-top{% endblock %}">
                 <div class="container-fluid">
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">

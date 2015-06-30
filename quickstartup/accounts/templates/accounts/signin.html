@@ -16,6 +16,11 @@
 {% block container %}
     <div class="container-fluid">
         <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                {% include "_includes/message_panels.html" %}
+            </div>
+        </div>
+        <div class="row">
             <div class="col-md-offset-4 col-md-4">
                 <div class="form-panel">
                     <h2>{% trans "Sign in" %}</h2>
@@ -37,11 +42,14 @@
                         </div>
 
                         <div class="form-group">
-                            <button class="btn btn-primary btn-lg btn-block" type="submit">{% trans "Sign in" %}</button>
+                            <button class="btn btn-primary btn-lg btn-block" type="submit">
+                                {% trans "Sign in" %}
+                            </button>
                         </div>
 
                         <div class="form-group">
-                            {% trans "Don't have an account?" %} <a href="{% url "qs_accounts:signup" %}">{% trans "Sign up" %}.</a>
+                            {% trans "Don't have an account?" %}
+                            <a href="{% url "qs_accounts:signup" %}">{% trans "Sign up" %}.</a>
                         </div>
                     </form>
                 </div>

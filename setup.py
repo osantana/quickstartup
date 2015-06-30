@@ -51,7 +51,7 @@ setup(
     include_package_data=True,
     install_requires=[
         "django>=1.8,<1.9",
-        "django-widget-tweaks>=1.3,<1.4",
+        "django-widget-tweaks>=1.4,<1.5",
         "django-braces>=1.8,<1.9",
         "django-model-utils>=2.2,<2.3",
         "python-social-auth>=0.2,<0.3",

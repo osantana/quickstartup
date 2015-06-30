@@ -3,11 +3,15 @@
 
 from django.conf import settings
 from django.contrib import messages
+from django.contrib.auth import get_user_model
+from django.contrib.auth.tokens import default_token_generator
 from django.contrib.auth.views import login as auth_login
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.urlresolvers import reverse, reverse_lazy
-from django.shortcuts import redirect, resolve_url
+from django.shortcuts import redirect, resolve_url, render
 from django.template.response import TemplateResponse
+from django.utils.encoding import force_text
+from django.utils.http import urlsafe_base64_decode
 from django.utils.module_loading import import_string
 from django.views.decorators.cache import never_cache
 from django.views.decorators.csrf import csrf_protect
@@ -16,10 +20,9 @@ from django.views.decorators.debug import sensitive_post_parameters
 from django.utils.translation import ugettext_lazy as _
 
 from braces.views import LoginRequiredMixin
-
 from registration.backends.default.views import ActivationView
 
-from .forms import CustomPasswordResetForm
+from .forms import CustomPasswordResetForm, SetPasswordForm
 from .utils import get_social_message_errors
 
 
@@ -46,7 +49,7 @@ def password_reset(request, template_name="accounts/reset.html", mail_template_n
                    password_reset_form=CustomPasswordResetForm,
                    post_reset_redirect=None, extra_context=None):
     if post_reset_redirect is None:
-        post_reset_redirect = reverse("qs_accounts:password_reset_done")
+        post_reset_redirect = reverse("qs_accounts:signin")
     else:
         post_reset_redirect = resolve_url(post_reset_redirect)
 
@@ -54,6 +57,8 @@ def password_reset(request, template_name="accounts/reset.html", mail_template_n
         form = password_reset_form(request.POST)
         if form.is_valid():
             form.save(request, mail_template_name)
+            messages.success(request, _("We've emailed you instructions for setting a new password to the "
+                                        "email address you've submitted."))
             return redirect(post_reset_redirect)
     else:
         form = password_reset_form()
@@ -63,6 +68,49 @@ def password_reset(request, template_name="accounts/reset.html", mail_template_n
         context.update(extra_context)
 
     return TemplateResponse(request, template_name, context)
+
+
+@sensitive_post_parameters()
+@never_cache
+def password_reset_confirm(request, uidb64=None, token=None,
+                           template_name="accounts/reset-confirm.html",
+                           set_password_form=SetPasswordForm,
+                           token_generator=default_token_generator,
+                           post_reset_redirect=None, extra_context=None):
+
+    assert uidb64 is not None and token is not None
+
+    if post_reset_redirect is None:
+        post_reset_redirect = reverse("qs_accounts:signin")
+    else:
+        post_reset_redirect = resolve_url(post_reset_redirect)
+
+    usermodel = get_user_model()
+    try:
+        uid = force_text(urlsafe_base64_decode(uidb64))
+        user = usermodel.objects.get(pk=uid)
+    except (TypeError, ValueError, OverflowError, usermodel.DoesNotExist):
+        messages.error(request, _("Unknown user or invalid token."))
+        return redirect(post_reset_redirect)
+
+    if not token_generator.check_token(user, token):
+        messages.error(request, _("Unknown user or invalid token."))
+        return redirect(post_reset_redirect)
+
+    if request.method == 'POST':
+        form = set_password_form(user, request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, _("Password has been reset successfully."))
+            return redirect(post_reset_redirect)
+    else:
+        form = set_password_form(user)
+
+    context = {'form': form}
+    if extra_context is not None:
+        context.update(extra_context)
+
+    return render(request, template_name, context)
 
 
 # noinspection PyUnresolvedReferences
@@ -120,7 +168,7 @@ class SignupActivationView(ActivationView):
 
 
 class UserSocialProfile(LoginRequiredMixin, TemplateView):
-    template_name='accounts/profile-social.html'
+    template_name = 'accounts/profile-social.html'
 
     def get_context_data(self, **kwargs):
         context = super(UserSocialProfile, self).get_context_data(**kwargs)

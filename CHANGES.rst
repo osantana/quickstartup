@@ -3,6 +3,16 @@
 History
 -------
 
+0.4.0
++++++
+
+* Add one more template layer to make easy template override
+* Update django-widget-tweak requirement version to 1.4.1
+* Update app new visual
+* Fix some visual issues (like textarea resize handle in contact form)
+* Reset password, now, redirect to Sign in form with a flash message instructions
+  instead of an specific page and fix message tag colors
+
 0.3.0
 +++++
 

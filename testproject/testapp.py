@@ -3,10 +3,11 @@
 
 from django.conf.urls import url
 from django.http.response import HttpResponse
+from django.shortcuts import render
 
 
 def index(request):
-    return HttpResponse("OK")
+    return render(request, "apps/index.html")
 
 
 urlpatterns = [

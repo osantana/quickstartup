@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: quickstartup 0.1.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-23 00:42-0300\n"
+"POT-Creation-Date: 2015-06-30 23:06-0300\n"
 "PO-Revision-Date: 2013-04-07 01:46-0300\n"
 "Last-Translator: Osvaldo Santana Neto <quickstartup@osantana.me>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
@@ -21,21 +21,21 @@ msgstr ""
 msgid "Contacts"
 msgstr "Contatos"
 
-#: forms.py:17 models.py:25
-msgid "name"
-msgstr "nome"
+#: forms.py:17
+msgid "Name"
+msgstr "Nome"
 
-#: forms.py:18 models.py:26
-msgid "email"
-msgstr "email"
+#: forms.py:18
+msgid "E-mail"
+msgstr "E-mail"
 
-#: forms.py:19 models.py:27
-msgid "phone"
-msgstr "fone"
+#: forms.py:19
+msgid "Phone"
+msgstr "Fone"
 
-#: forms.py:20 models.py:28
-msgid "message"
-msgstr "mensagem"
+#: forms.py:20
+msgid "Message"
+msgstr "Mensagem"
 
 #: models.py:13
 msgid "New"
@@ -59,7 +59,7 @@ msgstr "Inválido"
 
 #: models.py:22
 msgid "status"
-msgstr "situação"
+msgstr "Situação"
 
 #: models.py:23
 msgid "created at"
@@ -68,6 +68,22 @@ msgstr "criado em"
 #: models.py:24
 msgid "updated at"
 msgstr "atualizado em"
+
+#: models.py:25
+msgid "name"
+msgstr "nome"
+
+#: models.py:26
+msgid "email"
+msgstr "email"
+
+#: models.py:27
+msgid "phone"
+msgstr "fone"
+
+#: models.py:28
+msgid "message"
+msgstr "mensagem"
 
 #: models.py:40
 #, python-brace-format
@@ -89,17 +105,13 @@ msgstr ""
 msgid "New Contact from %s"
 msgstr "Novo Contato de %s"
 
-#: templates/contacts/contact.html:7 templates/contacts/contact.html.py:15
+#: templates/contacts/contact.html:12 templates/contacts/contact.html.py:19
 msgid "Contact"
 msgstr "Contato"
 
-#: templates/contacts/contact.html:34
+#: templates/contacts/contact.html:41
 msgid "Send"
 msgstr "Enviar"
-
-#: templates/contacts/contact.html:35
-msgid "Back"
-msgstr "Voltar"
 
 #: views.py:20
 msgid "Your message was sent successfully!"

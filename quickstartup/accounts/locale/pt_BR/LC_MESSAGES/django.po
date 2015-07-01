@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the django-quickstartup package.
 # Osvaldo Santana Neto <quickstartup@osantana.me>, 2013.
 #
-
 msgid ""
 msgstr ""
 "Project-Id-Version: quickstartup 0.1.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-23 00:42-0300\n"
+"POT-Creation-Date: 2015-06-30 23:06-0300\n"
 "PO-Revision-Date: 2013-04-07 01:46-0300\n"
 "Last-Translator: Osvaldo Santana Neto <quickstartup@osantana.me>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
@@ -75,9 +74,9 @@ msgid "Signin with"
 msgstr "Entrar com"
 
 #: templates/accounts/activation-error.html:3
-#: templates/accounts/signup-closed.html:3
-#: templates/accounts/signup-complete.html:4 templates/accounts/signup.html:6
-#: templates/accounts/signup.html.py:30
+#: templates/accounts/signin.html:52 templates/accounts/signup-closed.html:3
+#: templates/accounts/signup-complete.html:4 templates/accounts/signup.html:13
+#: templates/accounts/signup.html.py:21 templates/accounts/signup.html:39
 msgid "Sign up"
 msgstr "Cadastrar"
 
@@ -90,8 +89,6 @@ msgid "Your account is already activated or your activation link is incorrect."
 msgstr "Sua conta já está ativada ou o link de ativação está incorreto."
 
 #: templates/accounts/activation-error.html:12
-#: templates/accounts/reset-complete.html:14
-#: templates/accounts/reset-done.html:14
 #: templates/accounts/signup-complete.html:14
 msgid "Back to Sign in"
 msgstr "Voltar"
@@ -133,26 +130,17 @@ msgstr "Conectado"
 msgid "Profile Informations"
 msgstr "Informações de Perfil"
 
-#: templates/accounts/reset-complete.html:4
-#: templates/accounts/reset-confirm.html:4
-#: templates/accounts/reset-done.html:4 templates/accounts/reset.html:4
-#: templates/accounts/signin.html:8 templates/accounts/signin.html.py:29
+#: templates/accounts/reset-confirm.html:5 templates/accounts/reset.html:5
+#: templates/accounts/signin.html:13 templates/accounts/signin.html.py:26
+#: templates/accounts/signin.html:46
 msgid "Sign in"
 msgstr "Entrar"
 
-#: templates/accounts/reset-complete.html:12
-msgid "Password reset complete"
-msgstr "Redefinição de senha completada"
-
-#: templates/accounts/reset-complete.html:13
-msgid "Your password has been set. You may go ahead and log in now."
-msgstr "A sua senha foi definida. Você pode entrar no sistema agora."
-
-#: templates/accounts/reset-confirm.html:13
+#: templates/accounts/reset-confirm.html:18
 msgid "Enter new password"
 msgstr "Informe uma nova senha"
 
-#: templates/accounts/reset-confirm.html:15
+#: templates/accounts/reset-confirm.html:20
 msgid ""
 "Please enter your new password twice so we can verify you typed it in "
 "correctly."
@@ -160,21 +148,9 @@ msgstr ""
 "Por favor, informe a sua nova senha duas vezes para que possamos verificar "
 "se você a digitou corretamente."
 
-#: templates/accounts/reset-confirm.html:23
-msgid "Change my password"
-msgstr "Alterar minha senha"
-
-#: templates/accounts/reset-done.html:12
-msgid "Password reset successful"
-msgstr "Senha redefinida com sucesso"
-
-#: templates/accounts/reset-done.html:13
-msgid ""
-"We've emailed you instructions for setting your password to the email "
-"address you submitted. You should be receiving it shortly."
-msgstr ""
-"Nós lhe enviamos um email contendo instruções sobre como definir sua senha "
-"para o endereço solicitado. Você deve recebê-lo em breve."
+#: templates/accounts/reset-confirm.html:31
+msgid "Change password"
+msgstr "Alterar senha"
 
 #: templates/accounts/reset.html:13
 msgid "Reset password"
@@ -182,23 +158,23 @@ msgstr "Redefinir senha"
 
 #: templates/accounts/reset.html:15
 msgid ""
-"Forgotten your password? Enter your email address below, and we'll email "
-"instructions for setting a new one."
+"Enter your email address below, and we'll email instructions for setting a "
+"new one."
 msgstr ""
-"Esqueceu sua senha? Informe seu endereço de email abaixo e nós enviaremos as "
-"instruções sobre como definir uma nova senha."
+"Informe seu endereço de email abaixo e nós enviaremos as instruções sobre "
+"como definir uma nova senha."
 
-#: templates/accounts/reset.html:22
+#: templates/accounts/reset.html:24
 msgid "Reset"
 msgstr "Redefinir"
 
-#: templates/accounts/reset.html:23
-msgid "Back"
-msgstr "Voltar"
+#: templates/accounts/signin.html:41
+msgid "Forgot password?"
+msgstr "Esqueceu sua senha?"
 
-#: templates/accounts/signin.html:17
-msgid "Please sign in"
-msgstr "Entre"
+#: templates/accounts/signin.html:51
+msgid "Don't have an account?"
+msgstr "Não tem uma conta?"
 
 #: templates/accounts/signup-closed.html:10
 msgid "Signup is closed"
@@ -226,11 +202,7 @@ msgstr "Email de ativação enviado"
 msgid "Please check your email to complete the registration process."
 msgstr "Por favor, confira seu email para completar o processo de cadastro."
 
-#: templates/accounts/signup.html:16
-msgid "Signup for an account"
-msgstr "Cadastrar uma conta"
-
-#: templates/accounts/signup.html:35
+#: templates/accounts/signup.html:45
 msgid "Sign up with"
 msgstr "Cadastrar com"
 
@@ -387,14 +359,30 @@ msgstr ""
 "Obrigado,\n"
 "Equipe %(site.name)s\n"
 
-#: views.py:80
+#: views.py:60
+msgid ""
+"We've emailed you instructions for setting a new password to the email "
+"address you've submitted."
+msgstr ""
+"Nós lhe enviamos um email contendo instruções sobre como definir sua senha "
+"para o endereço solicitado."
+
+#: views.py:93 views.py:97
+msgid "Unknown user or invalid token."
+msgstr "Usuário desconhecido ou token inválido."
+
+#: views.py:104
+msgid "Password has been reset successfully."
+msgstr "Senha redefinida com sucesso"
+
+#: views.py:128
 msgid "Succesfully updated profile."
 msgstr "Perfil atualizado com sucesso."
 
-#: views.py:97
+#: views.py:145
 msgid "Succesfully updated your password."
 msgstr "Senha atualizada com sucesso."
 
-#: views.py:114
+#: views.py:162
 msgid "Welcome to {}! Your account was successfully activated."
 msgstr "Bem-vindo ao {}! Sua conta foi ativada com sucesso."

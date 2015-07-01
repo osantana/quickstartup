@@ -1,8 +1,7 @@
 {% extends "page.html" %}{% load i18n l10n pages %}
 
 
-{% block body_tag %}
-    <body class="page index">{% endblock %}
+{% block body_tag %}<body class="page index">{% endblock %}
 
 
 {% block container %}
@@ -10,7 +9,7 @@
         <div class="jumbotron">
             <h1>{{ PROJECT_NAME }}</h1>
 
-            <p>{% blocktrans %}This is a template for a simple web application in Django.{% endblocktrans %}</p>
+            <p>{% blocktrans %}Create your SaaS company quickly.{% endblocktrans %}</p>
 
             <p><a href="{% url "qs_accounts:signup" %}" class="btn btn-success btn-lg">{% trans "Create your Account!" %}</a></p>
         </div>
@@ -23,44 +22,42 @@
                     <h2>{% trans "Start Now!" %}</h2>
 
                     <p>
-                        {% blocktrans %}Quickstartup provides the basic components and design to start
-                            your web application quickly.{% endblocktrans %}
+{% blocktrans %}Quickstartup provides the building blocks to start your application development instantly.{% endblocktrans %}
                     </p>
                 </div>
             </div>
+
             <div class="col-md-4">
                 <div class="box">
                     <h2>{% trans "Go Live!" %}</h2>
 
                     <p>
-                        {% blocktrans %}Quickstartup includes deployment script for the major Django
-                            host providers. You can put your application online with one command.{% endblocktrans %}
+{% blocktrans %}Put your application in the air with a few simple steps.{% endblocktrans %}
                     </p>
                 </div>
             </div>
-        </div>
+        </div> <!-- row -->
+
         <div class="row">
             <div class="col-md-offset-2 col-md-4">
-                <div class="box">
-                    <h2>{% trans "Open Source" %}</h2>
-
-                    <p>
-                        {% blocktrans %}This is an Open Source project that allows any entrepreneur start
-                            their own SaaS application.{% endblocktrans %}
-                    </p>
-                </div>
-            </div>
-            <div class="col-md-4">
                 <div class="box">
                     <h2>{% trans "Focus on your business" %}</h2>
 
                     <p>
-                        {% blocktrans %}SaaS applications need many side features that deviate developers from
-                            the core business.{% endblocktrans %}
+{% blocktrans %}SaaS applications need many side features that deviate developers from the core business. Quickstartup provides these features and allows you to keep focused on main application development.{% endblocktrans %}
                     </p>
                 </div>
             </div>
-        </div>
-    </div>{% endblock %}
 
+            <div class="col-md-4">
+                <div class="box">
+                    <h2>{% trans "Free and Open Source" %}</h2>
 
+                    <p>
+{% blocktrans %}This project is Open Source and allows any entrepreneur starts their own SaaS application business.{% endblocktrans %}
+                    </p>
+                </div>
+            </div>
+        </div>  <!-- row -->
+    </div> <!-- .tour -->
+{% endblock %}

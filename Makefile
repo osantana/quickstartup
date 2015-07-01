@@ -18,9 +18,8 @@ clean-build:
 	rm -fr *.egg-info
 
 clean-pyc:
-	find . -name '*.pyc' -exec rm -f {} +
-	find . -name '*.pyo' -exec rm -f {} +
-	find . -name '*~' -exec rm -f {} +
+	@find . -iname '*.py[co]' -delete
+	@find . -iname '__pycache__' -delete
 
 test:
 	./manage.py test

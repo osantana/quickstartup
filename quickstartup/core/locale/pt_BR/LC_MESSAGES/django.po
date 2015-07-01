@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: quickstartup 0.1.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-23 00:42-0300\n"
+"POT-Creation-Date: 2015-06-30 23:06-0300\n"
 "PO-Revision-Date: 2013-04-07 01:46-0300\n"
 "Last-Translator: Osvaldo Santana Neto <quickstartup@osantana.me>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
@@ -23,43 +23,43 @@ msgstr ""
 "Você precisa habilitar o JavaScript do seu navegador para enviar este "
 "formulário."
 
-#: templates/_includes/field_password.html:6
-msgid "(forgot password)"
-msgstr "(esqueci a senha)"
-
-#: templates/apps.html:28
+#: templates/_base/app.html:29
 msgid "Profile"
 msgstr "Perfil"
 
-#: templates/apps.html:30
+#: templates/_base/app.html:31
 msgid "Sign out"
 msgstr "Sair"
 
-#: templates/apps.html:49 templates/apps/index.html:4
+#: templates/_base/app.html:53 templates/apps/index.html:4
 #: templates/apps/index.html.py:8
 msgid "Home"
 msgstr "Início"
 
-#: templates/apps/index.html:9
-msgid "This is the home."
-msgstr "Esta é a página principal."
-
-#: templates/pages.html:21
+#: templates/_base/page.html:23
 msgid "Sign in"
 msgstr "Entrar"
 
-#: templates/pages.html:22
+#: templates/_base/page.html:25
 msgid "Sign up"
 msgstr "Cadastrar"
 
-#: templates/pages.html:23
+#: templates/_base/page.html:27
 msgid "Contact"
 msgstr "Contato"
 
-#: templates/pages.html:30
+#: templates/_base/page.html:34
 msgid "Privacy"
 msgstr "Política de Privacidade"
 
-#: templates/pages.html:31
+#: templates/_base/page.html:35
 msgid "Terms"
 msgstr "Termos de uso"
+
+#: templates/_includes/field_password.html:6
+msgid "(forgot password)"
+msgstr "(esqueci a senha)"
+
+#: templates/apps/index.html:9
+msgid "This is the home."
+msgstr "Esta é a página principal."

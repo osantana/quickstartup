@@ -1,11 +1,10 @@
 {# Here we define the sctructure used by the public part of project website #}
-{% extends "project.html" %}{% load i18n l10n pages widget_tweaks %}
+{% extends "project.html" %}{% load i18n l10n pages widget_tweaks staticfiles%}
 
 
 {% block styles %}{{ block.super }}
-    <link rel="stylesheet" href="{{ STATIC_URL }}website/base.css">
+    <link rel="stylesheet" href="{% static "page.css" %}">
 {% endblock %}
-
 
 {% block body_tag %}
     <body class="website">{% endblock %}

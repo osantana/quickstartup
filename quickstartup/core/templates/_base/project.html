@@ -1,6 +1,12 @@
 {# Here we define the common layout used by website and app #}
 {% extends "_base/bootstrap.html" %}{% load i18n l10n pages widget_tweaks staticfiles %}
 
+
+{% block styles %}{{ block.super }}
+    <link rel="stylesheet" href="{% static "project.css" %}">
+{% endblock %}
+
+
 {% block page_title %}{{ PROJECT_NAME }}{% endblock page_title %}
 
 

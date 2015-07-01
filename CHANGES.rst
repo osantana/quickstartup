@@ -4,6 +4,11 @@ History
 -------
 
 
+0.4.4
++++++
+
+* More templates & static refactorings to make customization easy
+
 0.4.3
 +++++
 

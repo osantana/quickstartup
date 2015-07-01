@@ -2,25 +2,12 @@
 
 /*noinspection ALL*/
 body {
-    background-image: url("/static/website/background.jpg");
+    background-image: url("/static/background.jpg");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
     background-color: #333333;
     background-attachment: fixed;
-}
-
-label {
-    text-transform: capitalize;
-}
-
-.content {
-    border: 1px solid #d4d4d4;
-    background-color: #ffffff;
-    padding: 10px 20px 20px 20px;
-    border-radius: 5px;
-    text-shadow: 0 1px 0 #fff;
-    box-shadow: 0 0 20px rgba(0, 0, 0, .05);
 }
 
 .contact textarea {

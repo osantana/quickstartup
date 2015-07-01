@@ -3,6 +3,12 @@
 History
 -------
 
+
+0.4.2
++++++
+
+* Update messages and tranlations
+
 0.4.1
 +++++
 

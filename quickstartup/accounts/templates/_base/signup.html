@@ -18,6 +18,7 @@
         <div class="row">
             <div class="col-md-offset-4 col-md-4">
                 <div class="form-panel">
+                    {% block signup_form %}
                     <h2>{% trans "Sign up" %}</h2>
 
                     <form action="" method="post" role="form">
@@ -29,10 +30,12 @@
                             </div>
                         {% endif %}
 
+                        {% block signup_fields %}
                         {% include "_includes/bigfield.html" with field=form.name|attr:"autofocus" %}
                         {% include "_includes/bigfield.html" with field=form.email %}
                         {% include "_includes/bigfield_password.html" with field=form.password1 %}
                         {% include "_includes/bigfield_password.html" with field=form.password2 %}
+                        {% endblock %}
 
                         <div class="form-group">
                             <button class="btn btn-primary btn-lg btn-block" type="submit">
@@ -46,6 +49,7 @@
                             {% include "_includes/social_options.html" with verb=verb %}
                         {% endif %}
                     </form>
+                    {% endblock %}
                 </div>
             </div>
         </div>

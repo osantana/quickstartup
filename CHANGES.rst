@@ -4,6 +4,11 @@ History
 -------
 
 
+0.4.3
++++++
+
+* Make signup form template overridable
+
 0.4.2
 +++++
 

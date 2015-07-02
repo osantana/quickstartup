@@ -41,6 +41,7 @@ class PageTest(BaseTestCase):
 
     def test_success_terms_page_access(self):
         response = self.client.get("/terms/")
+        self.assertStatusCode(response, 200)
         self.assertContains(response, "<title>Terms of Service —")
 
     def test_success_terms_page_access_missing_trailing_slash(self):
@@ -49,6 +50,7 @@ class PageTest(BaseTestCase):
 
     def test_success_privacy_page_access(self):
         response = self.client.get("/privacy/")
+        self.assertStatusCode(response, 200)
         self.assertContains(response, "<title>Privacy Policy —")
 
     def test_fail_page_404(self):
@@ -75,5 +77,5 @@ class PageTest(BaseTestCase):
     def test_index_page_anonymous_user(self):
         response = self.client.get("/")
         self.assertStatusCode(response, 200)
-        self.assertTemplateUsed(response, "website/index.html")
+        self.assertTemplateUsed(response, "website/landing.html")
         self.assertInHTML("<title>Django Quickstartup</title>", response.content.decode("utf-8"))

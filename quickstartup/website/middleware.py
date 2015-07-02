@@ -8,6 +8,7 @@ from .views import website_page
 
 
 class WebsitePageMiddleware(object):
+    # noinspection PyMethodMayBeStatic
     def process_response(self, request, response):
         if response.status_code != 404:
             return response

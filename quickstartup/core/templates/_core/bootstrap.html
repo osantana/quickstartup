@@ -1,11 +1,11 @@
 {# These base includes bootstrap & jquery used by Quickstartup. #}
 {# If you have plans to use other CSS & JS frameworks you can change it here. #}
-{% extends "_base/html5.html" %}{% load i18n %}{% load l10n %}{% load static %}
+{% extends "_core/html5.html" %}{% load i18n l10n static %}
 
 
 {% block meta_tags %}
-<link rel="shortcut icon" href="{% static "favicon.ico" %}" type="image/x-icon">
-<link rel="icon" href="{% static "favicon.ico" %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static "favicon.ico" %}" type="image/x-icon">
+    <link rel="icon" href="{% static "favicon.ico" %}" type="image/x-icon">
 {% endblock %}
 
 

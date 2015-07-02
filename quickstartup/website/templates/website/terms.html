@@ -1,24 +1,2 @@
-{% extends "website/page.html" %}{% load i18n %}{% load l10n %}{% load pages %}
-
-
-{% block meta_tags %}{{ block.super }}
-    <meta name="robots" content="noindex, nofollow">
-{% endblock %}
-
-
-{% block page_title %}{% trans "Terms of Service" %} — {{ block.super }}{% endblock page_title %}
-
-
-{% block container %}
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="content">
-                    <h1>{% trans "Terms of Service" %}</h1>
-
-                    <p><a href="https://termsfeed.com/">{% trans "Create your Terms of Service here" %}</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
-{% endblock %}
+{# Template that will be overrided to change website terms of service #}
+{% extends "_website/terms.html" %}

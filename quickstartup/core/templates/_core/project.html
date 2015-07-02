@@ -1,9 +1,9 @@
 {# Here we define the common layout used by website and app #}
-{% extends "_base/bootstrap.html" %}{% load i18n l10n pages widget_tweaks staticfiles %}
+{% extends "_core/bootstrap.html" %}{% load i18n l10n pages widget_tweaks staticfiles %}
 
 
 {% block styles %}{{ block.super }}
-    <link rel="stylesheet" href="{% static "project.css" %}">
+    <link rel="stylesheet" href="{% static "css/quickstartup.css" %}">
 {% endblock %}
 
 
@@ -17,14 +17,14 @@
                 <div class="container-fluid">
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                            <span class="sr-only">Toggle navigation</span>
+                            <span class="sr-only">{% trans "Toggle navigation" %}</span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
                         {% block brand %}
                             <a class="navbar-brand" href="{% url "qs_pages:index" %}">
-                                <img src="{% static "logo-140x35.png" %}" alt="{{ PROJECT_NAME }}">
+                                <img src="{% static "images/logo-140x35.png" %}" alt="{{ PROJECT_NAME }}">
                             </a>
                         {% endblock %}
                     </div>
@@ -32,11 +32,8 @@
                 </div>
             </nav>
         {% endblock %}
-
         {% block container %}{% endblock %}
-
     </div>
-
     {% block footer %}
         <footer>
             <div class="footer">
@@ -53,5 +50,4 @@
             </div>
         </footer>
     {% endblock footer %}
-
 {% endblock html_body %}

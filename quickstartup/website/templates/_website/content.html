@@ -1,0 +1,25 @@
+{% extends "page.html" %}{% load i18n l10n %}
+
+
+{% block body_class %}{{ page.slug }}{% endblock %}
+
+
+{% block container %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-offset-2 col-md-8">
+                <ol class="breadcrumb">
+                    <li><a href="{% url "qs_pages:index" %}">{% trans "Home" %}</a></li>
+                    <li class="active">{% block title %}{% endblock %}</li>
+                </ol>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-offset-2 col-md-8">
+                <div class="content">
+                    {% block content %}{% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

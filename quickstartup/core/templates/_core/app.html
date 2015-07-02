@@ -3,12 +3,11 @@
 
 
 {% block styles %}{{ block.super }}
-    <link rel="stylesheet" href="{% static "app.css" %}">
+    <link rel="stylesheet" href="{% static "css/project.css" %}">
 {% endblock %}
 
-
 {% block body_tag %}
-    <body class="app">{% endblock %}
+    <body class="app {% block body_class %}{% endblock %}">{% endblock %}
 
 
 {% block navbar_menu %}
@@ -45,6 +44,7 @@
                 {% include "_includes/message_panels.html" %}
             </div>
         </div>
+
         <div class="row">
             {% block sidebar %}
                 <div class="col-md-3">
@@ -57,10 +57,8 @@
             {% endblock %}
 
             <div class="col-md-9">
-                <div class="row">
-                    <div class="col-md-12">
-                        {% block content %}{% endblock %}
-                    </div>
+                <div class="content">
+                    {% block content %}{% endblock %}
                 </div>
             </div>
 

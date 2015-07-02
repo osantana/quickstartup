@@ -1,7 +1,11 @@
 {% extends "app.html" %}{% load i18n l10n pages widget_tweaks %}
 
 
-{% block sidebar_home %}<a class="list-group-item active" href="{% url "app:index" %}">{% trans "Home" %}</a>{% endblock %}
+{% block sidebar_home %}
+    <a class="list-group-item active" href="{% url "app:index" %}">{% trans "Home" %}</a>{% endblock %}
+
+
+{% block body_class %}index{% endblock %}
 
 
 {% block content %}

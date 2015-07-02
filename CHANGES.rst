@@ -4,6 +4,11 @@ History
 -------
 
 
+0.5.0
++++++
+
+* Finish templates and static reorganization
+
 0.4.4
 +++++
 

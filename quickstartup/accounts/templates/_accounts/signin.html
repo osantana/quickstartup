@@ -1,0 +1,42 @@
+{% extends "accounts/accounts.html" %}{% load i18n l10n widget_tweaks %}
+
+
+{% block menu_signin %}
+    <li class="active"><a href="{% url "qs_accounts:signin" %}">{% trans "Sign in" %}</a></li>{% endblock %}
+
+
+{% block body_class %}{{ block.super }} signup{% endblock %}
+
+
+{% block title %}{% trans "Sign in" %}{% endblock %}
+
+
+{% block panel %}
+    {% block signin_form %}
+        <form action="" method="post" role="form">
+            {% csrf_token %}
+
+            {% include "_includes/form_errors.html" %}
+
+            {% block signin_fields %}
+                {% include "_includes/bigfield.html" with field=form.username|attr:"autofocus" %}
+                {% include "_includes/bigfield_password.html" with field=form.password %}
+            {% endblock %}
+
+            <div class="form-group">
+                <a href="{% url "qs_accounts:password_reset" %}">{% trans "Forgot password?" %}</a>
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-primary btn-lg btn-block" type="submit">
+                    {% trans "Sign in" %}
+                </button>
+            </div>
+
+            <div class="form-group">
+                {% trans "Don't have an account?" %}
+                <a href="{% url "qs_accounts:signup" %}">{% trans "Sign up" %}.</a>
+            </div>
+        </form>
+    {% endblock %}
+{% endblock %}

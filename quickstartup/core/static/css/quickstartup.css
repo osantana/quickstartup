@@ -1,0 +1,82 @@
+/* global (website & app) */
+/* ---------------------- */
+.navbar-brand {
+    padding: 8px 10px;
+}
+
+.footer {
+    margin: 50px 0 20px;
+    color: #fff;
+}
+
+.footer a {
+    color: #fff;
+    text-decoration: underline;
+}
+
+
+/* website */
+/* ------- */
+
+/*noinspection ALL*/
+body.page {
+    background-image: url("/static/images/background.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-color: #333333;
+    background-attachment: fixed;
+}
+
+.page .panel {
+    margin-top: 50px;
+    background-color: #fff;
+    padding: 0 20px 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, .8);
+}
+
+/* website->landing */
+.landing .jumbotron {
+    margin-top: 50px;
+    background-color: transparent;
+}
+
+.landing .jumbotron h1 {
+    font-family: "Helvetica Neue Light", Arial, sans-serif;
+    font-weight: lighter;
+    color: #fff;
+    text-shadow: 1px 1px 2px #000;
+}
+
+.landing .jumbotron p {
+    color: #fff;
+    text-shadow: 1px 1px 0 #000;
+}
+
+.landing .tour {
+    margin-top: 50px;
+    background-color: rgba(255, 255, 255, .9);
+}
+
+.landing .tour .box {
+    padding: 20px;
+}
+
+/* website->pages */
+.page .breadcrumb {
+    box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+}
+
+.page .content {
+    background-color: rgba(255, 255, 255, 1);
+    padding: 20px 50px;
+    min-height: 50em;
+    border-radius: 3px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+}
+
+/* website->contact */
+.contact textarea {
+    resize: none;
+}

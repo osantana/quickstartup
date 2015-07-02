@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: quickstartup 0.1.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-30 23:06-0300\n"
+"POT-Creation-Date: 2015-07-02 01:05-0300\n"
 "PO-Revision-Date: 2013-04-07 01:46-0300\n"
 "Last-Translator: Osvaldo Santana Neto <quickstartup@osantana.me>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
@@ -33,7 +33,7 @@ msgstr "Contas"
 msgid "E-Mail"
 msgstr "E-Mail"
 
-#: forms.py:77
+#: forms.py:77 templates/_accounts/reset-confirm.html:11
 msgid "New password"
 msgstr "Nova senha"
 
@@ -65,82 +65,79 @@ msgstr "usuário"
 msgid "users"
 msgstr "usuários"
 
-#: templates/_includes/social_options.html:6
+#: templates/_accounts/_includes/social_options.html:6
 msgid "Or"
 msgstr "Ou"
 
-#: templates/_includes/social_options.html:8
+#: templates/_accounts/_includes/social_options.html:8
 msgid "Signin with"
 msgstr "Entrar com"
 
-#: templates/accounts/activation-error.html:3
-#: templates/accounts/signin.html:52 templates/accounts/signup-closed.html:3
-#: templates/accounts/signup-complete.html:4 templates/accounts/signup.html:13
-#: templates/accounts/signup.html.py:21 templates/accounts/signup.html:39
+#: templates/_accounts/activation-error.html:3
+#: templates/_accounts/signin.html:38 templates/_accounts/signup-closed.html:3
+#: templates/_accounts/signup-complete.html:4
+#: templates/_accounts/signup.html:5 templates/_accounts/signup.html.py:11
+#: templates/_accounts/signup.html:30
 msgid "Sign up"
 msgstr "Cadastrar"
 
-#: templates/accounts/activation-error.html:10
+#: templates/_accounts/activation-error.html:10
 msgid "Account activation failed"
 msgstr "Ativação da conta falhou"
 
-#: templates/accounts/activation-error.html:11
+#: templates/_accounts/activation-error.html:11
 msgid "Your account is already activated or your activation link is incorrect."
 msgstr "Sua conta já está ativada ou o link de ativação está incorreto."
 
-#: templates/accounts/activation-error.html:12
-#: templates/accounts/signup-complete.html:14
+#: templates/_accounts/activation-error.html:12
+#: templates/_accounts/signup-complete.html:14
 msgid "Back to Sign in"
 msgstr "Voltar"
 
-#: templates/accounts/base_profile.html:7 templates/accounts/profile.html:4
+#: templates/_accounts/base-profile.html:7 templates/_accounts/profile.html:4
 msgid "Profile"
 msgstr "Perfil"
 
-#: templates/accounts/base_profile.html:8
-#: templates/accounts/profile-security.html:4
-#: templates/accounts/profile-security.html:9
+#: templates/_accounts/base-profile.html:8
+#: templates/_accounts/profile-security.html:4
+#: templates/_accounts/profile-security.html:9
 msgid "Security"
 msgstr "Segurança"
 
-#: templates/accounts/base_profile.html:10
-#: templates/accounts/profile-social.html:4
-#: templates/accounts/profile-social.html:9
+#: templates/_accounts/base-profile.html:10
+#: templates/_accounts/profile-social.html:4
+#: templates/_accounts/profile-social.html:9
 msgid "Social"
 msgstr "Social"
 
-#: templates/accounts/profile-security.html:20
-#: templates/accounts/profile.html:20
+#: templates/_accounts/profile-security.html:20
+#: templates/_accounts/profile.html:20
 msgid "Update"
 msgstr "Atualizar"
 
-#: templates/accounts/profile-social.html:12
+#: templates/_accounts/profile-social.html:12
 msgid "Social Networks"
 msgstr "Redes Sociais"
 
-#: templates/accounts/profile-social.html:23
+#: templates/_accounts/profile-social.html:23
 msgid "Connect"
 msgstr "Conectar"
 
-#: templates/accounts/profile-social.html:25
+#: templates/_accounts/profile-social.html:25
 msgid "Connected"
 msgstr "Conectado"
 
-#: templates/accounts/profile.html:10
+#: templates/_accounts/profile.html:10
 msgid "Profile Informations"
 msgstr "Informações de Perfil"
 
-#: templates/accounts/reset-confirm.html:5 templates/accounts/reset.html:5
-#: templates/accounts/signin.html:13 templates/accounts/signin.html.py:26
-#: templates/accounts/signin.html:46
+#: templates/_accounts/reset-confirm.html:5 templates/_accounts/reset.html:5
+#: templates/_accounts/signin.html:5 templates/_accounts/signin.html.py:11
+#: templates/_accounts/signin.html:32
 msgid "Sign in"
 msgstr "Entrar"
 
-#: templates/accounts/reset-confirm.html:18
-msgid "Enter new password"
-msgstr "Informe uma nova senha"
-
-#: templates/accounts/reset-confirm.html:20
+#: templates/_accounts/reset-confirm.html:16
 msgid ""
 "Please enter your new password twice so we can verify you typed it in "
 "correctly."
@@ -148,15 +145,15 @@ msgstr ""
 "Por favor, informe a sua nova senha duas vezes para que possamos verificar "
 "se você a digitou corretamente."
 
-#: templates/accounts/reset-confirm.html:31
+#: templates/_accounts/reset-confirm.html:30
 msgid "Change password"
 msgstr "Alterar senha"
 
-#: templates/accounts/reset.html:13
+#: templates/_accounts/reset.html:11
 msgid "Reset password"
 msgstr "Redefinir senha"
 
-#: templates/accounts/reset.html:15
+#: templates/_accounts/reset.html:16
 msgid ""
 "Enter your email address below, and we'll email instructions for setting a "
 "new one."
@@ -164,23 +161,23 @@ msgstr ""
 "Informe seu endereço de email abaixo e nós enviaremos as instruções sobre "
 "como definir uma nova senha."
 
-#: templates/accounts/reset.html:24
+#: templates/_accounts/reset.html:28
 msgid "Reset"
 msgstr "Redefinir"
 
-#: templates/accounts/signin.html:41
+#: templates/_accounts/signin.html:27
 msgid "Forgot password?"
 msgstr "Esqueceu sua senha?"
 
-#: templates/accounts/signin.html:51
+#: templates/_accounts/signin.html:37
 msgid "Don't have an account?"
 msgstr "Não tem uma conta?"
 
-#: templates/accounts/signup-closed.html:10
+#: templates/_accounts/signup-closed.html:10
 msgid "Signup is closed"
 msgstr "Cadastramento está fechado"
 
-#: templates/accounts/signup-closed.html:12
+#: templates/_accounts/signup-closed.html:12
 msgid ""
 "This site is currently in closed beta.\n"
 "If you want to be a beta tester of this service please contact us by contact "
@@ -190,19 +187,19 @@ msgstr ""
 "Se você deseja ser um testador deste serviço entre em contato pelo "
 "formulário de contato."
 
-#: templates/accounts/signup-closed.html:15
+#: templates/_accounts/signup-closed.html:15
 msgid "Go to Contact"
 msgstr "Ir para Contato"
 
-#: templates/accounts/signup-complete.html:12
+#: templates/_accounts/signup-complete.html:12
 msgid "Activation email sent"
 msgstr "Email de ativação enviado"
 
-#: templates/accounts/signup-complete.html:13
+#: templates/_accounts/signup-complete.html:13
 msgid "Please check your email to complete the registration process."
 msgstr "Por favor, confira seu email para completar o processo de cadastro."
 
-#: templates/accounts/signup.html:45
+#: templates/_accounts/signup.html:36
 msgid "Sign up with"
 msgstr "Cadastrar com"
 

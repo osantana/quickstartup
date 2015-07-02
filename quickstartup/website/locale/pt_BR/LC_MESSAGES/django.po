@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: quickstartup 0.1.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-30 23:06-0300\n"
+"POT-Creation-Date: 2015-07-02 01:05-0300\n"
 "PO-Revision-Date: 2013-04-07 01:46-0300\n"
 "Last-Translator: Osvaldo Santana Neto <quickstartup@osantana.me>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
@@ -29,19 +29,23 @@ msgstr "Path da URL. Exemplo: about para /about/"
 msgid "Template filename. Example: website/about.html"
 msgstr "Nome do arquivo de template. Exemplo: website/about.html"
 
-#: templates/website/index.html:12
+#: templates/_website/content.html:12
+msgid "Home"
+msgstr "Início"
+
+#: templates/_website/landing.html:12
 msgid "Create your SaaS company quickly."
 msgstr "Crie a sua empresa SaaS rapidamente."
 
-#: templates/website/index.html:14
+#: templates/_website/landing.html:14
 msgid "Create your Account!"
 msgstr "Cadastre-se!"
 
-#: templates/website/index.html:22
+#: templates/_website/landing.html:22
 msgid "Start Now!"
 msgstr "Comece Já!"
 
-#: templates/website/index.html:25
+#: templates/_website/landing.html:25
 msgid ""
 "Quickstartup provides the building blocks to start your application "
 "development instantly."
@@ -49,19 +53,19 @@ msgstr ""
 "Quickstartup oferece os componentes necessários para começar o "
 "desenvolvimento da sua aplicação instantaneamente."
 
-#: templates/website/index.html:32
+#: templates/_website/landing.html:32
 msgid "Go Live!"
 msgstr "No Ar!"
 
-#: templates/website/index.html:35
+#: templates/_website/landing.html:35
 msgid "Put your application in the air with a few simple steps."
 msgstr "Coloque a sua aplicação no ar com poucos passos simples."
 
-#: templates/website/index.html:44
+#: templates/_website/landing.html:44
 msgid "Focus on your business"
 msgstr "Fique focado no seu negócio"
 
-#: templates/website/index.html:47
+#: templates/_website/landing.html:47
 msgid ""
 "SaaS applications need many side features that deviate developers from the "
 "core business. Quickstartup provides these features and allows you to keep "
@@ -72,11 +76,11 @@ msgstr ""
 "funcionalidades e permite que você fique focado no desenvolvimento da "
 "aplicação principal."
 
-#: templates/website/index.html:54
+#: templates/_website/landing.html:54
 msgid "Free and Open Source"
 msgstr "Grátis e Código Aberto"
 
-#: templates/website/index.html:57
+#: templates/_website/landing.html:57
 msgid ""
 "This project is Open Source and allows any entrepreneur starts their own "
 "SaaS application business."
@@ -84,18 +88,18 @@ msgstr ""
 "Este projeto é Open Source e permite que qualquer empreendedor comece seu "
 "próprio negócio de aplicação SaaS"
 
-#: templates/website/privacy.html:9 templates/website/privacy.html.py:17
+#: templates/_website/privacy.html:9 templates/_website/privacy.html.py:14
 msgid "Privacy Policy"
 msgstr "Política de Privacidade"
 
-#: templates/website/privacy.html:19
+#: templates/_website/privacy.html:17
 msgid "Create your Privacy Policy here"
 msgstr "Crie a sua Política de Privacidade aqui"
 
-#: templates/website/terms.html:9 templates/website/terms.html.py:17
+#: templates/_website/terms.html:9 templates/_website/terms.html.py:14
 msgid "Terms of Service"
 msgstr "Termos de Uso"
 
-#: templates/website/terms.html:19
+#: templates/_website/terms.html:17
 msgid "Create your Terms of Service here"
 msgstr "Crie os seus Termos de Uso aqui"

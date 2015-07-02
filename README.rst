@@ -77,3 +77,5 @@ TODO
 ----
 
 * Decorators similar to "@login_required" that redirect user for signup/setup conclusion.
+* Reorganize mail templates to make override possible
+* Add address, map, and other infos in contact form

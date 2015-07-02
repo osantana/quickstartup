@@ -4,6 +4,11 @@ History
 -------
 
 
+0.5.1
++++++
+
+* Fix remaining formatting issues in some templates
+
 0.5.0
 +++++
 

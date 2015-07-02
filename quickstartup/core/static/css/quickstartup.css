@@ -5,13 +5,12 @@
 }
 
 .footer {
-    margin: 50px 0 20px;
-    color: #fff;
+    margin: 50px 0 0;
+    padding: 20px;
 }
 
-.footer a {
-    color: #fff;
-    text-decoration: underline;
+.footer p {
+    margin: 0;
 }
 
 
@@ -26,6 +25,16 @@ body.page {
     background-size: cover;
     background-color: #333333;
     background-attachment: fixed;
+}
+
+.page .footer {
+    color: #fff;
+    background-color: rgba(0, 0, 0, .8);
+}
+
+.page .footer a {
+    color: #fff;
+    text-decoration: underline;
 }
 
 .page .panel {

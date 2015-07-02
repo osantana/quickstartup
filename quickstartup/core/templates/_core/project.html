@@ -16,7 +16,8 @@
             <nav class="{% block navbar_class %}navbar navbar-inverse navbar-static-top{% endblock %}">
                 <div class="container-fluid">
                     <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse"
+                                data-target=".navbar-collapse">
                             <span class="sr-only">{% trans "Toggle navigation" %}</span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
@@ -35,19 +36,22 @@
         {% block container %}{% endblock %}
     </div>
     {% block footer %}
-        <footer>
-            <div class="footer">
-                <div class="container">
-                    {% block footer_content %}
-                        <p class="pull-left">{% block copyright %}
-                            &copy; 2015 Osvaldo Santana Neto /
-                            <small>Photo by <a href="https://www.flickr.com/photos/shawnhoke/">Shawn Hoke</a></small>
-                        {% endblock %}
-                        </p>
-                        {% block footer_links %}{% endblock footer_links %}
-                    {% endblock footer_content %}
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 footer">
+                    <footer>
+                        {% block footer_content %}
+                            <p class="pull-left">{% block copyright %}
+                                &copy; 2015 Osvaldo Santana Neto /
+                                <small>Photo by <a href="https://www.flickr.com/photos/shawnhoke/">Shawn Hoke</a>
+                                </small>
+                            {% endblock %}
+                            </p>
+                            {% block footer_links %}{% endblock footer_links %}
+                        {% endblock footer_content %}
+                    </footer>
                 </div>
             </div>
-        </footer>
+        </div>
     {% endblock footer %}
 {% endblock html_body %}

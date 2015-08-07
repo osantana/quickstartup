@@ -3,6 +3,11 @@
 History
 -------
 
+0.5.3
++++++
+
+* Small refactor in footer_links block
+
 0.5.2
 +++++
 

@@ -3,6 +3,11 @@
 History
 -------
 
+0.5.2
++++++
+
+* Sticky footer!
+* Add a block structure start_body after <body> tag (for some analytics scripts)
 
 0.5.1
 +++++

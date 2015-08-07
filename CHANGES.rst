@@ -3,6 +3,11 @@
 History
 -------
 
+0.5.4
++++++
+
+* Update requirements versions
+
 0.5.3
 +++++
 

@@ -29,8 +29,6 @@
 {% endblock %}
 
 {% block footer_links %}
-    <p class="pull-right">
-        <a href="{% page_url "privacy" %}">{% trans "Privacy" %}</a> |
-        <a href="{% page_url "terms" %}">{% trans "Terms" %}</a>
-    </p>
+    <a href="{% page_url "privacy" %}">{% trans "Privacy" %}</a> |
+    <a href="{% page_url "terms" %}">{% trans "Terms" %}</a>
 {% endblock %}

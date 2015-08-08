@@ -79,3 +79,6 @@ TODO
 * Decorators similar to "@login_required" that redirect user for signup/setup conclusion.
 * Reorganize mail templates to make override possible
 * Add address, map, and other infos in contact form
+* Implement a custom RegistrationBackend to make code simple
+* Make all e-mail sending async (no celery, please)
+* Allow login e-mail address modification (with check for valid e-mail)

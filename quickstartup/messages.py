@@ -56,7 +56,7 @@ def send_contact_mail(instance, created, **kwargs):
     email = EmailMessage(
         subject=_("New Contact from %s") % (settings.PROJECT_NAME,),
         body=template.format(domain=domain, instance=instance),
-        from_email="donotreply@{}".format(domain),
+        from_email=settings.PROJECT_CONTACT,
         to=[settings.PROJECT_CONTACT],
         headers={"Reply-To": instance.email},
     )

@@ -3,6 +3,12 @@
 History
 -------
 
+0.5.7
++++++
+
+* Replace noreply@{domain} with PROJECT_CONTACT to enable
+  tests on localhost (some SMTP servers does not accept this hostname)
+
 0.5.6
 +++++
 

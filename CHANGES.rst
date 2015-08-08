@@ -8,7 +8,6 @@ History
 
 * Fix an blocker bug in import on contact app
 
-
 0.5.5
 +++++
 

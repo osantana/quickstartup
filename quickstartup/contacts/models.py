@@ -1,13 +1,12 @@
 # coding: utf-8
 
 
-from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.db import models
-from django.core.mail import EmailMessage
 from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
 
+from messages import send_contact_mail
 
 CONTACT_STATUS = (
     ("N", _("New")),
@@ -30,30 +29,6 @@ class Contact(models.Model):
     @property
     def admin_url(self):
         return reverse("admin:contacts_contact_change", args=(self.pk,))
-
-
-def send_contact_mail(instance, created, **kwargs):
-    if not created:
-        return
-
-    template = _(
-        "Contact From: {instance.name} <{instance.email}>\n"
-        "Phone: {instance.phone}\n"
-        "Message:\n"
-        "{instance.message}\n"
-        "URL: http://{domain}{instance.admin_url}\n"
-    )
-
-    domain = settings.PROJECT_DOMAIN
-    email = EmailMessage(
-        subject=_("New Contact from %s") % (settings.PROJECT_NAME,),
-        body=template.format(domain=domain, instance=instance),
-        from_email=instance.email,
-        to=[settings.PROJECT_CONTACT],
-        headers={"Reply-To": instance.email},
-    )
-
-    email.send(fail_silently=True)
 
 
 post_save.connect(send_contact_mail, Contact, dispatch_uid="quickstartup.contacts")

@@ -6,7 +6,7 @@ from django.db import models
 from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
 
-from messages import send_contact_mail
+from ..messages import send_contact_mail
 
 CONTACT_STATUS = (
     ("N", _("New")),

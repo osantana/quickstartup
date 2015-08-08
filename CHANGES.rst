@@ -3,6 +3,17 @@
 History
 -------
 
+0.5.6
++++++
+
+* Fix an blocker bug in import on contact app
+
+
+0.5.5
++++++
+
+* Fixes and improvements in contact app (mainly in e-mail sending code)
+
 0.5.4
 +++++
 

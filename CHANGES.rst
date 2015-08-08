@@ -3,6 +3,11 @@
 History
 -------
 
+0.5.5
++++++
+
+* Fixes and improvements in contact app (mainly in e-mail sending code)
+
 0.5.4
 +++++
 

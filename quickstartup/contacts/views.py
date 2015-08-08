@@ -17,5 +17,6 @@ class ContactView(CreateView):
         return reverse("qs_contacts:contact")
 
     def form_valid(self, form):
+        valid = super(ContactView, self).form_valid(form)
         messages.success(self.request, _("Your message was sent successfully!"))
-        return super(ContactView, self).form_valid(form)
+        return valid

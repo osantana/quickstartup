@@ -56,6 +56,7 @@ setup(
         "django-model-utils>=2.2,<2.3",
         "python-social-auth>=0.2,<0.3",
         "django-registration-redux>=1.2,<1.3",
+        "django-ipware>=1.1.1,<1.2",
     ],
     license="MIT",
     zip_safe=False,

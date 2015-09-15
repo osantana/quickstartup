@@ -3,6 +3,12 @@
 History
 -------
 
+0.6.0
++++++
+
+* Improve Contact model representation string (eg. John Doe <jdoe@example.com>)
+* Add `ip` of user at contact application.
+
 0.5.7
 +++++
 

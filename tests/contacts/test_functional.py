@@ -38,11 +38,12 @@ class ContactTest(BaseTestCase):
         self.assertTrue(u"Message:\nHello World!" in mail.outbox[0].body)
 
         contact = Contact.objects.first()
-        self.assertEquals(contact.name, u"John Doe")
-        self.assertEquals(contact.email, u"john@doe.com")
-        self.assertEquals(contact.phone, u"+1 55 555-1234")
-        self.assertEquals(contact.message, u"Hello World!")
-        self.assertEquals(contact.status, "N")
+        self.assertEqual(contact.name, u"John Doe")
+        self.assertEqual(contact.email, u"john@doe.com")
+        self.assertEqual(contact.phone, u"+1 55 555-1234")
+        self.assertEqual(contact.message, u"Hello World!")
+        self.assertEqual(contact.status, "N")
+        self.assertEqual(contact.ip, "127.0.0.1")
 
     def test_fail_antispam(self):
         data = {
@@ -65,7 +66,8 @@ class ContactTest(BaseTestCase):
     def test_send_email_once(self):
         contact = Contact.objects.create(name="John Doe",
                                          email="john@doe.com",
-                                         message="Hello!")
+                                         message="Hello!",
+                                         ip="127.0.0.1")
         self.assertEquals(len(mail.outbox), 1)
 
         contact.message = "Hello World!"

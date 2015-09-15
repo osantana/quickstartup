@@ -25,10 +25,14 @@ class Contact(models.Model):
     email = models.EmailField(_("email"), max_length=255)
     phone = models.CharField(_("phone"), max_length=100, blank=True)
     message = models.TextField(_("message"))
+    ip = models.GenericIPAddressField(_("contact ip"))
 
     @property
     def admin_url(self):
         return reverse("admin:contacts_contact_change", args=(self.pk,))
+
+    def __str__(self):
+        return "{} <{}>".format(self.name, self.email)
 
 
 post_save.connect(send_contact_mail, Contact, dispatch_uid="quickstartup.contacts")

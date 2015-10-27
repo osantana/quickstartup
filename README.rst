@@ -23,8 +23,10 @@ Screenshots
 Landing Page
 ++++++++++++
 
-.. figure:: docs/landing.png
+.. figure:: https://raw.githubusercontent.com/osantana/quickstartup/master/docs/landing.png
     :alt: Landing Page
+    :scale: 50%
+    :align: center
 
     Landing Page
 
@@ -32,8 +34,10 @@ Landing Page
 Signup Form
 +++++++++++
 
-.. figure:: docs/signup.png
+.. figure:: https://raw.githubusercontent.com/osantana/quickstartup/master/docs/signup.png
     :alt: Signup Form
+    :scale: 50%
+    :align: center
 
     Signup form (you can easily customize it)
 
@@ -41,8 +45,10 @@ Signup Form
 Signin Form
 +++++++++++
 
-.. figure:: docs/signin.png
+.. figure:: https://raw.githubusercontent.com/osantana/quickstartup/master/docs/signin.png
     :alt: Signin Form
+    :scale: 50%
+    :align: center
 
     Signin form
 
@@ -50,8 +56,10 @@ Signin Form
 Reset Password
 ++++++++++++++
 
-.. figure:: docs/reset.png
+.. figure:: https://raw.githubusercontent.com/osantana/quickstartup/master/docs/reset.png
     :alt: Reset Password
+    :scale: 50%
+    :align: center
 
     Reset Password
 
@@ -59,15 +67,19 @@ Reset Password
 Contact Form
 ++++++++++++
 
-.. figure:: docs/contact.png
+.. figure:: https://raw.githubusercontent.com/osantana/quickstartup/master/docs/contact.png
     :alt: Contact Form
+    :scale: 50%
+    :align: center
 
     Contact Form
 
 Sample App
 ++++++++++
 
-.. figure:: docs/sample_app.png
+.. figure:: https://raw.githubusercontent.com/osantana/quickstartup/master/docs/sample_app.png
     :alt: Sample Application showing user profile editor
+    :scale: 50%
+    :align: center
 
     Sample Application showing user profile editor

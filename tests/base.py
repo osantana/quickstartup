@@ -6,7 +6,7 @@ from pathlib import Path
 from django.apps import apps
 from django.test import TestCase
 
-from quickstartup.website.bootstrap import bootstrap_website_pages
+from quickstartup.qs_website.bootstrap import bootstrap_website_pages
 
 
 TEST_ROOT_DIR = Path(__file__).parent
@@ -21,15 +21,13 @@ TEMPLATES = [
             'debug': True,
             'context_processors': (
                 "django.contrib.auth.context_processors.auth",
-                "django.core.context_processors.debug",
-                "django.core.context_processors.i18n",
-                "django.core.context_processors.media",
-                "django.core.context_processors.static",
-                "django.core.context_processors.request",
-                "django.core.context_processors.tz",
+                "django.template.context_processors.debug",
+                "django.template.context_processors.i18n",
+                "django.template.context_processors.media",
+                "django.template.context_processors.static",
+                "django.template.context_processors.request",
+                "django.template.context_processors.tz",
                 "django.contrib.messages.context_processors.messages",
-                "social.apps.django_app.context_processors.backends",
-                "social.apps.django_app.context_processors.login_redirect",
                 "quickstartup.context_processors.project_infos",
                 "quickstartup.context_processors.project_settings",
             ),

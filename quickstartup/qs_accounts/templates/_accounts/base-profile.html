@@ -1,0 +1,12 @@
+{% extends "app.html" %}{% load i18n %}
+
+{% block content %}
+    <ul class="nav nav-tabs">
+        {% block tab_profile_main %}
+            <li><a href="{% url 'qs_accounts:profile' %}">{% trans "Profile" %}</a></li>{% endblock %}
+        {% block tab_profile_security %}
+            <li><a href="{% url 'qs_accounts:profile-security' %}">{% trans 'Security' %}</a></li>{% endblock %}
+    </ul>
+
+    {% block profile_content %}{% endblock %}
+{% endblock %}

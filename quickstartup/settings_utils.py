@@ -5,8 +5,8 @@
 
 
 import logging
+
 from django.core.exceptions import ImproperlyConfigured
-from django.db import OperationalError
 
 
 class CustomAdapter(logging.LoggerAdapter):
@@ -51,25 +51,6 @@ def get_project_package(project_dir):
         project_name = settings_files[0].parent.name
 
     return project_name
-
-
-def get_site_id(domain, name):
-    from django.contrib.sites.models import Site
-    from django.db import ProgrammingError
-    try:
-        site = Site.objects.get(pk=1)
-    except Site.DoesNotExist:
-        site = Site.objects.create(domain=domain, name=name)
-    except OperationalError:
-        return 1
-    except ProgrammingError:
-        return 1
-
-    site.domain = domain
-    site.name = name
-    site.save()
-
-    return site.id
 
 
 def get_static_root(base_dir):

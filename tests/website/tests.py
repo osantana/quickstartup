@@ -5,8 +5,8 @@ from django.core.urlresolvers import NoReverseMatch
 
 from django.test import override_settings
 
-from quickstartup.website.models import Page
-from quickstartup.website.urlresolver import page_reverse
+from quickstartup.qs_website.models import Page
+from quickstartup.qs_website.urlresolver import page_reverse
 from tests.base import BaseTestCase, TEMPLATES
 
 
@@ -66,13 +66,6 @@ class PageTest(BaseTestCase):
         Page.objects.create(slug="buggy-template", template_name="buggy-template.html")
         response = self.client.get(page_reverse("buggy-template"))
         self.assertStatusCode(response, 404)  # original error is 404 because we dont map pages urls
-
-    @override_settings(TEMPLATES=TEMPLATES, DEBUG=True)
-    def test_reraise_when_calling_template_with_error_and_debug_enabled(self):
-        Page.objects.create(slug="buggy-template", template_name="buggy-template.html")
-        url = page_reverse("buggy-template")
-        with self.assertRaises(NoReverseMatch):
-            self.client.get(url)
 
     def test_index_page_anonymous_user(self):
         response = self.client.get("/")

@@ -1,0 +1,35 @@
+{% extends "accounts/accounts.html" %}{% load i18n l10n widget_tweaks %}
+
+
+{% block menu_signup %}
+    <li class="active"><a href="{% url "qs_accounts:signup" %}">{% trans "Sign up" %}</a></li>{% endblock %}
+
+
+{% block body_class %}{{ block.super }} signup{% endblock %}
+
+
+{% block title %}{% trans "Sign up" %}{% endblock %}
+
+
+{% block panel %}
+    {% block signup_form %}
+        <form action="" method="post" role="form">
+            {% csrf_token %}
+
+            {% include "_includes/form_errors.html" %}
+
+            {% block signup_fields %}
+                {% include "_includes/bigfield.html" with field=form.name|attr:"autofocus" %}
+                {% include "_includes/bigfield.html" with field=form.email %}
+                {% include "_includes/bigfield_password.html" with field=form.password1 %}
+                {% include "_includes/bigfield_password.html" with field=form.password2 %}
+            {% endblock %}
+
+            <div class="form-group">
+                <button class="btn btn-primary btn-lg btn-block" type="submit">
+                    {% trans "Sign up" %}
+                </button>
+            </div>
+        </form>
+    {% endblock %}
+{% endblock %}

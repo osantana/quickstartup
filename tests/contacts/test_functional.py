@@ -7,7 +7,7 @@ from django.core import mail
 from django.core.urlresolvers import reverse
 
 from tests.base import BaseTestCase, TEST_ROOT_DIR
-from quickstartup.contacts.models import Contact
+from quickstartup.qs_contacts.models import Contact
 
 
 TEMPLATE_DIRS = (
@@ -16,7 +16,7 @@ TEMPLATE_DIRS = (
 
 
 class ContactTest(BaseTestCase):
-    @mock.patch("quickstartup.core.fields.AntiSpamField.clean")
+    @mock.patch("quickstartup.antispam.AntiSpamField.clean")
     def test_send_contact(self, patched_clean):
         patched_clean.return_value = "1337"
         data = {

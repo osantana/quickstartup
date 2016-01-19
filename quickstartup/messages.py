@@ -18,7 +18,6 @@ def send_transaction_mail(user, template_name, request=None, site=None,
                           subject_template_base="mails/{}-subject.txt",
                           **context):
     if request is not None:
-        context = RequestContext(request, context)
         site = get_current_site(request)
 
     context.update({'user': user, 'site': site})

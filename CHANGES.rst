@@ -3,6 +3,13 @@
 History
 -------
 
+0.9.0
++++++
+
+* Breaks everything
+* Rename apps with prefix ``qs_*`` to avoida conflicts with user's apps
+* Remove django-registration dependency
+
 0.6.0
 +++++
 

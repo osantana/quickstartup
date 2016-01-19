@@ -16,7 +16,7 @@ if settings.ADMIN_URL:
     ]
 
 urlpatterns += [
-    url(r"^accounts/", include("quickstartup.accounts.urls", namespace="qs_accounts")),
-    url(r"^contact/$", include("quickstartup.contacts.urls", namespace="qs_contacts")),
-    url(r"^", include("quickstartup.website.urls", namespace="qs_pages")),
+    url(r"^accounts/", include("quickstartup.qs_accounts.urls", namespace="qs_accounts")),
+    url(r"^contact/", include("quickstartup.qs_contacts.urls", namespace="qs_contacts")),
+    url(r"^", include("quickstartup.qs_website.urls", namespace="qs_pages")),
 ]

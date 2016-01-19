@@ -16,11 +16,11 @@ class UserTestCase(TestCase):
             password="secret",
         )
 
-        self.assert_(user.name, "John Doe")
-        self.assert_(user.email, "test@example.com")
-        self.assert_(user.get_full_name(), "John Doe")
-        self.assert_(user.get_username(), "test@example.com")
-        self.assert_(user.get_short_name(), "test@example.com")
+        self.assertEqual(user.name, "John Doe")
+        self.assertEqual(user.email, "test@example.com")
+        self.assertEqual(user.get_full_name(), "John Doe")
+        self.assertEqual(user.get_username(), "test@example.com")
+        self.assertEqual(user.get_short_name(), "test@example.com")
         self.assertFalse(user.is_staff)
         self.assertFalse(user.is_superuser)
 
@@ -32,11 +32,11 @@ class UserTestCase(TestCase):
             is_staff=True,
         )
 
-        self.assert_(user.name, "John Doe")
-        self.assert_(user.email, "test@example.com")
-        self.assert_(user.get_full_name(), "John Doe")
-        self.assert_(user.get_username(), "test@example.com")
-        self.assert_(user.get_short_name(), "test@example.com")
+        self.assertEqual(user.name, "John Doe")
+        self.assertEqual(user.email, "test@example.com")
+        self.assertEqual(user.get_full_name(), "John Doe")
+        self.assertEqual(user.get_username(), "test@example.com")
+        self.assertEqual(user.get_short_name(), "test@example.com")
         self.assertTrue(user.is_staff)
         self.assertFalse(user.is_superuser)
 
@@ -47,10 +47,10 @@ class UserTestCase(TestCase):
             password="ubbersekret",
         )
 
-        self.assert_(user.name, "Super John Doe")
-        self.assert_(user.email, "admin@example.com")
-        self.assert_(user.get_full_name(), "Super John Doe")
-        self.assert_(user.get_username(), "admin@example.com")
-        self.assert_(user.get_short_name(), "admin@example.com")
+        self.assertEqual(user.name, "Super John Doe")
+        self.assertEqual(user.email, "admin@example.com")
+        self.assertEqual(user.get_full_name(), "Super John Doe")
+        self.assertEqual(user.get_username(), "admin@example.com")
+        self.assertEqual(user.get_short_name(), "admin@example.com")
         self.assertTrue(user.is_staff, "Superuser is staff")
         self.assertTrue(user.is_superuser, "Superuser must be enable")

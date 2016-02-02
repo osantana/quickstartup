@@ -1,10 +1,11 @@
 # coding: utf-8
+
 import re
 
 from django.conf import settings
+from django.contrib.auth import get_user_model
 from django.core import mail
 from django.core.urlresolvers import reverse
-from django.contrib.auth import get_user_model
 from django.test import override_settings
 
 from tests.base import BaseTestCase
@@ -42,8 +43,11 @@ class AccountTest(BaseTestCase):
         text, html = self.get_mail_payloads(mail.outbox[0])
         self.assertIn("Hi,", text)
         self.assertIn("<h3>Hi,</h3>", html)
-        reset_token_url = re.search(r"^http://testserver(.*)$", text, re.MULTILINE).groups()[0]
 
+        reset_token = re.search(r"https://quickstartup.us(.*)$", text, re.MULTILINE)
+        self.assertTrue(reset_token, "No reset token")
+
+        reset_token_url = reset_token.groups()[0]
         self.client.get(reverse("qs_accounts:signin"))  # consume flash messages
 
         data = {"new_password1": "new-sekret", "new_password2": "new-sekret"}
@@ -59,10 +63,11 @@ class AccountTest(BaseTestCase):
 
     def test_reset_password_with_passwords_that_does_not_match(self):
         url = reverse("qs_accounts:password_reset")
-        data = {"email": "test@example.com"}
+        data = {"email": "test@example.com", "name": "John Doe"}
         response = self.client.post(url, data)
 
-        reset_token_url = response.context["path"]
+        reset_token_url = reverse("qs_accounts:password_reset_confirm",
+                                  kwargs={"reset_token": response.context["reset_token"]})
 
         data = {"new_password1": "sekret", "new_password2": "do-not-match"}
         response = self.client.post(reset_token_url, data)
@@ -81,65 +86,68 @@ class AccountTest(BaseTestCase):
         self.assertIn("Hi John Doe,", text)
         self.assertIn("<h3>Hi John Doe,</h3>", html)
 
-    # def test_full_signup_and_signin_signout_cycle(self):
-    #     url = reverse("qs_accounts:signup")
-    #     data = {
-    #         "name": "John Doe",
-    #         "email": "john.doe@example.com",
-    #         "password1": "sekr3t",
-    #         "password2": "sekr3t",
-    #     }
-    #
-    #     # signup
-    #     response = self.client.post(url, data, follow=True)
-    #     self.assertStatusCode(response, 200)
-    #
-    #     # redirected to activation notice
-    #     self.assertEqual(len(response.redirect_chain), 1)
-    #     redirect_url = response.redirect_chain[0][0].replace("http://testserver", "")
-    #     self.assertEqual(redirect_url, reverse("qs_accounts:signup_complete"))
-    #
-    #     # check user creation on database
-    #     user = self.user_model.objects.get(email="john.doe@example.com")
-    #     profile = RegistrationProfile.objects.get(user__email='john.doe@example.com')
-    #     activation_url = reverse('qs_accounts:activate', kwargs={'activation_key': profile.activation_key})
-    #     self.assertEqual(user.name, "John Doe")
-    #     self.assertEqual(user.is_active, False)
-    #     self.assertEqual(user.is_staff, False)
-    #     self.assertEqual(user.is_superuser, False)
-    #
-    #     # check activation email
-    #     text, html = self.get_mail_payloads(mail.outbox[0])
-    #     self.assertIn("Hi John Doe,", text)
-    #     self.assertIn("<h3>Hi John Doe,</h3>", html)
-    #     self.assertIn(activation_url, text)
-    #     self.assertIn(activation_url, html)
-    #
-    #     # "click" on activation link
-    #     response = self.client.get(activation_url, follow=True)
-    #     self.assertStatusCode(response, 200)
-    #     self.assertEqual(len(response.redirect_chain), 1)
-    #
-    #     # check redirection as logged user
-    #     redirect_url = response.redirect_chain[0][0].replace("http://testserver", "")
-    #     self.assertEqual(redirect_url, reverse("app:index"))
-    #
-    #     # loggout
-    #     response = self.client.get(reverse("qs_accounts:signout"), follow=True)
-    #     self.assertStatusCode(response, 200)
-    #     self.assertEqual(len(response.redirect_chain), 1)
-    #
-    #     redirect_url = response.redirect_chain[0][0].replace("http://testserver", "")
-    #     self.assertEqual(redirect_url, reverse("qs_pages:index"))
-    #
-    # def test_fail_signup_password_doesnt_match(self):
-    #     url = reverse("qs_accounts:signup")
-    #     data = {
-    #         "name": "John Doe",
-    #         "email": "john.doe@example.com",
-    #         "password1": "sekr3t",
-    #         "password2": "oops!",
-    #     }
-    #     response = self.client.post(url, data, follow=True)
-    #     self.assertStatusCode(response, 200)
-    #     self.assertFormError(response, "form", "password2", ["Passwords don't match"])
+    def test_full_signup_and_signin_signout_cycle(self):
+        url = reverse("qs_accounts:signup")
+        data = {
+            "name": "John Doe",
+            "email": "john.doe@example.com",
+            "password1": "sekr3t",
+            "password2": "sekr3t",
+        }
+
+        # signup
+        response = self.client.post(url, data, follow=True)
+        self.assertStatusCode(response, 200)
+
+        # redirected to activation notice
+        self.assertEqual(len(response.redirect_chain), 1)
+        redirect_url = response.redirect_chain[0][0].replace("http://testserver", "")
+        self.assertEqual(redirect_url, reverse("qs_accounts:signup_complete"))
+
+        # check user creation on database
+        user = self.user_model.objects.get(email="john.doe@example.com")
+        self.assertEqual(user.name, "John Doe")
+        self.assertEqual(user.is_active, False)
+        self.assertEqual(user.is_staff, False)
+        self.assertEqual(user.is_superuser, False)
+        # activation_url = reverse('qs_accounts:activate', kwargs={'activation_key': self.activation_key})
+
+        # check activation email
+        text, html = self.get_mail_payloads(mail.outbox[0])
+        self.assertIn("Hi John Doe,", text)
+        self.assertIn("<h3>Hi John Doe,</h3>", html)
+
+        activation = re.search(r"https://quickstartup.us(.*)$", text, re.MULTILINE)
+        self.assertTrue(activation, "No activation link in text email")
+
+        activation_url = activation.groups()[0]
+        self.assertIn(activation_url, html)
+
+        # "click" on activation link
+        response = self.client.get(activation_url, follow=True)
+        self.assertStatusCode(response, 200)
+        self.assertEqual(len(response.redirect_chain), 1)
+
+        # check redirection as logged user
+        redirect_url = response.redirect_chain[0][0].replace("http://testserver", "")
+        self.assertEqual(redirect_url, reverse("app:index"))
+
+        # loggout
+        response = self.client.get(reverse("qs_accounts:signout"), follow=True)
+        self.assertStatusCode(response, 200)
+        self.assertEqual(len(response.redirect_chain), 1)
+
+        redirect_url = response.redirect_chain[0][0].replace("http://testserver", "")
+        self.assertEqual(redirect_url, reverse("qs_pages:index"))
+
+    def test_fail_signup_password_doesnt_match(self):
+        url = reverse("qs_accounts:signup")
+        data = {
+            "name": "John Doe",
+            "email": "john.doe@example.com",
+            "password1": "sekr3t",
+            "password2": "oops!",
+        }
+        response = self.client.post(url, data, follow=True)
+        self.assertStatusCode(response, 200)
+        self.assertFormError(response, "form", "password2", ["Passwords don't match"])

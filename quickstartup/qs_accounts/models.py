@@ -26,6 +26,12 @@ class BaseUserManager(DjangoBaseUserManager):
     def create_superuser(self, email, password, **extra_fields):
         return self._create_user(email, password, True, True, **extra_fields)
 
+    def activate(self, username):
+        user = self.get_by_natural_key(username)
+        user.is_active = True
+        user.save()
+        return user
+
 
 # noinspection PyAbstractClass
 class AbstractBaseUser(DjangoAbstractBaseUser):
@@ -43,9 +49,6 @@ class AbstractBaseUser(DjangoAbstractBaseUser):
         abstract = True
 
     def get_short_name(self):
-        return self.email
-
-    def get_username(self):
         return self.email
 
 

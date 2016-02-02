@@ -1,0 +1,11 @@
+{% extends "emails/base.html" %}{% load i18n staticfiles %}
+
+
+{% block head_title %}{{ subject }}{% endblock head_title %}
+
+
+{% block logo %}<img src="{{ project_url }}{% static "images/logo-200x50.png" %}">{% endblock %}
+
+{% block footer_content %}
+    <p>&copy; {{ project_name }}</p>
+{% endblock footer_content %}

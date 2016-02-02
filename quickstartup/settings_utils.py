@@ -6,7 +6,9 @@
 
 import logging
 
+from django.conf import settings
 from django.core.exceptions import ImproperlyConfigured
+from django.utils.module_loading import import_string
 
 
 class CustomAdapter(logging.LoggerAdapter):
@@ -55,6 +57,7 @@ def get_project_package(project_dir):
 
 def get_static_root(base_dir):
     try:
+        # noinspection PyUnresolvedReferences
         from dj_static import Cling
     except ImportError:
         return str(base_dir / "static")
@@ -64,8 +67,33 @@ def get_static_root(base_dir):
 
 def get_media_root(base_dir):
     try:
+        # noinspection PyUnresolvedReferences
         from dj_static import MediaCling
     except ImportError:
         return str(base_dir / "media")
 
     return "media"
+
+
+DEFAULT_SETTINGS = {
+    'LOGIN_REDIRECT_URL': 'app:index',
+    'QS_PROJECT_NAME': 'Django Quickstartup',
+    'QS_PROJECT_CONTACT': 'contact@quickstartup.us',
+    'QS_PROJECT_DOMAIN': 'quickstartup.us',
+    'QS_PROJECT_URL': 'https://quickstartup.us',
+    'QS_PROFILE_FORM': 'quickstartup.qs_accounts.forms.ProfileForm',
+    'QS_PASSWORD_FORM': 'quickstartup.qs_accounts.forms.SetPasswordForm',
+    'QS_PASSWORD_CHANGE_FORM': 'django.contrib.auth.forms.PasswordChangeForm',
+    'QS_SIGNUP_OPEN': True,
+    'QS_SIGNUP_FORM': 'quickstartup.qs_accounts.forms.SignupForm',
+    'QS_SIGNUP_AUTO_LOGIN': False,
+    'QS_SIGNUP_TOKEN_EXPIRATION_DAYS': 7,
+}
+
+
+def get_settings(name):
+    return getattr(settings, name.upper(), DEFAULT_SETTINGS.get(name))
+
+
+def get_object_from_settings(name):
+    return import_string(get_settings(name))

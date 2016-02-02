@@ -1,18 +1,18 @@
 # coding: utf-8
 
 
-from django.conf import settings
 from django.conf.urls import include, url
 from django.contrib import admin
 
+from .settings_utils import get_settings
 
 admin.autodiscover()
 
 urlpatterns = []
 
-if settings.ADMIN_URL:
+if get_settings("QS_ADMIN_URL"):
     urlpatterns += [
-        url(r"^{}/".format(settings.ADMIN_URL), include(admin.site.urls)),
+        url(r"^{}/".format(get_settings("QS_ADMIN_URL").rstrip("/")), include(admin.site.urls)),
     ]
 
 urlpatterns += [

@@ -14,15 +14,15 @@ class SendMailException(Exception):
 
 
 def send_transaction_mail(user, template_name, request=None, site=None,
-                          template_base="mails/{}.{}",
-                          subject_template_base="mails/{}-subject.txt",
+                          template_base="emails/{}.{}",
+                          subject_template_base="emails/{}-subject.html",
                           **context):
     if request is not None:
         site = get_current_site(request)
 
     context.update({'user': user, 'site': site})
 
-    subject = render_to_string(subject_template_base.format(template_name, "txt"), context)
+    subject = render_to_string(subject_template_base.format(template_name, "html"), context)
     subject = ''.join(subject.splitlines())
 
     from_email = settings.DEFAULT_FROM_EMAIL
@@ -51,12 +51,12 @@ def send_contact_mail(instance, created, **kwargs):
         "URL: http://{domain}{instance.admin_url}\n"
     )
 
-    domain = settings.PROJECT_DOMAIN
+    domain = settings.QS_PROJECT_DOMAIN
     email = EmailMessage(
-        subject=_("New Contact from %s") % (settings.PROJECT_NAME,),
+        subject=_("New Contact from %s") % (settings.QS_PROJECT_NAME,),
         body=template.format(domain=domain, instance=instance),
-        from_email=settings.PROJECT_CONTACT,
-        to=[settings.PROJECT_CONTACT],
+        from_email=settings.QS_PROJECT_CONTACT,
+        to=[settings.QS_PROJECT_CONTACT],
         headers={"Reply-To": instance.email},
     )
 

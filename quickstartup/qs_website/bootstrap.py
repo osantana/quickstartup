@@ -1,6 +1,7 @@
 # coding: utf-8
 
 
+# noinspection PyUnusedLocal
 def bootstrap_website_pages(apps, schema_editor=None):
     page_model = apps.get_model("qs_website", "Page")
     pages = [

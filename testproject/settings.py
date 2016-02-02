@@ -13,9 +13,10 @@ PROJECT_DIR = Path(__file__).absolute().parents[1]
 FRONTEND_DIR = PROJECT_DIR / "frontend"
 
 # Project Info
-PROJECT_NAME = "Django Quickstartup"
-PROJECT_CONTACT = "contact@quickstartup.us"
-PROJECT_DOMAIN = "quickstartup.us"
+QS_PROJECT_NAME = "Django Quickstartup"
+QS_PROJECT_CONTACT = "contact@quickstartup.us"
+QS_PROJECT_DOMAIN = "quickstartup.us"
+QS_PROJECT_URL = "https://quickstartup.us"
 
 # Debug & Development
 DEBUG = True
@@ -29,23 +30,14 @@ DATABASES = {
 }
 
 # Email
-DEFAULT_FROM_EMAIL = PROJECT_CONTACT
-EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+DEFAULT_FROM_EMAIL = QS_PROJECT_CONTACT
 EMAIL_FILE_PATH = "./app-messages"
+EMAIL_BACKEND = "djmail.backends.default.EmailBackend"
+DJMAIL_REAL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
 
 # Security & Signup/Signin
 ALLOWED_HOSTS = ["*"]
 SECRET_KEY = "SEKRET-KEY"
-AUTH_USER_MODEL = "qs_accounts.User"
-LOGIN_REDIRECT_URL = "app:index"
-LOGIN_URL = "qs_accounts:signin"
-ACCOUNT_ACTIVATION_DAYS = 7
-
-# REGISTRATION_AUTO_LOGIN = True  # Automatically log the user in.
-# REGISTRATION_OPEN = True
-# REGISTRATION_FORM = "quickstartup.qs_accounts.forms.SignupForm"
-
-ADMIN_URL = "admin"  # empty to disable admin URLs
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
@@ -54,6 +46,19 @@ AUTHENTICATION_BACKENDS = (
 PASSWORD_HASHERS = (
     'django.contrib.auth.hashers.MD5PasswordHasher',
 )
+
+# Custom User & Profile Settings
+AUTH_USER_MODEL = "qs_accounts.User"
+LOGIN_REDIRECT_URL = "app:index"
+LOGIN_URL = "qs_accounts:signin"
+QS_SIGNUP_AUTO_LOGIN = True
+QS_SIGNUP_OPEN = True
+QS_SIGNUP_FORM = "quickstartup.qs_accounts.forms.SignupForm"
+QS_SIGNUP_TOKEN_EXPIRATION_DAYS = 7
+QS_PROFILE_FORM = "quickstartup.qs_accounts.forms.ProfileForm"
+QS_PASSWORD_FORM = 'quickstartup.qs_accounts.forms.SetPasswordForm'
+QS_PASSWORD_CHANGE_FORM = 'django.contrib.auth.forms.PasswordChangeForm'
+QS_ADMIN_URL = "admin"  # empty to disable admin URLs
 
 # i18n & l10n
 TIME_ZONE = "UTC"
@@ -138,6 +143,7 @@ INSTALLED_APPS = (
 
     # 3rd party libs
     'widget_tweaks',
+    'djmail',
 
     # Quick Startup Apps
     'quickstartup.qs_core',

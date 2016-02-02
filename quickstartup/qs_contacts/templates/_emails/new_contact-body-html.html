@@ -1,0 +1,20 @@
+{% extends "emails/project.html" %}{% load i18n l10n pages staticfiles %}
+
+{% block title %}{% blocktrans %}New Contact from {{ project_name }}{% endblocktrans %}{% endblock %}
+
+{% block content %}
+    <ul>
+        <li>{% trans "Contact From:" %} {{ contact.name }} &lt;{{ contact.email }}&gt;</li>
+        <li>{% trans "Phone:" %} {{ contact.phone }}</li>
+        <li>
+            {% trans "URL:" %}
+            <a href="{{ project_url }}{{ contact.admin_url }}">{{ project_url }}{{ contact.admin_url }}</a>
+        </li>
+        <li>{% trans "IP:" %} {{ contact.ip }}</li>
+    </ul>
+
+    <h6>{% trans "Message" %}</h6>
+    <div class="message">
+        {{ contact.message }}
+    </div>
+{% endblock %}

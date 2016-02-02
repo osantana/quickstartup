@@ -32,12 +32,19 @@ class ContactTest(BaseTestCase):
         self.assertStatusCode(response, 200)
         self.assertTemplateUsed(response, "contacts/contact.html")
         self.assertEqual(len(mail.outbox), 1)
-        self.assertEqual(mail.outbox[0].subject, u'New Contact from Django Quickstartup')
-        self.assertTrue(u"Contact From: John Doe <john@doe.com>" in mail.outbox[0].body)
-        self.assertTrue(u"Phone: +1 55 555-1234" in mail.outbox[0].body)
-        self.assertTrue(u"Message:\nHello World!" in mail.outbox[0].body)
 
+        email = mail.outbox[0]
         contact = Contact.objects.first()
+
+        self.assertEquals(email.extra_headers["Reply-To"], 'john@doe.com')
+        self.assertIn("contact@quickstartup.us", email.to)
+        self.assertEqual(email.subject, u'New Contact from Django Quickstartup')
+        self.assertIn(u"Contact From: John Doe <john@doe.com>",  email.body)
+        self.assertIn(u"Phone: +1 55 555-1234", email.body)
+        self.assertIn(u"Message:\n\n    Hello World!", email.body)
+        self.assertIn("https://quickstartup.us/admin/qs_contacts/contact/{}/change/".format(contact.id), email.body)
+        self.assertIn("IP: 127.0.0.1", email.body)
+
         self.assertEqual(contact.name, u"John Doe")
         self.assertEqual(contact.email, u"john@doe.com")
         self.assertEqual(contact.phone, u"+1 55 555-1234")
@@ -62,14 +69,3 @@ class ContactTest(BaseTestCase):
         response = self.client.get("/contact/")
         self.assertStatusCode(response, 200)
         self.assertTemplateUsed(response, "contacts/contact.html")
-
-    def test_send_email_once(self):
-        contact = Contact.objects.create(name="John Doe",
-                                         email="john@doe.com",
-                                         message="Hello!",
-                                         ip="127.0.0.1")
-        self.assertEquals(len(mail.outbox), 1)
-
-        contact.message = "Hello World!"
-        contact.save()
-        self.assertEquals(len(mail.outbox), 1)  # changes don't send a new mail

@@ -1,0 +1,9 @@
+{% load i18n l10n %}
+{% trans "Contact From:" %} {{ contact.name }} <{{ contact.email }}>
+{% trans "Phone:" %} {{ contact.phone }}
+{% trans "Message:" %}
+
+    {{ contact.message }}
+
+{% trans "URL:" %} {{ project_url }}{{ contact.admin_url }}
+{% trans "IP:" %} {{ contact.ip }}

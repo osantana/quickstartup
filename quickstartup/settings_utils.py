@@ -88,6 +88,7 @@ DEFAULT_SETTINGS = {
     'QS_SIGNUP_FORM': 'quickstartup.qs_accounts.forms.SignupForm',
     'QS_SIGNUP_AUTO_LOGIN': False,
     'QS_SIGNUP_TOKEN_EXPIRATION_DAYS': 7,
+    'QS_CONTACT_FORM': 'quickstartup.qs_contacts.forms.ContactForm',
 }
 
 

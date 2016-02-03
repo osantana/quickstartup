@@ -11,7 +11,7 @@ from django.core.exceptions import ImproperlyConfigured
 from django.utils.module_loading import import_string
 
 
-class CustomAdapter(logging.LoggerAdapter):
+class CustomLoggerAdapter(logging.LoggerAdapter):
     def process(self, msg, kwargs):
         messages = []
         data = kwargs.get('extra', {})
@@ -24,7 +24,7 @@ class CustomAdapter(logging.LoggerAdapter):
 
 
 def get_logger(name):
-    return CustomAdapter(logging.getLogger(name), {})
+    return CustomLoggerAdapter(logging.getLogger(name), {})
 
 
 def get_loggers(level, loggers):
@@ -92,9 +92,9 @@ DEFAULT_SETTINGS = {
 }
 
 
-def get_settings(name):
+def get_configuration(name):
     return getattr(settings, name.upper(), DEFAULT_SETTINGS.get(name))
 
 
-def get_object_from_settings(name):
-    return import_string(get_settings(name))
+def get_object_from_configuration(name):
+    return import_string(get_configuration(name))

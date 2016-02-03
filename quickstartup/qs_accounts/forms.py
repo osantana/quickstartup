@@ -8,7 +8,7 @@ from django.core.signing import TimestampSigner
 from django.utils.translation import ugettext_lazy as _
 from djmail import template_mail
 
-from quickstartup.settings_utils import get_settings
+from quickstartup.settings_utils import get_configuration
 from .models import User
 from .signals import user_registered
 from ..widgets import EmailInput
@@ -37,9 +37,9 @@ class SignupForm(forms.ModelForm):
             'request': request,
             'user': user,
             'activation_key': signer.sign(user.get_username()),
-            'project_name': get_settings("QS_PROJECT_NAME"),
-            'project_url': get_settings("QS_PROJECT_URL"),
-            'expiration_days': get_settings("QS_SIGNUP_TOKEN_EXPIRATION_DAYS"),
+            'project_name': get_configuration("QS_PROJECT_NAME"),
+            'project_url': get_configuration("QS_PROJECT_URL"),
+            'expiration_days': get_configuration("QS_SIGNUP_TOKEN_EXPIRATION_DAYS"),
         }
         mails = template_mail.MagicMailBuilder()
         email = mails.activation(user, context)
@@ -74,8 +74,8 @@ class CustomPasswordResetForm(forms.Form):
             context = {
                 "request": request,
                 "user": user,
-                "project_name": get_settings("QS_PROJECT_NAME"),
-                "project_url": get_settings("QS_PROJECT_URL"),
+                "project_name": get_configuration("QS_PROJECT_NAME"),
+                "project_url": get_configuration("QS_PROJECT_URL"),
                 "reset_token": reset_token,
             }
 

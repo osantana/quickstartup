@@ -5,7 +5,7 @@ from pathlib import Path
 
 from django.contrib.messages import constants as message_constants
 
-from quickstartup.settings_utils import (get_project_package, get_loggers, get_static_root, get_media_root)
+from quickstartup.settings_utils import get_project_package, get_loggers, get_static_root, get_media_root
 
 # Project Structure
 BASE_DIR = Path(__file__).absolute().parents[2]

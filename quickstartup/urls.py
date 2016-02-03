@@ -4,15 +4,15 @@
 from django.conf.urls import include, url
 from django.contrib import admin
 
-from .settings_utils import get_settings
+from .settings_utils import get_configuration
 
 admin.autodiscover()
 
 urlpatterns = []
 
-if get_settings("QS_ADMIN_URL"):
+if get_configuration("QS_ADMIN_URL"):
     urlpatterns += [
-        url(r"^{}/".format(get_settings("QS_ADMIN_URL").rstrip("/")), include(admin.site.urls)),
+        url(r"^{}/".format(get_configuration("QS_ADMIN_URL").rstrip("/")), include(admin.site.urls)),
     ]
 
 urlpatterns += [

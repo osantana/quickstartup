@@ -5,14 +5,11 @@ from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import get_user_model, get_backends
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.tokens import default_token_generator
 from django.contrib.auth.views import login as auth_login
 from django.core.signing import TimestampSigner, SignatureExpired, BadSignature
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.shortcuts import redirect, resolve_url, render
 from django.template.response import TemplateResponse
-from django.utils.encoding import force_text
-from django.utils.http import urlsafe_base64_decode
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 from django.views.decorators.cache import never_cache
@@ -20,7 +17,7 @@ from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.debug import sensitive_post_parameters
 from django.views.generic import UpdateView, FormView, TemplateView
 
-from quickstartup.settings_utils import get_settings, get_object_from_settings
+from quickstartup.settings_utils import get_configuration, get_object_from_configuration
 from .forms import CustomPasswordResetForm, SetPasswordForm
 from .signals import user_activated
 
@@ -68,14 +65,13 @@ def password_reset_confirm(request, reset_token,
                            template_name="accounts/reset-confirm.html",
                            set_password_form=SetPasswordForm,
                            post_reset_redirect=None):
-
     if post_reset_redirect is None:
         post_reset_redirect = reverse("qs_accounts:signin")
     else:
         post_reset_redirect = resolve_url(post_reset_redirect)
 
     signer = TimestampSigner()
-    expiration = get_settings("PASSWORD_RESET_TIMEOUT_DAYS")
+    expiration = get_configuration("PASSWORD_RESET_TIMEOUT_DAYS")
     try:
         username = signer.unsign(reset_token, max_age=expiration * SECONDS_IN_DAY)
     except (BadSignature, SignatureExpired):
@@ -111,7 +107,7 @@ class ProfileMixin(object):
 
 class UserProfile(LoginRequiredMixin, ProfileMixin, UpdateView):
     success_url = reverse_lazy('qs_accounts:profile')
-    form_class = import_string(get_settings("QS_PROFILE_FORM"))
+    form_class = import_string(get_configuration("QS_PROFILE_FORM"))
     template_name = 'accounts/profile.html'
 
     def form_valid(self, form):
@@ -121,8 +117,8 @@ class UserProfile(LoginRequiredMixin, ProfileMixin, UpdateView):
 
 class UserSecurityProfile(LoginRequiredMixin, ProfileMixin, UpdateView):
     success_url = reverse_lazy('qs_accounts:profile-security')
-    form_class = get_object_from_settings("QS_PASSWORD_CHANGE_FORM")
-    form_class_without_password = get_object_from_settings("QS_PASSWORD_FORM")
+    form_class = get_object_from_configuration("QS_PASSWORD_CHANGE_FORM")
+    form_class_without_password = get_object_from_configuration("QS_PASSWORD_FORM")
     template_name = 'accounts/profile-security.html'
 
     def get_form_class(self):
@@ -148,13 +144,13 @@ class SignupView(FormView):
     success_url = reverse_lazy("qs_accounts:signup_complete")
 
     def dispatch(self, request, *args, **kwargs):
-        allowed = get_settings("QS_SIGNUP_OPEN")
+        allowed = get_configuration("QS_SIGNUP_OPEN")
         if not allowed:
             return redirect(self.disallowed_url)
         return super().dispatch(request, *args, **kwargs)
 
     def get_form_class(self):
-        return get_object_from_settings("QS_SIGNUP_FORM")
+        return get_object_from_configuration("QS_SIGNUP_FORM")
 
     def form_valid(self, form):
         form.finish(self.request)
@@ -165,11 +161,11 @@ class SignupActivationView(TemplateView):
     template_name = 'accounts/activation-error.html'
 
     def get_success_url(self):
-        return get_settings("LOGIN_REDIRECT_URL")
+        return get_configuration("LOGIN_REDIRECT_URL")
 
     def get(self, request, activation_key, *args, **kwargs):
         signer = TimestampSigner()
-        expiration = get_settings("QS_SIGNUP_TOKEN_EXPIRATION_DAYS")
+        expiration = get_configuration("QS_SIGNUP_TOKEN_EXPIRATION_DAYS")
         try:
             username = signer.unsign(activation_key, max_age=expiration * SECONDS_IN_DAY)
         except (BadSignature, SignatureExpired):
@@ -184,7 +180,7 @@ class SignupActivationView(TemplateView):
         if user.is_active:
             user_activated.send(sender=self.__class__, user=user, request=request)
 
-        if get_settings("QS_SIGNUP_AUTO_LOGIN"):
+        if get_configuration("QS_SIGNUP_AUTO_LOGIN"):
             self._login_user(request, user)
         return redirect(self.get_success_url())
 

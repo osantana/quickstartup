@@ -6,7 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 from djmail import template_mail
 from ipware.ip import get_ip
 
-from settings_utils import get_settings
+from quickstartup.settings_utils import get_configuration
 from .models import Contact
 from .signals import new_contact
 from ..antispam import AntiSpamField
@@ -28,11 +28,11 @@ class ContactForm(forms.ModelForm):
         context = {
             'request': request,
             'contact': contact,
-            'project_name': get_settings("QS_PROJECT_NAME"),
-            'project_url': get_settings("QS_PROJECT_URL"),
+            'project_name': get_configuration("QS_PROJECT_NAME"),
+            'project_url': get_configuration("QS_PROJECT_URL"),
         }
         mails = template_mail.MagicMailBuilder()
-        email = mails.new_contact(get_settings("QS_PROJECT_CONTACT"), context,
+        email = mails.new_contact(get_configuration("QS_PROJECT_CONTACT"), context,
                                   headers={"Reply-To": contact.email})
         email.send()
 

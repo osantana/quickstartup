@@ -8,8 +8,9 @@ from django.core.signing import TimestampSigner
 from django.utils.translation import ugettext_lazy as _
 from djmail import template_mail
 
+from quickstartup.qs_core.antispam import AntiSpamField
+from quickstartup.qs_core.widgets import EmailInput
 from quickstartup.settings_utils import get_configuration
-from quickstartup.widgets import EmailInput
 from .models import User
 from .signals import user_registered
 
@@ -17,6 +18,7 @@ from .signals import user_registered
 class SignupForm(forms.ModelForm):
     password1 = forms.CharField(label=_('Password'), widget=forms.PasswordInput)
     password2 = forms.CharField(label=_('Password (verify)'), widget=forms.PasswordInput)
+    antispam = AntiSpamField()
 
     class Meta:
         model = User

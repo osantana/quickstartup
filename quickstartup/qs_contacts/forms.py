@@ -6,11 +6,11 @@ from django.utils.translation import ugettext_lazy as _
 from djmail import template_mail
 from ipware.ip import get_ip
 
+from quickstartup.qs_core.antispam import AntiSpamField
+from quickstartup.qs_core.widgets import EmailInput, PhoneInput
 from quickstartup.settings_utils import get_configuration
 from .models import Contact
 from .signals import new_contact
-from ..antispam import AntiSpamField
-from ..widgets import EmailInput, PhoneInput
 
 
 class ContactForm(forms.ModelForm):

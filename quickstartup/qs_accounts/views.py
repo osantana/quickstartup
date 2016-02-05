@@ -42,7 +42,7 @@ class PasswordResetView(FormView):
     def form_valid(self, form):
         form.finish(self.request)
         messages.success(self.request, _("We've e-mailed you instructions for setting a new password to the "
-                                         "email address you've submitted."))
+                                         "e-mail address you've submitted."))
         return super().form_valid(form)
 
 
@@ -56,10 +56,10 @@ class PasswordResetConfirmView(FormView):
         try:
             self.get_username()
         except SignatureExpired:
-            messages.error(request, _("Password reset token expired"))
+            messages.error(request, _("Password reset token expired."))
             return redirect(self.get_success_url())
         except BadSignature:
-            messages.error(request, _("Invalid password reset token"))
+            messages.error(request, _("Invalid password reset token."))
             return redirect(self.get_success_url())
         return super().dispatch(request, reset_token, *args, **kwargs)
 
@@ -153,8 +153,8 @@ class SignupView(FormView):
 
     def form_valid(self, form):
         form.finish(self.request)
-        messages.success(self.request, _("We've emailed you instructions for setting a new password to the "
-                                         "email address you've submitted."))
+        messages.success(self.request, _("We've e-mailed you instructions for setting a new password to the "
+                                         "e-mail address you've submitted."))
 
         return super().form_valid(form)
 

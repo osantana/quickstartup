@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: quickstartup 0.1.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-07-02 01:05-0300\n"
+"POT-Creation-Date: 2016-02-05 03:44+0000\n"
 "PO-Revision-Date: 2013-04-07 01:46-0300\n"
 "Last-Translator: Osvaldo Santana Neto <quickstartup@osantana.me>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
@@ -17,53 +17,54 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: fields.py:11
+#: quickstartup/qs_core/antispam.py:12
 msgid "You need to enable JavaScript to complete this form."
 msgstr ""
 "Você precisa habilitar o JavaScript do seu navegador para enviar este "
 "formulário."
 
-#: templates/_core/app.html:28
+#: quickstartup/qs_core/templates/_core/app.html:28
 msgid "Profile"
 msgstr "Perfil"
 
-#: templates/_core/app.html:30
+#: quickstartup/qs_core/templates/_core/app.html:30
 msgid "Sign out"
 msgstr "Sair"
 
-#: templates/_core/app.html:53 templates/apps/index.html:5
-#: templates/apps/index.html.py:12
+#: quickstartup/qs_core/templates/_core/app.html:53
+#: quickstartup/qs_core/templates/apps/index.html:5
+#: quickstartup/qs_core/templates/apps/index.html:12
 msgid "Home"
 msgstr "Início"
 
-#: templates/_core/page.html:22
+#: quickstartup/qs_core/templates/_core/page.html:22
 msgid "Sign in"
 msgstr "Entrar"
 
-#: templates/_core/page.html:24
+#: quickstartup/qs_core/templates/_core/page.html:24
 msgid "Sign up"
 msgstr "Cadastrar"
 
-#: templates/_core/page.html:26
+#: quickstartup/qs_core/templates/_core/page.html:26
 msgid "Contact"
 msgstr "Contato"
 
-#: templates/_core/page.html:33
+#: quickstartup/qs_core/templates/_core/page.html:32
 msgid "Privacy"
 msgstr "Política de Privacidade"
 
-#: templates/_core/page.html:34
+#: quickstartup/qs_core/templates/_core/page.html:33
 msgid "Terms"
 msgstr "Termos de uso"
 
-#: templates/_core/project.html:20
+#: quickstartup/qs_core/templates/_core/project.html:21
 msgid "Toggle navigation"
 msgstr "Alternar navegação"
 
-#: templates/_includes/field_password.html:6
+#: quickstartup/qs_core/templates/_includes/field_password.html:6
 msgid "(forgot password)"
 msgstr "(esqueci a senha)"
 
-#: templates/apps/index.html:13
+#: quickstartup/qs_core/templates/apps/index.html:13
 msgid "This is the home."
 msgstr "Esta é a página principal."

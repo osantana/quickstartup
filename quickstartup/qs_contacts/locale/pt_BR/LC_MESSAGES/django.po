@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: quickstartup 0.1.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-07-02 01:05-0300\n"
+"POT-Creation-Date: 2016-02-05 03:44+0000\n"
 "PO-Revision-Date: 2013-04-07 01:46-0300\n"
 "Last-Translator: Osvaldo Santana Neto <quickstartup@osantana.me>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
@@ -17,102 +17,118 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:10
+#: quickstartup/qs_contacts/apps.py:10
 msgid "Contacts"
 msgstr "Contatos"
 
-#: forms.py:17
+#: quickstartup/qs_contacts/forms.py:17
 msgid "Name"
 msgstr "Nome"
 
-#: forms.py:18
+#: quickstartup/qs_contacts/forms.py:18
 msgid "E-mail"
 msgstr "E-mail"
 
-#: forms.py:19
+#: quickstartup/qs_contacts/forms.py:19
 msgid "Phone"
 msgstr "Fone"
 
-#: forms.py:20
+#: quickstartup/qs_contacts/forms.py:20
+#: quickstartup/qs_contacts/templates/_emails/new_contact-body-html.html:16
 msgid "Message"
 msgstr "Mensagem"
 
-#: models.py:13
+#: quickstartup/qs_contacts/models.py:10
 msgid "New"
 msgstr "Novo"
 
-#: models.py:14
+#: quickstartup/qs_contacts/models.py:11
 msgid "Ongoing"
 msgstr "Em Andamento"
 
-#: models.py:15
+#: quickstartup/qs_contacts/models.py:12
 msgid "Resolved"
 msgstr "Resolvido"
 
-#: models.py:16
+#: quickstartup/qs_contacts/models.py:13
 msgid "Closed"
 msgstr "Fechado"
 
-#: models.py:17
+#: quickstartup/qs_contacts/models.py:14
 msgid "Invalid"
 msgstr "Inválido"
 
-#: models.py:22
+#: quickstartup/qs_contacts/models.py:19
 msgid "status"
 msgstr "Situação"
 
-#: models.py:23
+#: quickstartup/qs_contacts/models.py:20
 msgid "created at"
 msgstr "criado em"
 
-#: models.py:24
+#: quickstartup/qs_contacts/models.py:21
 msgid "updated at"
 msgstr "atualizado em"
 
-#: models.py:25
+#: quickstartup/qs_contacts/models.py:22
 msgid "name"
 msgstr "nome"
 
-#: models.py:26
-msgid "email"
-msgstr "email"
+#: quickstartup/qs_contacts/models.py:23
+msgid "e-mail"
+msgstr "e-mail"
 
-#: models.py:27
+#: quickstartup/qs_contacts/models.py:24
 msgid "phone"
 msgstr "fone"
 
-#: models.py:28
+#: quickstartup/qs_contacts/models.py:25
 msgid "message"
 msgstr "mensagem"
 
-#: models.py:40
-#, python-brace-format
-msgid ""
-"Contact From: {instance.name} <{instance.email}>\n"
-"Phone: {instance.phone}\n"
-"Message:\n"
-"{instance.message}\n"
-"URL: http://{domain}{instance.admin_url}\n"
-msgstr ""
-"Contato de: {instance.name} <{instance.email}>\n"
-"Fone: {instance.phone}\n"
-"Mensagem:\n"
-"{instance.message}\n"
-"URL: http://{domain}{instance.admin_url}\n"
+#: quickstartup/qs_contacts/models.py:26
+msgid "contact ip"
+msgstr "ip de contato"
 
-#: models.py:49
-#, python-format
-msgid "New Contact from %s"
-msgstr "Novo Contato de %s"
-
-#: templates/_contacts/contact.html:13 templates/_contacts/contact.html:27
+#: quickstartup/qs_contacts/templates/_contacts/contact.html:13
+#: quickstartup/qs_contacts/templates/_contacts/contact.html:27
 msgid "Contact"
 msgstr "Contato"
 
-#: templates/_contacts/contact.html:52
+#: quickstartup/qs_contacts/templates/_contacts/contact.html:52
 msgid "Send"
 msgstr "Enviar"
 
-#: views.py:20
+#: quickstartup/qs_contacts/templates/_emails/new_contact-body-html.html:3
+#: quickstartup/qs_contacts/templates/_emails/new_contact-subject.html:1
+#, python-format
+msgid "New Contact from %(project_name)s"
+msgstr "Novo Contato de %(project_name)s"
+
+#: quickstartup/qs_contacts/templates/_emails/new_contact-body-html.html:7
+#: quickstartup/qs_contacts/templates/_emails/new_contact-body-text.html:2
+msgid "Contact From:"
+msgstr "Contato De:"
+
+#: quickstartup/qs_contacts/templates/_emails/new_contact-body-html.html:8
+#: quickstartup/qs_contacts/templates/_emails/new_contact-body-text.html:3
+msgid "Phone:"
+msgstr "Fone:"
+
+#: quickstartup/qs_contacts/templates/_emails/new_contact-body-html.html:10
+#: quickstartup/qs_contacts/templates/_emails/new_contact-body-text.html:8
+msgid "URL:"
+msgstr "URL:"
+
+#: quickstartup/qs_contacts/templates/_emails/new_contact-body-html.html:13
+#: quickstartup/qs_contacts/templates/_emails/new_contact-body-text.html:9
+msgid "IP:"
+msgstr "IP:"
+
+#: quickstartup/qs_contacts/templates/_emails/new_contact-body-text.html:4
+msgid "Message:"
+msgstr "Mensagem:"
+
+#: quickstartup/qs_contacts/views.py:25
 msgid "Your message was sent successfully!"
 msgstr "Sua mensagem foi enviada!"

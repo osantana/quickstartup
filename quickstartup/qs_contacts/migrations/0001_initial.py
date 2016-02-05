@@ -21,7 +21,7 @@ class Migration(migrations.Migration):
                 ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='created at')),
                 ('updated_at', models.DateTimeField(auto_now=True, verbose_name='updated at')),
                 ('name', models.CharField(max_length=255, verbose_name='name', blank=False, null=False)),
-                ('email', models.EmailField(max_length=255, verbose_name='email', blank=False, null=False)),
+                ('email', models.EmailField(max_length=255, verbose_name='e-mail', blank=False, null=False)),
                 ('phone', models.CharField(blank=True, max_length=100, verbose_name='phone')),
                 ('message', models.TextField(verbose_name='message', blank=False, null=False)),
                 ('ip', models.GenericIPAddressField(verbose_name='contact ip')),

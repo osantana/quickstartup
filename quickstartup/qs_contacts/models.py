@@ -20,7 +20,7 @@ class Contact(models.Model):
     created_at = models.DateTimeField(_("created at"), auto_now_add=True)
     updated_at = models.DateTimeField(_("updated at"), auto_now=True)
     name = models.CharField(_("name"), max_length=255)
-    email = models.EmailField(_("email"), max_length=255, blank=False, null=False)
+    email = models.EmailField(_("e-mail"), max_length=255, blank=False, null=False)
     phone = models.CharField(_("phone"), max_length=100, blank=True)
     message = models.TextField(_("message"), blank=False, null=False)
     ip = models.GenericIPAddressField(_("contact ip"))

@@ -1,6 +1,7 @@
 # coding: utf-8
 
 import re
+from unittest import mock
 
 from django.conf import settings
 from django.contrib.auth import get_user_model
@@ -86,13 +87,16 @@ class AccountTest(BaseTestCase):
         self.assertIn("Hi John Doe,", text)
         self.assertIn("<h3>Hi John Doe,</h3>", html)
 
-    def test_full_signup_and_signin_signout_cycle(self):
+    @mock.patch("quickstartup.qs_core.antispam.AntiSpamField.clean")
+    def test_full_signup_and_signin_signout_cycle(self, patched_clean):
+        patched_clean.return_value = "1337"
         url = reverse("qs_accounts:signup")
         data = {
             "name": "John Doe",
             "email": "john.doe@example.com",
             "password1": "sekr3t",
             "password2": "sekr3t",
+            "antispam": "1337",
         }
 
         # signup

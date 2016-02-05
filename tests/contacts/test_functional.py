@@ -1,7 +1,5 @@
 # coding: utf-8
-
-
-import mock
+from unittest import mock
 
 from django.core import mail
 from django.core.urlresolvers import reverse
@@ -16,7 +14,7 @@ TEMPLATE_DIRS = (
 
 
 class ContactTest(BaseTestCase):
-    @mock.patch("quickstartup.antispam.AntiSpamField.clean")
+    @mock.patch("quickstartup.qs_core.antispam.AntiSpamField.clean")
     def test_send_contact(self, patched_clean):
         patched_clean.return_value = "1337"
         data = {

@@ -110,7 +110,6 @@ class AccountTest(BaseTestCase):
         self.assertEqual(user.is_active, False)
         self.assertEqual(user.is_staff, False)
         self.assertEqual(user.is_superuser, False)
-        # activation_url = reverse('qs_accounts:activate', kwargs={'activation_key': self.activation_key})
 
         # check activation email
         text, html = self.get_mail_payloads(mail.outbox[0])

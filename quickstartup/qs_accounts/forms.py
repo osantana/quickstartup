@@ -3,15 +3,15 @@
 
 from django import forms
 from django.contrib.auth import forms as django_forms
-from django.contrib.auth import get_user_model
+from django.contrib.auth import password_validation
 from django.core.signing import TimestampSigner
 from django.utils.translation import ugettext_lazy as _
 from djmail import template_mail
 
 from quickstartup.settings_utils import get_configuration
+from quickstartup.widgets import EmailInput
 from .models import User
 from .signals import user_registered
-from ..widgets import EmailInput
 
 
 class SignupForm(forms.ModelForm):
@@ -27,11 +27,11 @@ class SignupForm(forms.ModelForm):
         password2 = self.cleaned_data.get("password2")
 
         if password1 and password2 and password1 != password2:
-            raise forms.ValidationError("Passwords don't match")
+            raise forms.ValidationError("The two password fields didn't match.")
 
         return password2
 
-    def _send_activation_email(self, request, user):
+    def send_activation_email(self, request, user):
         signer = TimestampSigner()
         context = {
             'request': request,
@@ -50,7 +50,7 @@ class SignupForm(forms.ModelForm):
         user.set_password(self.cleaned_data["password1"])
         user.save()
 
-        self._send_activation_email(request, user)
+        self.send_activation_email(request, user)
         user_registered.send(sender=self.__class__, user=user, request=request)
 
 
@@ -59,34 +59,54 @@ class AuthenticationForm(django_forms.AuthenticationForm):
     password = forms.CharField(label=_("Password"), widget=forms.PasswordInput())
 
 
-class CustomPasswordResetForm(forms.Form):
+class PasswordResetForm(forms.Form):
     email = forms.EmailField(label=_("E-Mail"), max_length=254, widget=EmailInput())
 
-    def save(self, request):
+    def get_users(self):
         email = self.cleaned_data["email"]
+        return User.objects.filter(email__iexact=email, is_active=True)
 
-        user_model = get_user_model()
-        active_users = user_model.objects.filter(email__iexact=email, is_active=True)
+    def send_password_reset_email(self, request, user):
+        signer = TimestampSigner()
+        reset_token = signer.sign(user.get_username())
+        context = {
+            "request": request,
+            "user": user,
+            "project_name": get_configuration("QS_PROJECT_NAME"),
+            "project_url": get_configuration("QS_PROJECT_URL"),
+            "reset_token": reset_token,
+        }
+        mails = template_mail.MagicMailBuilder()
+        email = mails.password_reset(user, context)
+        email.send()
 
-        for user in active_users:
-            signer = TimestampSigner()
-            reset_token = signer.sign(user.get_username())
-            context = {
-                "request": request,
-                "user": user,
-                "project_name": get_configuration("QS_PROJECT_NAME"),
-                "project_url": get_configuration("QS_PROJECT_URL"),
-                "reset_token": reset_token,
-            }
-
-            mails = template_mail.MagicMailBuilder()
-            email = mails.password_reset(user, context)
-            email.send()
+    def finish(self, request):
+        for user in self.get_users():
+            self.send_password_reset_email(request, user)
 
 
-class SetPasswordForm(django_forms.SetPasswordForm):
+class PasswordResetConfirmForm(forms.Form):
     new_password1 = forms.CharField(label=_("New password"), widget=forms.PasswordInput())
-    new_password2 = forms.CharField(label=_("New password confirmation"), widget=forms.PasswordInput())
+    new_password2 = forms.CharField(label=_("New password (verify)"), widget=forms.PasswordInput())
+
+    def __init__(self, user, *args, **kwargs):
+        self.user = user
+        super().__init__(*args, **kwargs)
+
+    def clean_new_password2(self):
+        password1 = self.cleaned_data.get('new_password1')
+        password2 = self.cleaned_data.get('new_password2')
+        if password1 and password2 and password1 != password2:
+            raise forms.ValidationError("The two password fields didn't match.", code='password_mismatch')
+
+        password_validation.validate_password(password2, self.user)
+        return password2
+
+    # noinspection PyUnusedLocal
+    def finish(self, request):
+        password = self.cleaned_data["new_password1"]
+        self.user.set_password(password)
+        self.user.save()
 
 
 class ProfileForm(forms.ModelForm):

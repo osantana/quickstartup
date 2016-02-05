@@ -56,7 +56,7 @@ QS_SIGNUP_OPEN = True
 QS_SIGNUP_FORM = "quickstartup.qs_accounts.forms.SignupForm"
 QS_SIGNUP_TOKEN_EXPIRATION_DAYS = 7
 QS_PROFILE_FORM = "quickstartup.qs_accounts.forms.ProfileForm"
-QS_PASSWORD_FORM = 'quickstartup.qs_accounts.forms.SetPasswordForm'
+QS_PASSWORD_FORM = 'quickstartup.qs_accounts.forms.PasswordResetForm'
 QS_PASSWORD_CHANGE_FORM = 'django.contrib.auth.forms.PasswordChangeForm'
 QS_ADMIN_URL = "admin"  # empty to disable admin URLs
 

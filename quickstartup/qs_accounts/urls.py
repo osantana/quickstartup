@@ -18,8 +18,9 @@ urlpatterns = [
         name="signout"),
 
     # Password reset
-    url(r"^password/reset/$", views.password_reset, name="password_reset"),
-    url(r"^password/reset/(?P<reset_token>.+)/$", views.password_reset_confirm, name="password_reset_confirm"),
+    url(r"^password/reset/$", views.PasswordResetView.as_view(), name="password_reset"),
+    url(r"^password/reset/(?P<reset_token>.+)/$", views.PasswordResetConfirmView.as_view(),
+        name="password_reset_confirm"),
 
     # Password change
     url(r"^password/change/$", auth_views.password_change, name="password_change"),

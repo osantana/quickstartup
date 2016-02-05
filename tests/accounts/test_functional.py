@@ -35,7 +35,7 @@ class AccountTest(BaseTestCase):
 
         message = getmessage(response)
         self.assertEqual(message.tags, "success")
-        self.assertEqual(message.message, "We've emailed you instructions for setting a new password to the "
+        self.assertEqual(message.message, "We've e-mailed you instructions for setting a new password to the "
                                           "email address you've submitted.")
 
         self.assertEqual(len(mail.outbox), 1)
@@ -72,7 +72,7 @@ class AccountTest(BaseTestCase):
         data = {"new_password1": "sekret", "new_password2": "do-not-match"}
         response = self.client.post(reset_token_url, data)
         self.assertStatusCode(response, 200)
-        self.assertContains(response, "The two password fields didn&#39;t match.")
+        self.assertFormError(response, "form", "new_password2", ["The two password fields didn't match."])
 
     def test_simple_reset_password_of_user_with_name(self):
         self.user.name = "John Doe"
@@ -150,4 +150,4 @@ class AccountTest(BaseTestCase):
         }
         response = self.client.post(url, data, follow=True)
         self.assertStatusCode(response, 200)
-        self.assertFormError(response, "form", "password2", ["Passwords don't match"])
+        self.assertFormError(response, "form", "password2", ["The two password fields didn't match."])

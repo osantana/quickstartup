@@ -37,7 +37,7 @@ class AccountTest(BaseTestCase):
         message = getmessage(response)
         self.assertEqual(message.tags, "success")
         self.assertEqual(message.message, "We've e-mailed you instructions for setting a new password to the "
-                                          "email address you've submitted.")
+                                          "e-mail address you've submitted.")
 
         self.assertEqual(len(mail.outbox), 1)
 

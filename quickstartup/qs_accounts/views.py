@@ -40,7 +40,7 @@ class PasswordResetView(FormView):
         return get_object_from_configuration("QS_PASSWORD_RESET_FORM")
 
     def form_valid(self, form):
-        form.finish(self.request)
+        form.save(self.request)
         messages.success(self.request, _("We've e-mailed you instructions for setting a new password to the "
                                          "e-mail address you've submitted."))
         return super().form_valid(form)
@@ -92,7 +92,7 @@ class PasswordResetConfirmView(FormView):
         return kwargs
 
     def form_valid(self, form):
-        form.finish(self.request)
+        form.save(self.request)
         messages.success(self.request, _("Password has been reset successfully."))
         return super().form_valid(form)
 
@@ -152,7 +152,7 @@ class SignupView(FormView):
         return get_object_from_configuration("QS_SIGNUP_FORM")
 
     def form_valid(self, form):
-        form.finish(self.request)
+        form.save(self.request)
         messages.success(self.request, _("We've e-mailed you instructions for setting a new password to the "
                                          "e-mail address you've submitted."))
 

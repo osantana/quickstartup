@@ -47,13 +47,14 @@ class SignupForm(forms.ModelForm):
         email = mails.activation(user, context)
         email.send()
 
-    def finish(self, request):
+    def save(self, commit=True, request=None):
         user = super().save(commit=False)
         user.set_password(self.cleaned_data["password1"])
         user.save()
 
         self.send_activation_email(request, user)
         user_registered.send(sender=self.__class__, user=user, request=request)
+        return user
 
 
 class AuthenticationForm(django_forms.AuthenticationForm):
@@ -82,7 +83,7 @@ class PasswordResetForm(forms.Form):
         email = mails.password_reset(user, context)
         email.send()
 
-    def finish(self, request):
+    def save(self, request):
         for user in self.get_users():
             self.send_password_reset_email(request, user)
 
@@ -105,7 +106,7 @@ class PasswordResetConfirmForm(forms.Form):
         return password2
 
     # noinspection PyUnusedLocal
-    def finish(self, request):
+    def save(self, request):
         password = self.cleaned_data["new_password1"]
         self.user.set_password(password)
         self.user.save()

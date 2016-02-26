@@ -158,7 +158,7 @@ class SignupActivationView(TemplateView):
     def _login_user(self, request, user):
         backend = get_backends()[0]  # Hack to bypass `authenticate()`.
         user.backend = "%s.%s" % (backend.__module__, backend.__class__.__name__)
-        login(request, user)
+        user_login(request, user)
         request.session['QS_SIGNUP_AUTO_LOGIN'] = True
         request.session.modified = True
 

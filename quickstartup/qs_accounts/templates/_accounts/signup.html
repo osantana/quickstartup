@@ -17,6 +17,7 @@
             {% csrf_token %}
 
             {% include "_includes/form_errors.html" %}
+            {% include "_includes/antispam.html" %}
 
             {% block signup_fields %}
                 {% include "_includes/bigfield.html" with field=form.name|attr:"autofocus" %}

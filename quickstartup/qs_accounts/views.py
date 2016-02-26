@@ -3,7 +3,7 @@
 
 from django.conf import settings
 from django.contrib import messages
-from django.contrib.auth import get_user_model, get_backends
+from django.contrib.auth import login as user_login, get_user_model, get_backends
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import login as auth_login
 from django.core.signing import TimestampSigner, SignatureExpired, BadSignature
@@ -21,6 +21,13 @@ from quickstartup.settings_utils import get_configuration, get_object_from_confi
 from .signals import user_activated
 
 SECONDS_IN_DAY = 24 * 60 * 60
+
+
+# noinspection PyUnresolvedReferences
+class ProfileMixin(object):
+    # noinspection PyUnusedLocal
+    def get_object(self, *args, **kwargs):
+        return self.request.user
 
 
 @sensitive_post_parameters()
@@ -50,6 +57,7 @@ class PasswordResetConfirmView(FormView):
     template_name = "accounts/reset-confirm.html"
     success_url = reverse_lazy("qs_accounts:signin")
 
+    # noinspection PyMethodOverriding
     @method_decorator(sensitive_post_parameters())
     @method_decorator(never_cache)
     def dispatch(self, request, reset_token, *args, **kwargs):
@@ -97,46 +105,6 @@ class PasswordResetConfirmView(FormView):
         return super().form_valid(form)
 
 
-# noinspection PyUnresolvedReferences
-class ProfileMixin(object):
-    # noinspection PyUnusedLocal
-    def get_object(self, *args, **kwargs):
-        return self.request.user
-
-
-class UserProfile(LoginRequiredMixin, ProfileMixin, UpdateView):
-    success_url = reverse_lazy('qs_accounts:profile')
-    form_class = import_string(get_configuration("QS_PROFILE_FORM"))
-    template_name = 'accounts/profile.html'
-
-    def form_valid(self, form):
-        messages.success(self.request, _(u'Succesfully updated profile.'))
-        return super(UserProfile, self).form_valid(form)
-
-
-class UserSecurityProfile(LoginRequiredMixin, ProfileMixin, UpdateView):
-    success_url = reverse_lazy('qs_accounts:profile-security')
-    form_class = get_object_from_configuration("QS_PASSWORD_CHANGE_FORM")
-    form_class_without_password = get_object_from_configuration("QS_PASSWORD_RESET_FORM")
-    template_name = 'accounts/profile-security.html'
-
-    def get_form_class(self):
-        if not self.request.user.has_usable_password():
-            return self.form_class_without_password or self.form_class
-        return self.form_class
-
-    def form_valid(self, form):
-        messages.success(self.request, _(u'Succesfully updated your password.'))
-        return super(UserSecurityProfile, self).form_valid(form)
-
-    def get_form_kwargs(self):
-        kwargs = super(UserSecurityProfile, self).get_form_kwargs()
-        kwargs.update({'user': self.object})
-        if 'instance' in kwargs:
-            del kwargs['instance']
-        return kwargs
-
-
 class SignupView(FormView):
     template_name = "accounts/signup.html"
     disallowed_url = reverse_lazy("qs_accounts:signup_closed")
@@ -165,6 +133,7 @@ class SignupActivationView(TemplateView):
     def get_success_url(self):
         return get_configuration("LOGIN_REDIRECT_URL")
 
+    # noinspection PyMethodOverriding
     def get(self, request, activation_key, *args, **kwargs):
         signer = TimestampSigner()
         expiration = get_configuration("QS_SIGNUP_TOKEN_EXPIRATION_DAYS")
@@ -192,3 +161,38 @@ class SignupActivationView(TemplateView):
         login(request, user)
         request.session['QS_SIGNUP_AUTO_LOGIN'] = True
         request.session.modified = True
+
+
+class UserProfileView(LoginRequiredMixin, ProfileMixin, UpdateView):
+    success_url = reverse_lazy('qs_accounts:profile')
+    form_class = import_string(get_configuration("QS_PROFILE_FORM"))
+    template_name = 'accounts/profile.html'
+
+    def form_valid(self, form):
+        messages.success(self.request, _(u'Succesfully updated profile.'))
+        return super().form_valid(form)
+
+
+class PasswordChangeView(LoginRequiredMixin, ProfileMixin, UpdateView):
+    success_url = reverse_lazy('qs_accounts:profile')
+    form_class = get_object_from_configuration("QS_PASSWORD_CHANGE_FORM")
+    template_name = 'accounts/password-change.html'
+
+    @method_decorator(sensitive_post_parameters())
+    @method_decorator(never_cache)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+
+    def form_valid(self, form):
+        messages.success(self.request, _(u'Succesfully updated your password.'))
+        return super().form_valid(form)
+
+
+class EmailChangeView(LoginRequiredMixin, ProfileMixin, UpdateView):
+    success_url = reverse_lazy('qs_accounts:profile')
+    form_class = get_object_from_configuration("QS_EMAIL_CHANGE_FORM")
+    template_name = 'accounts/email-change.html'
+
+    def form_valid(self, form):
+        messages.success(self.request, _(u"You'll receive an message in your new e-mail to check it."))
+        return super().form_valid(form)

@@ -32,3 +32,8 @@
     <a href="{% page_url "privacy" %}">{% trans "Privacy" %}</a> |
     <a href="{% page_url "terms" %}">{% trans "Terms" %}</a>
 {% endblock %}
+
+{% block copyright %}
+    {{ block.super }} /
+    {% trans "Photo by" %} <a href="https://www.flickr.com/photos/shawnhoke/">Shawn Hoke</a>
+{% endblock %}

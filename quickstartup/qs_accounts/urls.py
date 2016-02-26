@@ -22,10 +22,6 @@ urlpatterns = [
     url(r"^password/reset/(?P<reset_token>.+)/$", views.PasswordResetConfirmView.as_view(),
         name="password_reset_confirm"),
 
-    # Password change
-    url(r"^password/change/$", auth_views.password_change, name="password_change"),
-    url(r"^password/change/done/$", auth_views.password_change_done, name="password_change_done"),
-
     # Basic Registration
     url(r"^signup/$", view=views.SignupView.as_view(), name="signup"),
     url(r'^signup/complete/$', view=TemplateView.as_view(template_name='accounts/signup-complete.html', ),
@@ -35,6 +31,7 @@ urlpatterns = [
         name='signup_closed'),
 
     # Profile
-    url(r"^profile/$", view=views.UserProfile.as_view(), name="profile"),
-    url(r"^profile/security/$", view=views.UserSecurityProfile.as_view(), name="profile-security"),
+    url(r"^profile/$", view=views.UserProfileView.as_view(), name="profile"),
+    url(r"^profile/password/$", views.PasswordChangeView.as_view(), name="password_change"),
+    url(r"^profile/email/$", views.EmailChangeView.as_view(), name="email_change"),
 ]

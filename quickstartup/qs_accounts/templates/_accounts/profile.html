@@ -1,25 +1,34 @@
 {% extends "accounts/base-profile.html" %}{% load i18n l10n pages widget_tweaks %}
 
-{% block tab_profile_main %}
-    <li class="active"><a href="{% url 'qs_accounts:profile' %}">{% trans "Profile" %}</a></li>{% endblock %}
+{% block sidebar_profile %}
+    <a class="list-group-item active" href="{% url "qs_accounts:profile" %}">{% trans "Profile" %}</a>
+{% endblock %}
 
-{% block profile_content %}
+{% block content %}
+    <h2 class="page-header content">
+        {% trans "Profile" %}
 
-    {% include "_includes/form_errors.html" %}
-
-    <h2>{% trans "Profile Informations" %}</h2>
-
-    <div class="panel panel-default">
-        <div class="panel-body">
-
-            <form action="{% url 'qs_accounts:profile' %}" method="post" class="form-panel" role="form">
-                {% csrf_token %}
-                {% include "_includes/field.html" with field=form.name|attr:"autofocus" %}
-                {% include "_includes/field.html" with field=form.email %}
-                <div class="form-group">
-                    <button class="btn btn-primary" type="submit">{% trans "Update" %}</button>
-                </div>
-            </form>
+        <div class="btn-group btn-group-sm pull-right" role="group">
+            <a href="{% url "qs_accounts:email_change" %}" class="btn btn-default btn-sm" role="button">
+                <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                {% trans "Change E-Mail" %}
+            </a>
+            <a href="{% url "qs_accounts:password_change" %}" class="btn btn-default btn-sm" role="button">
+                <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+                {% trans "Change Password" %}
+            </a>
         </div>
-    </div>
+    </h2>
+
+    <form action="" method="post" class="form-panel" role="form">
+        {% csrf_token %}
+
+        {% include "_includes/form_errors.html" %}
+        {% include "_includes/labeled_bigfield.html" with field=form.name|attr:"autofocus" %}
+
+        <div class="form-group">
+            <button class="btn btn-primary btn-lg" type="submit">{% trans "Update" %}</button>
+            <a href="{% url "app:index" %}" class="btn btn-default btn-lg" role="button">{% trans "Cancel" %}</a>
+        </div>
+    </form>
 {% endblock %}

@@ -1,0 +1,7 @@
+{{ form.antispam|safe }}
+{% if form.antispam.errors %}
+    <div class="alert alert-danger">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ form.antispam.errors|join:", " }}
+    </div>
+{% endif %}

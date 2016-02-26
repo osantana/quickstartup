@@ -116,3 +116,48 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ("name", "email")
+
+
+class PasswordChangeForm(forms.Form):
+    old_password = forms.CharField(label=_("Current"), widget=forms.PasswordInput)
+    new_password1 = forms.CharField(label=_("New"), widget=forms.PasswordInput, help_text=password_validation.password_validators_help_text_html())
+    new_password2 = forms.CharField(label=_("Confirmation"), widget=forms.PasswordInput)
+
+    def __init__(self, instance, *args, **kwargs):
+        self.user = instance
+        super().__init__(*args, **kwargs)
+
+    def clean_old_password(self):
+        old_password = self.cleaned_data["old_password"]
+        if not self.user.check_password(old_password):
+            raise forms.ValidationError(_("Your old password was entered incorrectly. Please enter it again."), code='password_incorrect')
+        return old_password
+
+    def clean_new_password2(self):
+        password1 = self.cleaned_data.get('new_password1')
+        password2 = self.cleaned_data.get('new_password2')
+        if password1 and password2:
+            if password1 != password2:
+                raise forms.ValidationError(_("The two password fields didn't match."), code='password_mismatch')
+        password_validation.validate_password(password2, self.user)
+        return password2
+
+    def save(self, commit=True):
+        password = self.cleaned_data["new_password1"]
+        self.user.set_password(password)
+        if commit:
+            self.user.save()
+        return self.user
+
+
+class EmailChangeForm(forms.Form):
+    new_email = forms.EmailField(label=_("New E-Mail"), widget=forms.PasswordInput)
+
+    def __init__(self, instance, *args, **kwargs):
+        self.user = instance
+        super().__init__(*args, **kwargs)
+
+    def save(self):
+        new_email = self.cleaned_data["new_email"]
+        self.user.set_new_email(new_email)
+        return self.user

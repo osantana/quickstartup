@@ -41,7 +41,10 @@ class AbstractBaseUser(DjangoAbstractBaseUser):
     date_joined = models.DateTimeField(_("date joined"), default=timezone.now)
     is_active = models.BooleanField(_("active"), default=False)
     is_staff = models.BooleanField(_("staff"), default=False)
-    is_superuser = models.BooleanField(_('superuser'), default=False)\
+    is_superuser = models.BooleanField(_('superuser'), default=False)
+
+    new_email = models.EmailField(_("new e-mail"), max_length=255, editable=False,
+                                  null=True, blank=True, db_index=True)
 
     USERNAME_FIELD = "email"
 
@@ -50,6 +53,17 @@ class AbstractBaseUser(DjangoAbstractBaseUser):
 
     def get_short_name(self):
         return self.email
+
+    def set_new_email(self, email):
+        self.new_email = email
+        self.save()
+
+    def confirm_new_email(self):
+        if not self.new_email:
+            return
+
+        self.email = self.new_email
+        self.save()
 
 
 class AbstractUser(AbstractBaseUser):

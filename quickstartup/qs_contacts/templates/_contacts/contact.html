@@ -31,14 +31,7 @@
                             {% csrf_token %}
 
                             {% include "_includes/form_errors.html" %}
-
-                            {{ form.antispam|safe }}
-                            {% if form.antispam.errors %}
-                                <div class="alert alert-error">
-                                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                    {{ form.antispam.errors|join:", " }}
-                                </div>
-                            {% endif %}
+                            {% include "_includes/antispam.html" %}
 
                             {% block contact_form_fields %}
                                 {% include "_includes/bigfield.html" with field=form.name|attr:"autofocus" %}

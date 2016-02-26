@@ -28,6 +28,9 @@ class AccountTest(BaseTestCase):
         self.user_model = get_user_model()
         self.user = self.user_model.objects.create_user(email="test@example.com", password="secret")
 
+    def _login(self):
+        self.client.login(email="test@example.com", password="secret")
+
     def test_simple_reset_password(self):
         url = reverse("qs_accounts:password_reset")
         data = {"email": "test@example.com"}
@@ -135,7 +138,7 @@ class AccountTest(BaseTestCase):
         redirect_url = response.redirect_chain[0][0].replace("http://testserver", "")
         self.assertEqual(redirect_url, reverse("app:index"))
 
-        # loggout
+        # logout
         response = self.client.get(reverse("qs_accounts:signout"), follow=True)
         self.assertStatusCode(response, 200)
         self.assertEqual(len(response.redirect_chain), 1)
@@ -154,3 +157,33 @@ class AccountTest(BaseTestCase):
         response = self.client.post(url, data, follow=True)
         self.assertStatusCode(response, 200)
         self.assertFormError(response, "form", "password2", ["The two password fields didn't match."])
+
+    def test_change_password(self):
+        self._login()
+        data = {
+            "old_password": "secret",
+            "new_password1": "sekret",
+            "new_password2": "sekret",
+        }
+
+        response = self.client.post(reverse("qs_accounts:password_change"), data, follow=True)
+        self.assertStatusCode(response, 200)
+
+        # refresh!
+        self.user.refresh_from_db()
+
+        self.assertTrue(self.user.check_password("sekret"), "Password not modified")
+
+    def test_change_email(self):
+        self._login()
+        data = {
+            "new_email": "new@example.com",
+        }
+
+        response = self.client.post(reverse("qs_accounts:email_change"), data, follow=True)
+        self.assertStatusCode(response, 200)
+        self.assertEqual(len(mail.outbox), 1)
+
+        self.user.refresh_from_db()
+        self.assertEqual(self.user.email, "test@example.com")
+        self.assertEqual(self.user.new_email, "new@example.com")

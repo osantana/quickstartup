@@ -104,3 +104,10 @@ body.page {
 .contact textarea {
     resize: none;
 }
+
+
+/* app->profile */
+.page-header.content {
+    margin-top: 0;
+}
+

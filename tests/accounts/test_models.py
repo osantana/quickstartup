@@ -54,3 +54,26 @@ class UserTestCase(TestCase):
         self.assertEqual(user.get_short_name(), "admin@example.com")
         self.assertTrue(user.is_staff, "Superuser is staff")
         self.assertTrue(user.is_superuser, "Superuser must be enable")
+
+    def test_change_email(self):
+        user = UserModel.objects.create_user(
+            name="John Doe",
+            email="test@example.com",
+            password="secret",
+        )
+
+        user.set_new_email("new@example.com")
+        self.assertEqual(user.email, "test@example.com")
+
+        user.confirm_new_email()
+        self.assertEqual(user.email, "new@example.com")
+
+    def test_confirm_email_with_no_change(self):
+        user = UserModel.objects.create_user(
+            name="John Doe",
+            email="test@example.com",
+            password="secret",
+        )
+
+        user.confirm_new_email()
+        self.assertEqual(user.email, "test@example.com")

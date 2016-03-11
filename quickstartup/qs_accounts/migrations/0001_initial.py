@@ -25,7 +25,7 @@ class Migration(migrations.Migration):
                 ('is_staff', models.BooleanField(default=False, verbose_name='staff')),
                 ('is_superuser', models.BooleanField(default=False, verbose_name='superuser')),
                 ('name', models.CharField(blank=True, max_length=255, null=True)),
-                ('new_email', models.EmailField(blank=True, db_index=True, editable=False, max_length=255, null=True,
+                ('new_email', models.EmailField(blank=True, db_index=True, max_length=255, null=True,
                                                 verbose_name='new e-mail')),
             ],
             options={

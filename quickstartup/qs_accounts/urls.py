@@ -34,4 +34,6 @@ urlpatterns = [
     url(r"^profile/$", view=views.UserProfileView.as_view(), name="profile"),
     url(r"^profile/password/$", views.PasswordChangeView.as_view(), name="password_change"),
     url(r"^profile/email/$", views.EmailChangeView.as_view(), name="email_change"),
+    url(r"^profile/email/(?P<activation_key>[^/]+)/$", views.EmailChangeConfirmationView.as_view(),
+        name="email_change_confirmation"),
 ]

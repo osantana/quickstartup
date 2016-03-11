@@ -2,14 +2,16 @@
 
 import re
 from unittest import mock
+from urllib.parse import quote
 
 from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.core import mail
+from django.core.signing import Signer
 from django.core.urlresolvers import reverse
 from django.test import override_settings
 
-from tests.base import BaseTestCase
+from ..base import BaseTestCase
 
 STATIC_ROOT = str(settings.FRONTEND_DIR / "static")
 
@@ -30,6 +32,9 @@ class AccountTest(BaseTestCase):
 
     def _login(self):
         self.client.login(email="test@example.com", password="secret")
+
+    def _logout(self):
+        self.client.logout()
 
     def test_simple_reset_password(self):
         url = reverse("qs_accounts:password_reset")
@@ -182,8 +187,103 @@ class AccountTest(BaseTestCase):
 
         response = self.client.post(reverse("qs_accounts:email_change"), data, follow=True)
         self.assertStatusCode(response, 200)
-        self.assertEqual(len(mail.outbox), 1)
 
         self.user.refresh_from_db()
         self.assertEqual(self.user.email, "test@example.com")
         self.assertEqual(self.user.new_email, "new@example.com")
+
+        # check activation email
+        self.assertEqual(len(mail.outbox), 1)
+
+        text, html = self.get_mail_payloads(mail.outbox[0])
+        self.assertIn("Hi,", text)
+        self.assertIn("<h3>Hi,</h3>", html)
+
+        change = re.search(r"https://quickstartup.us(.*)$", text, re.MULTILINE)
+        self.assertTrue(change, "No activation link in text email")
+
+        change_url = change.groups()[0]
+        self.assertIn(change_url, html)
+
+        # "click" on change e-mail confirmation link
+        response = self.client.get(change_url, follow=True)
+        self.assertStatusCode(response, 200)
+        self.assertEqual(len(response.redirect_chain), 1)
+
+        message = getmessage(response)
+        self.assertEqual(message.tags, "success")
+        self.assertEqual(message.message, "New e-mail has been successfully configured.")
+
+        self.user.refresh_from_db()
+        self.assertEqual(self.user.email, "new@example.com")
+        self.assertEqual(self.user.new_email, None)
+
+    def test_fail_set_email_as_anonymous(self):
+        # self._login()
+        response = self.client.post(reverse("qs_accounts:email_change"), {"new_email": "new@example.com"})
+
+        url = "%s?next=%s" % (reverse("qs_accounts:signin"), reverse("qs_accounts:email_change"))
+        self.assertRedirects(response, url)
+
+        self.user.refresh_from_db()
+        self.assertEqual(self.user.new_email, None)
+
+    def test_fail_confirm_email_as_anonymous(self):
+        self._login()
+        self.client.post(reverse("qs_accounts:email_change"), {"new_email": "new@example.com"})
+        self._logout()
+
+        text, html = self.get_mail_payloads(mail.outbox[0])
+        change = re.search(r"https://quickstartup.us(.*)$", text, re.MULTILINE)
+        change_url = change.groups()[0]
+
+        response = self.client.get(change_url)
+        url = "%s?next=%s" % (reverse("qs_accounts:signin"), quote(change_url))
+        self.assertRedirects(response, url)
+
+        self.user.refresh_from_db()
+        self.assertEqual(self.user.email, 'test@example.com')
+        self.assertEqual(self.user.new_email, 'new@example.com')
+
+    def test_fail_confirm_email_with_invalid_token(self):
+        self._login()
+        response = self.client.post(reverse("qs_accounts:email_change"), {"new_email": "new@example.com"}, follow=True)
+        self.assertStatusCode(response, 200)
+
+        text, html = self.get_mail_payloads(mail.outbox[0])
+        change = re.search(r"https://quickstartup.us(.*)$", text, re.MULTILINE)
+
+        change_url = change.groups()[0][:-2] + "/"  # make token signature invalid
+
+        response = self.client.get(change_url, follow=True)
+        self.assertStatusCode(response, 200)
+        self.assertEqual(len(response.redirect_chain), 1)
+
+        message = getmessage(response)
+        self.assertEqual(message.tags, "danger")
+        self.assertEqual(message.message, "Invalid e-mail configuration token.")
+
+        self.user.refresh_from_db()
+        self.assertEqual(self.user.email, 'test@example.com')
+        self.assertEqual(self.user.new_email, 'new@example.com')
+
+    def test_fail_confirm_email_with_invalid_username(self):
+        self._login()
+        response = self.client.post(reverse("qs_accounts:email_change"), {"new_email": "new@example.com"}, follow=True)
+        self.assertStatusCode(response, 200)
+
+        signer = Signer()
+        activation_key = signer.sign("invalid@example.com")
+        change_url = reverse("qs_accounts:email_change_confirmation", kwargs={"activation_key": activation_key})
+
+        response = self.client.get(change_url, follow=True)
+        self.assertStatusCode(response, 200)
+        self.assertEqual(len(response.redirect_chain), 1)
+
+        message = getmessage(response)
+        self.assertEqual(message.tags, "danger")
+        self.assertEqual(message.message, "E-mail not found.")
+
+        self.user.refresh_from_db()
+        self.assertEqual(self.user.email, 'test@example.com')
+        self.assertEqual(self.user.new_email, 'new@example.com')

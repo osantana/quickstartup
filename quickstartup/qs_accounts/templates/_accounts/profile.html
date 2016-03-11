@@ -20,15 +20,23 @@
         </div>
     </h2>
 
-    <form action="" method="post" class="form-panel" role="form">
+    <form action="" method="post" role="form">
         {% csrf_token %}
 
-        {% include "_includes/form_errors.html" %}
-        {% include "_includes/labeled_bigfield.html" with field=form.name|attr:"autofocus" %}
+        <div class="row">
+            {% include "_includes/form_errors.html" %}
+        </div>
 
-        <div class="form-group">
-            <button class="btn btn-primary btn-lg" type="submit">{% trans "Update" %}</button>
-            <a href="{% url "app:index" %}" class="btn btn-default btn-lg" role="button">{% trans "Cancel" %}</a>
+        <div class="row">
+            <div class="col-sm-12">
+                {% include "_includes/hbfield.html" with field=form.name|attr:"autofocus" %}
+            </div>
+        </div>
+        <div class="form-panel">
+            <div class="col-sm-offset-2">
+                <button class="btn btn-primary btn-lg" type="submit">{% trans "Update" %}</button>
+                <a href="{% url "app:index" %}" class="btn btn-default btn-lg" role="button">{% trans "Cancel" %}</a>
+            </div>
         </div>
     </form>
 {% endblock %}

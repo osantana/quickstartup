@@ -7,7 +7,7 @@ from django.test import override_settings
 
 from quickstartup.qs_website.models import Page
 from quickstartup.qs_website.urlresolver import page_reverse
-from tests.base import BaseTestCase, TEMPLATES
+from ..base import BaseTestCase, TEMPLATES
 
 
 class PageTest(BaseTestCase):

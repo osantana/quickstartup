@@ -4,8 +4,8 @@ from unittest import mock
 from django.core import mail
 from django.core.urlresolvers import reverse
 
-from tests.base import BaseTestCase, TEST_ROOT_DIR
 from quickstartup.qs_contacts.models import Contact
+from ..base import BaseTestCase, TEST_ROOT_DIR
 
 
 TEMPLATE_DIRS = (

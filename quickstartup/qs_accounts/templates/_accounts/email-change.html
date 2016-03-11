@@ -6,23 +6,32 @@
 
 {% block content %}
 
-    <h2 class="page-header content">{% trans "Change Password" %}</h2>
+    <h2 class="page-header content">{% trans "Change E-Mail" %}</h2>
 
-    <form action="." method="post" class="form-panel" role="form">
+    <form action="." method="post" class="form-horizontal" role="form">
         {% csrf_token %}
 
         {% include "_includes/form_errors.html" %}
 
         <div class="row">
-            E-Mail: {{ instance.email }} {{ user.email }}
-            <div class="col-md-4">
-                {% include "_includes/labeled_bigfield.html" with field=form.new_email|attr:"autofocus" %}
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label class="control-label col-sm-2 input-lg">{% trans "E-mail" %}</label>
+                    <div class="col-sm-8">
+                        <input class="form-control input-lg" readonly value="{{ object.email }}">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                {% include "_includes/hbfield.html" with field=form.new_email|attr:"autofocus" control_cols=8 %}
             </div>
         </div>
-        <div class="form-group">
-            <button class="btn btn-primary btn-lg" type="submit">{% trans "Update" %}</button>
-            <a href="{% url "qs_accounts:profile" %}" class="btn btn-default btn-lg"
-               role="button">{% trans "Cancel" %}</a>
+        <div class="form-panel">
+            <div class="col-sm-offset-2">
+                <button class="btn btn-primary btn-lg" type="submit">{% trans "Update" %}</button>
+                <a href="{% url "qs_accounts:profile" %}" class="btn btn-default btn-lg"
+                   role="button">{% trans "Cancel" %}</a>
+            </div>
         </div>
     </form>
 {% endblock %}

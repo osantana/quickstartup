@@ -1,0 +1,10 @@
+{% load i18n l10n pages widget_tweaks %}
+<div class="form-group{% if field.errors %} has-error{% endif %}">
+    <label class="control-label col-sm-{{ label_cols|default:"2" }}" for="{{ field.auto_id }}">{{ field.label }}</label>
+    <div class="col-md-{{ control_cols|default:"10" }}">
+        {% render_field field class+="form-control" %}
+    </div>
+    <div class="col-md-offset-{{ label_cols|default:"2" }} col-md-{{ control_cols|default:"10" }}">
+        {% if field.errors %}<span class="help-block">{{ field.errors|join:", " }}</span>{% endif %}
+    </div>
+</div>

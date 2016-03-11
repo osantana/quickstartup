@@ -1,5 +1,5 @@
 # WARNING: update requirements on setup.py too!
-django==1.9.2
+django==1.9.4
 django-widget-tweaks==1.4.1
 django-model-utils==2.4
 django-ipware==1.1.3

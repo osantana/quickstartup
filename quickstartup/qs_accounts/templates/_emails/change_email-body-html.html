@@ -1,0 +1,21 @@
+{% extends "emails/project.html" %}{% load i18n l10n pages staticfiles %}
+
+{% block title %}{% blocktrans %}Confirm your new e-mail address at {{ project_name }}{% endblocktrans %}{% endblock %}
+
+{% block content %}
+    {% if user.name %}
+        <h3>{% trans "Hi " %}{{ user.name }},</h3>
+    {% else %}
+        <h3>{% trans "Hi," %}</h3>
+    {% endif %}
+
+    <p class="callout">
+        {% blocktrans %}Confirm your new e-mail address at {{ project_name }}:{% endblocktrans %}
+        <a href="{{ project_url }}{% url 'qs_accounts:email_change_confirmation' activation_key %}">{% trans "click here" %}</a>
+    </p>
+
+    <p class="lead">
+{% blocktrans %}Thanks,<br>
+The {{ project_name }} team.{% endblocktrans %}
+    </p>
+{% endblock %}

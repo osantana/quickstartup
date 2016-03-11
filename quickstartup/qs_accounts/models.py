@@ -32,6 +32,11 @@ class BaseUserManager(DjangoBaseUserManager):
         user.save()
         return user
 
+    def confirm_new_email(self, username):
+        user = self.get_by_natural_key(username)
+        user.confirm_new_email()
+        return user
+
 
 # noinspection PyAbstractClass
 class AbstractBaseUser(DjangoAbstractBaseUser):
@@ -43,8 +48,7 @@ class AbstractBaseUser(DjangoAbstractBaseUser):
     is_staff = models.BooleanField(_("staff"), default=False)
     is_superuser = models.BooleanField(_('superuser'), default=False)
 
-    new_email = models.EmailField(_("new e-mail"), max_length=255, editable=False,
-                                  null=True, blank=True, db_index=True)
+    new_email = models.EmailField(_("new e-mail"), max_length=255, null=True, blank=True, db_index=True)
 
     USERNAME_FIELD = "email"
 
@@ -54,15 +58,12 @@ class AbstractBaseUser(DjangoAbstractBaseUser):
     def get_short_name(self):
         return self.email
 
-    def set_new_email(self, email):
-        self.new_email = email
-        self.save()
-
     def confirm_new_email(self):
         if not self.new_email:
             return
 
         self.email = self.new_email
+        self.new_email = None
         self.save()
 
 

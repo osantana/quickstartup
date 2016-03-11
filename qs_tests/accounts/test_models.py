@@ -62,7 +62,8 @@ class UserTestCase(TestCase):
             password="secret",
         )
 
-        user.set_new_email("new@example.com")
+        user.new_email = "new@example.com"
+        user.save()
         self.assertEqual(user.email, "test@example.com")
 
         user.confirm_new_email()

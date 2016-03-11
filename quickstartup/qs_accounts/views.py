@@ -6,7 +6,7 @@ from django.contrib import messages
 from django.contrib.auth import login as user_login, get_user_model, get_backends
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import login as auth_login
-from django.core.signing import TimestampSigner, SignatureExpired, BadSignature
+from django.core.signing import TimestampSigner, SignatureExpired, BadSignature, Signer
 from django.core.urlresolvers import reverse_lazy
 from django.shortcuts import redirect, resolve_url
 from django.utils.decorators import method_decorator
@@ -15,7 +15,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.views.decorators.cache import never_cache
 from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.debug import sensitive_post_parameters
-from django.views.generic import UpdateView, FormView, TemplateView
+from django.views.generic import UpdateView, FormView, TemplateView, RedirectView
 
 from quickstartup.settings_utils import get_configuration, get_object_from_configuration
 from .signals import user_activated
@@ -120,7 +120,7 @@ class SignupView(FormView):
         return get_object_from_configuration("QS_SIGNUP_FORM")
 
     def form_valid(self, form):
-        form.save(self.request)
+        form.save(request=self.request)
         messages.success(self.request, _("We've e-mailed you instructions for setting a new password to the "
                                          "e-mail address you've submitted."))
 
@@ -196,3 +196,25 @@ class EmailChangeView(LoginRequiredMixin, ProfileMixin, UpdateView):
     def form_valid(self, form):
         messages.success(self.request, _(u"You'll receive an message in your new e-mail to check it."))
         return super().form_valid(form)
+
+
+class EmailChangeConfirmationView(LoginRequiredMixin, ProfileMixin, RedirectView):
+    url = reverse_lazy("qs_accounts:profile")
+
+    # noinspection PyMethodOverriding
+    def get(self, request, activation_key, *args, **kwargs):
+        signer = Signer()
+        try:
+            username = signer.unsign(activation_key)
+        except BadSignature:
+            messages.error(self.request, _(u"Invalid e-mail configuration token."))
+            return super().get(request, *args, **kwargs)
+
+        user_model = get_user_model()
+        try:
+            user_model.objects.confirm_new_email(username)
+            messages.success(self.request, _(u"New e-mail has been successfully configured."))
+        except user_model.DoesNotExist:
+            messages.error(self.request, _(u"E-mail not found."))
+
+        return super().get(request, *args, **kwargs)

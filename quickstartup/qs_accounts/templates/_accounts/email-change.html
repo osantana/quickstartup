@@ -11,7 +11,7 @@
     <form action="." method="post" class="form-horizontal" role="form">
         {% csrf_token %}
 
-        {% include "_includes/form_errors.html" %}
+        {% include "_includes/form-errors.html" %}
 
         <div class="row">
             <div class="col-sm-12">
@@ -23,7 +23,7 @@
                 </div>
             </div>
             <div class="col-sm-12">
-                {% include "_includes/hbfield.html" with field=form.new_email|attr:"autofocus" control_cols=8 %}
+                {% include "_includes/horizontal-labeled-big-field.html" with field=form.new_email|attr:"autofocus" control_cols=8 %}
             </div>
         </div>
         <div class="form-panel">

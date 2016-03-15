@@ -16,11 +16,11 @@
         <form action="" method="post" role="form">
             {% csrf_token %}
 
-            {% include "_includes/form_errors.html" %}
+            {% include "_includes/form-errors.html" %}
 
             {% block signin_fields %}
-                {% include "_includes/bigfield.html" with field=form.username|attr:"autofocus" %}
-                {% include "_includes/bigfield_password.html" with field=form.password %}
+                {% include "_includes/vertical-placeholder-big-field.html" with field=form.username|attr:"autofocus" %}
+                {% include "_includes/vertical-placeholder-big-password.html" with field=form.password %}
             {% endblock %}
 
             <div class="form-group">

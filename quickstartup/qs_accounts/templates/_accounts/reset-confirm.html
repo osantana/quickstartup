@@ -18,11 +18,11 @@
         <form action="" method="post" role="form">
             {% csrf_token %}
 
-            {% include "_includes/form_errors.html" %}
+            {% include "_includes/form-errors.html" %}
 
             {% block reset_confirm_form_fields %}
-                {% include "_includes/bigfield_password.html" with field=form.new_password1|attr:"autofocus" %}
-                {% include "_includes/bigfield_password.html" with field=form.new_password2 %}
+                {% include "_includes/vertical-placeholder-big-password.html" with field=form.new_password1|attr:"autofocus" %}
+                {% include "_includes/vertical-placeholder-big-password.html" with field=form.new_password2 %}
             {% endblock %}
 
             <div class="form-group">

@@ -17,7 +17,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                {% include "_includes/message_panels.html" %}
+                {% include "_includes/message-panels.html" %}
             </div>
         </div>
         <div class="row">
@@ -30,14 +30,14 @@
                         <form action="" method="post" role="form">
                             {% csrf_token %}
 
-                            {% include "_includes/form_errors.html" %}
+                            {% include "_includes/form-errors.html" %}
                             {% include "_includes/antispam.html" %}
 
                             {% block contact_form_fields %}
-                                {% include "_includes/bigfield.html" with field=form.name|attr:"autofocus" %}
-                                {% include "_includes/bigfield.html" with field=form.email %}
-                                {% include "_includes/bigfield.html" with field=form.phone %}
-                                {% include "_includes/bigfield.html" with field=form.message %}
+                                {% include "_includes/vertical-placeholder-big-field.html" with field=form.name|attr:"autofocus" %}
+                                {% include "_includes/vertical-placeholder-big-field.html" with field=form.email %}
+                                {% include "_includes/vertical-placeholder-big-field.html" with field=form.phone %}
+                                {% include "_includes/vertical-placeholder-big-field.html" with field=form.message %}
                             {% endblock %}
 
                             <div class="form-group">

@@ -24,12 +24,12 @@
         {% csrf_token %}
 
         <div class="row">
-            {% include "_includes/form_errors.html" %}
+            {% include "_includes/form-errors.html" %}
         </div>
 
         <div class="row">
             <div class="col-sm-12">
-                {% include "_includes/hbfield.html" with field=form.name|attr:"autofocus" %}
+                {% include "_includes/horizontal-labeled-big-field.html" with field=form.name|attr:"autofocus" %}
             </div>
         </div>
         <div class="form-panel">

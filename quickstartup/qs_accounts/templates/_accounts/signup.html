@@ -16,14 +16,14 @@
         <form action="" method="post" role="form">
             {% csrf_token %}
 
-            {% include "_includes/form_errors.html" %}
+            {% include "_includes/form-errors.html" %}
             {% include "_includes/antispam.html" %}
 
             {% block signup_fields %}
-                {% include "_includes/bigfield.html" with field=form.name|attr:"autofocus" %}
-                {% include "_includes/bigfield.html" with field=form.email %}
-                {% include "_includes/bigfield_password.html" with field=form.password1 %}
-                {% include "_includes/bigfield_password.html" with field=form.password2 %}
+                {% include "_includes/vertical-placeholder-big-field.html" with field=form.name|attr:"autofocus" %}
+                {% include "_includes/vertical-placeholder-big-field.html" with field=form.email %}
+                {% include "_includes/vertical-placeholder-big-password.html" with field=form.password1 %}
+                {% include "_includes/vertical-placeholder-big-password.html" with field=form.password2 %}
             {% endblock %}
 
             <div class="form-group">

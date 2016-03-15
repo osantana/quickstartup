@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: quickstartup 0.1.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-05 03:44+0000\n"
+"POT-Creation-Date: 2016-03-15 03:29+0000\n"
 "PO-Revision-Date: 2013-04-07 01:46-0300\n"
 "Last-Translator: Osvaldo Santana Neto <quickstartup@osantana.me>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
@@ -17,12 +17,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: quickstartup/qs_accounts/admin.py:14 quickstartup/qs_accounts/forms.py:19
-#: quickstartup/qs_accounts/forms.py:61
+#: quickstartup/qs_accounts/admin.py:14 quickstartup/qs_accounts/forms.py:21
+#: quickstartup/qs_accounts/forms.py:69
 msgid "Password"
 msgstr "Senha"
 
-#: quickstartup/qs_accounts/admin.py:15 quickstartup/qs_accounts/forms.py:20
+#: quickstartup/qs_accounts/admin.py:15 quickstartup/qs_accounts/forms.py:22
 msgid "Password (verify)"
 msgstr "Senha (verificação)"
 
@@ -30,44 +30,72 @@ msgstr "Senha (verificação)"
 msgid "Accounts"
 msgstr "Contas"
 
-#: quickstartup/qs_accounts/forms.py:60 quickstartup/qs_accounts/forms.py:65
+#: quickstartup/qs_accounts/forms.py:68 quickstartup/qs_accounts/forms.py:76
 msgid "E-Mail"
 msgstr "E-Mail"
 
-#: quickstartup/qs_accounts/forms.py:91
+#: quickstartup/qs_accounts/forms.py:102
 #: quickstartup/qs_accounts/templates/_accounts/reset-confirm.html:11
 msgid "New password"
 msgstr "Nova senha"
 
-#: quickstartup/qs_accounts/forms.py:92
+#: quickstartup/qs_accounts/forms.py:103
 msgid "New password (verify)"
 msgstr "Nova Senha (verificação)"
 
-#: quickstartup/qs_accounts/models.py:40
+#: quickstartup/qs_accounts/forms.py:136
+msgid "Current"
+msgstr "Atual"
+
+#: quickstartup/qs_accounts/forms.py:137
+msgid "New"
+msgstr "Nova"
+
+#: quickstartup/qs_accounts/forms.py:139
+msgid "Confirmation"
+msgstr "Confirmação"
+
+#: quickstartup/qs_accounts/forms.py:148
+msgid "Your old password was entered incorrectly. Please enter it again."
+msgstr "Sua senha antiga está incorreta. Por favor, digite novamente."
+
+#: quickstartup/qs_accounts/forms.py:162
+msgid "The two password fields didn't match."
+msgstr "As duas senhas não conferem."
+
+#: quickstartup/qs_accounts/forms.py:175
+msgid "New E-Mail"
+msgstr "Novo E-Mail"
+
+#: quickstartup/qs_accounts/models.py:45
 msgid "e-mail"
 msgstr "e-mail"
 
-#: quickstartup/qs_accounts/models.py:41
+#: quickstartup/qs_accounts/models.py:46
 msgid "date joined"
 msgstr "data de entrada"
 
-#: quickstartup/qs_accounts/models.py:42
+#: quickstartup/qs_accounts/models.py:47
 msgid "active"
 msgstr "ativo"
 
-#: quickstartup/qs_accounts/models.py:43
+#: quickstartup/qs_accounts/models.py:48
 msgid "staff"
 msgstr "equipe"
 
-#: quickstartup/qs_accounts/models.py:44
+#: quickstartup/qs_accounts/models.py:49
 msgid "superuser"
 msgstr "superusuário"
 
-#: quickstartup/qs_accounts/models.py:59
+#: quickstartup/qs_accounts/models.py:51
+msgid "new e-mail"
+msgstr "novo e-mail"
+
+#: quickstartup/qs_accounts/models.py:74
 msgid "user"
 msgstr "usuário"
 
-#: quickstartup/qs_accounts/models.py:60
+#: quickstartup/qs_accounts/models.py:75
 msgid "users"
 msgstr "usuários"
 
@@ -77,7 +105,7 @@ msgstr "usuários"
 #: quickstartup/qs_accounts/templates/_accounts/signup-complete.html:13
 #: quickstartup/qs_accounts/templates/_accounts/signup.html:5
 #: quickstartup/qs_accounts/templates/_accounts/signup.html:11
-#: quickstartup/qs_accounts/templates/_accounts/signup.html:30
+#: quickstartup/qs_accounts/templates/_accounts/signup.html:31
 msgid "Sign up"
 msgstr "Cadastrar"
 
@@ -94,25 +122,43 @@ msgstr "Sua conta já está ativada ou o link de ativação está incorreto."
 msgid "Back to Sign in"
 msgstr "Voltar"
 
-#: quickstartup/qs_accounts/templates/_accounts/base-profile.html:6
+#: quickstartup/qs_accounts/templates/_accounts/base-profile.html:7
+msgid "Home"
+msgstr "Início"
+
+#: quickstartup/qs_accounts/templates/_accounts/base-profile.html:10
+#: quickstartup/qs_accounts/templates/_accounts/email-change.html:4
+#: quickstartup/qs_accounts/templates/_accounts/password-change.html:4
 #: quickstartup/qs_accounts/templates/_accounts/profile.html:4
+#: quickstartup/qs_accounts/templates/_accounts/profile.html:9
 msgid "Profile"
 msgstr "Perfil"
 
-#: quickstartup/qs_accounts/templates/_accounts/base-profile.html:8
-#: quickstartup/qs_accounts/templates/_accounts/profile-security.html:4
-#: quickstartup/qs_accounts/templates/_accounts/profile-security.html:9
-msgid "Security"
-msgstr "Segurança"
+#: quickstartup/qs_accounts/templates/_accounts/email-change.html:9
+#: quickstartup/qs_accounts/templates/_accounts/profile.html:14
+msgid "Change E-Mail"
+msgstr "Alterar E-Mail"
 
-#: quickstartup/qs_accounts/templates/_accounts/profile-security.html:20
-#: quickstartup/qs_accounts/templates/_accounts/profile.html:20
+#: quickstartup/qs_accounts/templates/_accounts/email-change.html:19
+msgid "E-mail"
+msgstr "E-mail"
+
+#: quickstartup/qs_accounts/templates/_accounts/email-change.html:31
+#: quickstartup/qs_accounts/templates/_accounts/password-change.html:29
+#: quickstartup/qs_accounts/templates/_accounts/profile.html:37
 msgid "Update"
 msgstr "Atualizar"
 
-#: quickstartup/qs_accounts/templates/_accounts/profile.html:10
-msgid "Profile Informations"
-msgstr "Informações de Perfil"
+#: quickstartup/qs_accounts/templates/_accounts/email-change.html:33
+#: quickstartup/qs_accounts/templates/_accounts/password-change.html:31
+#: quickstartup/qs_accounts/templates/_accounts/profile.html:38
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: quickstartup/qs_accounts/templates/_accounts/password-change.html:9
+#: quickstartup/qs_accounts/templates/_accounts/profile.html:18
+msgid "Change Password"
+msgstr "Alterar Senha"
 
 #: quickstartup/qs_accounts/templates/_accounts/reset-confirm.html:5
 #: quickstartup/qs_accounts/templates/_accounts/reset.html:5
@@ -192,6 +238,8 @@ msgstr "Ative sua conta no %(project_name)s"
 
 #: quickstartup/qs_accounts/templates/_emails/activation-body-html.html:7
 #: quickstartup/qs_accounts/templates/_emails/activation-body-text.html:1
+#: quickstartup/qs_accounts/templates/_emails/change_email-body-html.html:7
+#: quickstartup/qs_accounts/templates/_emails/change_email-body-text.html:1
 #: quickstartup/qs_accounts/templates/_emails/password_reset-body-html.html:9
 #: quickstartup/qs_accounts/templates/_emails/password_reset-body-text.html:2
 msgid "Hi "
@@ -199,6 +247,8 @@ msgstr "Olá "
 
 #: quickstartup/qs_accounts/templates/_emails/activation-body-html.html:9
 #: quickstartup/qs_accounts/templates/_emails/activation-body-text.html:1
+#: quickstartup/qs_accounts/templates/_emails/change_email-body-html.html:9
+#: quickstartup/qs_accounts/templates/_emails/change_email-body-text.html:2
 #: quickstartup/qs_accounts/templates/_emails/password_reset-body-html.html:11
 #: quickstartup/qs_accounts/templates/_emails/password_reset-body-text.html:3
 msgid "Hi,"
@@ -228,11 +278,13 @@ msgid "To activate your account"
 msgstr "Para ativar sua conta"
 
 #: quickstartup/qs_accounts/templates/_emails/activation-body-html.html:23
+#: quickstartup/qs_accounts/templates/_emails/change_email-body-html.html:14
 #: quickstartup/qs_accounts/templates/_emails/password_reset-body-html.html:22
 msgid "click here"
 msgstr "clique aqui"
 
 #: quickstartup/qs_accounts/templates/_emails/activation-body-html.html:27
+#: quickstartup/qs_accounts/templates/_emails/change_email-body-html.html:18
 #: quickstartup/qs_accounts/templates/_emails/password_reset-body-html.html:35
 #, python-format
 msgid ""
@@ -268,6 +320,7 @@ msgid "To activate your account follow the link below:"
 msgstr "Para ativar sua conta siga o link abaixo:"
 
 #: quickstartup/qs_accounts/templates/_emails/activation-body-text.html:15
+#: quickstartup/qs_accounts/templates/_emails/change_email-body-text.html:8
 #: quickstartup/qs_accounts/templates/_emails/password_reset-body-text.html:13
 #, python-format
 msgid ""
@@ -278,6 +331,16 @@ msgstr ""
 "\n"
 "Obrigado,\n"
 "Equipe %(project_name)s\n"
+
+#: quickstartup/qs_accounts/templates/_emails/change_email-body-html.html:3
+#: quickstartup/qs_accounts/templates/_emails/change_email-subject.html:1
+msgid "Confirm your new e-mail address at %(project_name)s"
+msgstr "Confirme seu novo endereço de e-mail em %(project_name)s"
+
+#: quickstartup/qs_accounts/templates/_emails/change_email-body-html.html:13
+#: quickstartup/qs_accounts/templates/_emails/change_email-body-text.html:4
+msgid "Confirm your new e-mail address at %(project_name)s:"
+msgstr "Confirme seu novo endereço de e-mail em %(project_name)s:"
 
 #: quickstartup/qs_accounts/templates/_emails/password_reset-body-html.html:4
 msgid "Password Reset"
@@ -327,7 +390,7 @@ msgstr "Por favor, vá para a página a seguir e escolha uma nova senha:"
 msgid "Password reset on %(project_name)s"
 msgstr "Redefinição de senha no %(project_name)s"
 
-#: quickstartup/qs_accounts/views.py:44 quickstartup/qs_accounts/views.py:156
+#: quickstartup/qs_accounts/views.py:51 quickstartup/qs_accounts/views.py:124
 msgid ""
 "We've e-mailed you instructions for setting a new password to the e-mail "
 "address you've submitted."
@@ -335,22 +398,38 @@ msgstr ""
 "Nós lhe enviamos um e-mail contendo instruções sobre como definir sua senha "
 "para o endereço solicitado."
 
-#: quickstartup/qs_accounts/views.py:59
+#: quickstartup/qs_accounts/views.py:67
 msgid "Password reset token expired."
 msgstr "Token para redefinir senha expirou."
 
-#: quickstartup/qs_accounts/views.py:62
+#: quickstartup/qs_accounts/views.py:70
 msgid "Invalid password reset token."
 msgstr "Token para redefinir senha é inválido."
 
-#: quickstartup/qs_accounts/views.py:96
+#: quickstartup/qs_accounts/views.py:104
 msgid "Password has been reset successfully."
 msgstr "Senha redefinida com sucesso"
 
-#: quickstartup/qs_accounts/views.py:113
+#: quickstartup/qs_accounts/views.py:172
 msgid "Succesfully updated profile."
 msgstr "Perfil atualizado com sucesso."
 
-#: quickstartup/qs_accounts/views.py:129
+#: quickstartup/qs_accounts/views.py:187
 msgid "Succesfully updated your password."
 msgstr "Senha atualizada com sucesso."
+
+#: quickstartup/qs_accounts/views.py:197
+msgid "You'll receive an message in your new e-mail to check it."
+msgstr "Você receberá uma mensagem em seu novo e-mail para verificação."
+
+#: quickstartup/qs_accounts/views.py:210
+msgid "Invalid e-mail configuration token."
+msgstr "Token para configuração de e-mail é inválido."
+
+#: quickstartup/qs_accounts/views.py:216
+msgid "New e-mail has been successfully configured."
+msgstr "Novo e-mail foi configurado com sucesso."
+
+#: quickstartup/qs_accounts/views.py:218
+msgid "E-mail not found."
+msgstr "E-mail não encontrado."

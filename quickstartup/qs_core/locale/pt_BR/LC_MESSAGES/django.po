@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: quickstartup 0.1.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-05 03:44+0000\n"
+"POT-Creation-Date: 2016-03-15 03:29+0000\n"
 "PO-Revision-Date: 2013-04-07 01:46-0300\n"
 "Last-Translator: Osvaldo Santana Neto <quickstartup@osantana.me>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
@@ -57,13 +57,13 @@ msgstr "Política de Privacidade"
 msgid "Terms"
 msgstr "Termos de uso"
 
+#: quickstartup/qs_core/templates/_core/page.html:38
+msgid "Photo by"
+msgstr "Foto de"
+
 #: quickstartup/qs_core/templates/_core/project.html:21
 msgid "Toggle navigation"
 msgstr "Alternar navegação"
-
-#: quickstartup/qs_core/templates/_includes/field_password.html:6
-msgid "(forgot password)"
-msgstr "(esqueci a senha)"
 
 #: quickstartup/qs_core/templates/apps/index.html:13
 msgid "This is the home."

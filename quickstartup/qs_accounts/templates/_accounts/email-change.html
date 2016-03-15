@@ -16,9 +16,9 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="form-group">
-                    <label class="control-label col-sm-2 input-lg">{% trans "E-mail" %}</label>
+                    <label class="control-label col-sm-2 input-lg" for="id_email">{% trans "E-mail" %}</label>
                     <div class="col-sm-8">
-                        <input class="form-control input-lg" readonly value="{{ object.email }}">
+                        <input id="id_email" class="form-control input-lg" readonly value="{{ object.email }}">
                     </div>
                 </div>
             </div>

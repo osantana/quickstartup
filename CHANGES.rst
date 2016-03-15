@@ -3,6 +3,11 @@
 History
 -------
 
+0.9.1
++++++
+
+* Add Django password validators in all password-related forms.
+
 0.9.0
 +++++
 

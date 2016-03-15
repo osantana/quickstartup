@@ -83,6 +83,21 @@ class AccountTest(BaseTestCase):
         self.assertStatusCode(response, 200)
         self.assertFormError(response, "form", "new_password2", ["The two password fields didn't match."])
 
+    @override_settings(AUTH_PASSWORD_VALIDATORS=[
+        {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'}
+    ])
+    def test_fail_reset_password_with_invalid_passwords(self):
+        url = reverse("qs_accounts:password_reset")
+        data = {"email": "test@example.com", "name": "John Doe"}
+        response = self.client.post(url, data)
+        reset_token_url = reverse("qs_accounts:password_reset_confirm",
+                                  kwargs={"reset_token": response.context["reset_token"]})
+
+        data = {"new_password1": "123", "new_password2": "123"}
+        response = self.client.post(reset_token_url, data)
+        self.assertStatusCode(response, 200)
+        self.assertFormError(response, "form", "new_password1", ["This password is entirely numeric."])
+
     def test_simple_reset_password_of_user_with_name(self):
         self.user.name = "John Doe"
         self.user.save()
@@ -163,6 +178,21 @@ class AccountTest(BaseTestCase):
         self.assertStatusCode(response, 200)
         self.assertFormError(response, "form", "password2", ["The two password fields didn't match."])
 
+    @override_settings(AUTH_PASSWORD_VALIDATORS=[
+        {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'}
+    ])
+    def test_fail_signup_invalid_password(self):
+        url = reverse("qs_accounts:signup")
+        data = {
+            "name": "John Doe",
+            "email": "john.doe@example.com",
+            "password1": "123",  # invalid numeric-only password
+            "password2": "123",
+        }
+        response = self.client.post(url, data, follow=True)
+        self.assertStatusCode(response, 200)
+        self.assertFormError(response, "form", "password1", ["This password is entirely numeric."])
+
     def test_change_password(self):
         self._login()
         data = {
@@ -176,8 +206,24 @@ class AccountTest(BaseTestCase):
 
         # refresh!
         self.user.refresh_from_db()
-
         self.assertTrue(self.user.check_password("sekret"), "Password not modified")
+
+    @override_settings(AUTH_PASSWORD_VALIDATORS=[
+        {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'}
+    ])
+    def test_fail_change_invalid_password(self):
+        self._login()
+        data = {
+            "old_password": "secret",
+            "new_password1": "123",
+            "new_password2": "123",
+        }
+        response = self.client.post(reverse("qs_accounts:password_change"), data)
+        self.assertStatusCode(response, 200)
+        self.assertFormError(response, "form", "new_password1", ["This password is entirely numeric."])  # refresh!
+
+        self.user.refresh_from_db()
+        self.assertTrue(self.user.check_password("secret"), "Password modified")
 
     def test_change_email(self):
         self._login()

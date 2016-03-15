@@ -26,6 +26,11 @@ class SignupForm(forms.ModelForm):
         model = UserModel
         fields = ('name', 'email', 'password1', 'password2')
 
+    def clean_password1(self):
+        password1 = self.cleaned_data.get("password1")
+        password_validation.validate_password(password1, self.instance)
+        return password1
+
     def clean_password2(self):
         password1 = self.cleaned_data.get("password1")
         password2 = self.cleaned_data.get("password2")
@@ -101,13 +106,16 @@ class PasswordResetConfirmForm(forms.Form):
         self.user = user
         super().__init__(*args, **kwargs)
 
+    def clean_new_password1(self):
+        password1 = self.cleaned_data['new_password1']
+        password_validation.validate_password(password1, self.user)
+        return password1
+
     def clean_new_password2(self):
         password1 = self.cleaned_data.get('new_password1')
         password2 = self.cleaned_data.get('new_password2')
         if password1 and password2 and password1 != password2:
             raise forms.ValidationError("The two password fields didn't match.", code='password_mismatch')
-
-        password_validation.validate_password(password2, self.user)
         return password2
 
     # noinspection PyUnusedLocal
@@ -115,6 +123,7 @@ class PasswordResetConfirmForm(forms.Form):
         password = self.cleaned_data["new_password1"]
         self.user.set_password(password)
         self.user.save()
+        return self.user
 
 
 class ProfileForm(forms.ModelForm):
@@ -139,6 +148,11 @@ class PasswordChangeForm(forms.Form):
             raise forms.ValidationError(_("Your old password was entered incorrectly. Please enter it again."),
                                         code='password_incorrect')
         return old_password
+
+    def clean_new_password1(self):
+        password1 = self.cleaned_data.get("new_password1")
+        password_validation.validate_password(password1, self.user)
+        return password1
 
     def clean_new_password2(self):
         password1 = self.cleaned_data.get('new_password1')

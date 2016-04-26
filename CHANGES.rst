@@ -3,6 +3,11 @@
 History
 -------
 
+0.9.4
++++++
+
+* Update django-ipware version requirement
+
 0.9.3
 +++++
 

@@ -52,7 +52,7 @@ setup(
     install_requires=[
         "django>=1.9,<1.10",
         "django-widget-tweaks>=1.4,<1.5",
-        "django-model-utils>=2.4,<2.5",
+        "django-model-utils>=2.4,<2.6",
         "django-ipware>=1.1.1,<1.2",
         "djmail>=0.12,<0.13",
     ],

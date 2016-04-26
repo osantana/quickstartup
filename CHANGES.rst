@@ -3,6 +3,11 @@
 History
 -------
 
+0.9.3
++++++
+
+* Update requirements
+
 0.9.2
 +++++
 

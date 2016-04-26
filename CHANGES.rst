@@ -7,6 +7,7 @@ History
 +++++
 
 * Update django-ipware version requirement
+* Add Py3.5 in setup.py classifiers
 
 0.9.3
 +++++

@@ -1,4 +1,4 @@
 -r requirements.txt
 coverage
 coveralls
-tox>=1.7.0
+tox>=2.3.1

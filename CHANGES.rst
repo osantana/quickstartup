@@ -3,6 +3,12 @@
 History
 -------
 
+0.9.5
++++++
+
+* Update requirements.txt (using pur)
+* Use py35 for tests in tox
+
 0.9.4
 +++++
 

@@ -50,7 +50,7 @@ setup(
     ],
     include_package_data=True,
     install_requires=[
-        "django>=1.9,<1.10",
+        "django>=1.10,<2.0",
         "django-widget-tweaks>=1.4,<1.5",
         "django-model-utils>=2.4,<2.6",
         "django-ipware>=1.1.1,<1.2",

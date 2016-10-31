@@ -5,17 +5,18 @@
 
 
 {% block container %}
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
-            <div class="col-md-offset-2 col-md-8">
-                <ol class="breadcrumb">
-                    <li><a href="{% url "qs_pages:index" %}">{% trans "Home" %}</a></li>
-                    <li class="active">{% block title %}{% endblock %}</li>
-                </ol>
+            <div class="col-xs">
+                <nav class="breadcrumb">
+                    <a class="breadcrumb-item" href="{% url "qs_pages:index" %}">{% trans "Home" %}</a></li>
+                    <a class="breadcrumb-item active">{% block title %}{% endblock %}</a>
+                </nav>
             </div>
         </div>
+
         <div class="row">
-            <div class="col-md-offset-2 col-md-8">
+            <div class="col-xs">
                 <div class="content">
                     {% block content %}{% endblock %}
                 </div>

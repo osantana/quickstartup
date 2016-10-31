@@ -12,8 +12,7 @@ body {
 }
 
 .footer {
-    margin: 50px 0 0;
-    padding: 10px;
+    padding: 10px 30px;
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -23,6 +22,9 @@ body {
     margin: 0;
 }
 
+.project-container {
+    margin: 20px 0;
+}
 
 /* website */
 /* ------- */
@@ -84,15 +86,13 @@ body.page {
 
 /* website->pages */
 .page .breadcrumb {
-    box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+    border-radius: 0;
 }
 
 .page .content {
     background-color: rgba(255, 255, 255, 1);
-    padding: 20px 50px;
+    padding: 20px;
     min-height: 50em;
-    border-radius: 3px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .5);
 }
 
 /* website->contact */
@@ -100,12 +100,10 @@ body.page {
     resize: none;
 }
 
-
 /* app->profile */
 .page-header.content {
     margin-top: 0;
 }
-
 
 .form-panel {
     border-top: 1px solid #ddd;

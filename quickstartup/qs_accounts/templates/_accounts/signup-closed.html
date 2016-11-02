@@ -10,21 +10,20 @@
 
 
 {% block menu_signup %}
-    <li class="active"><a href="{% url "qs_accounts:signup" %}">{% trans "Sign up" %}</a></li>{% endblock %}
+    <li class="nav-item active"><a class="nav-link" href="{% url "qs_accounts:signup" %}">{% trans "Sign up" %}</a>
+    </li>{% endblock %}
 
 
 {% block container %}
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-offset-3 col-md-6">
-                <div class="panel">
-                    <div class="page-header">
-                        <h1>{% trans "Signup is closed" %}</h1>
-
-                        <p>
-{% blocktrans %}This site is currently in closed beta.
-If you want to be a beta tester of this service please contact us by contact form.{% endblocktrans %}</p>
-                    </div>
+        <div class="row flex-items-xs-center">
+            <div class="col-xs-6">
+                <div class="message panel">
+                    <h1>{% trans "Signup is closed" %}</h1>
+                    <p>
+                        {% blocktrans %}This site is currently in closed beta.
+                            If you want to be a beta tester of this service please contact us by contact
+                            form.{% endblocktrans %}</p>
                     <a class="btn btn-primary btn-lg btn-block" href="{% url "qs_contacts:contact" %}">
                         {% trans "Go to Contact" %}
                     </a>

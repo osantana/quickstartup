@@ -13,43 +13,41 @@
 {% block html_body %}
     <div id="wrap">
         {% block navbar %}
-            <nav class="{% block navbar_class %}navbar navbar-full navbar-dark bg-inverse{% endblock %}">
+            <nav class="navbar {% block navbar_class %}navbar-full navbar-dark bg-inverse{% endblock %}">
                 {% block brand %}
-                    <a class="navbar-brand" href="{% url "qs_pages:index" %}">
-                        <img src="{% static "images/logo-140x35.png" %}" alt="{{ PROJECT_NAME }}">
-                    </a>
+                    <a class="navbar-brand" href="{% url "qs_pages:index" %}">{{ PROJECT_NAME }}</a>
                 {% endblock %}
 
                 <button class="navbar-toggler hidden-lg-up"
                         type="button"
                         data-toggle="collapse"
                         data-target="#navbarResponsive"
-                        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"></button>
+                        aria-controls="navbarResponsive"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"></button>
                 <div class="collapse navbar-toggleable-md" id="navbarResponsive">
                     {% block navbar_menu %}
-                        <div class="nav navbar-nav">
+                        <ul class="nav navbar-nav">
                             {% block navbar_left_options %}{% endblock %}
-                        </div>
-                        <div class="nav navbar-nav float-xs-right">
+                        </ul>
+                        <ul class="nav navbar-nav float-xs-right">
                             {% block navbar_right_options %}{% endblock %}
-                        </div>
+                        </ul>
                     {% endblock %}
                 </div>
             </nav>
         {% endblock %}
-        <div class="project-container">
+        <div class="container-fluid">
             <!-- main container section -->
             {% block container %}{% endblock %}
         </div>
     </div>
     {% block footer %}
-        <footer class="container footer">
+        <footer class="container-fluid footer">
             {% block footer_content %}
                 <div class="row">
                     <div class="col-xs">
-                        <p>
-                            {% block copyright %}&copy; 2016 Osvaldo Santana Neto{% endblock %}
-                        </p>
+                        <p>{% block copyright %}&copy; 2016 Osvaldo Santana Neto{% endblock %} </p>
                     </div>
                     <div class="col-xs">
                         <p class="float-xs-right">

@@ -1,14 +1,3 @@
 {% extends "app.html" %}{% load i18n %}
 
-{% block sidebar %}
-    <div class="col-md-3">
-        <div class="sidebar-nav list-group">
-            {% block sidebar_home %}
-                <a class="list-group-item" href="{% url "app:index" %}">{% trans "Home" %}</a>
-            {% endblock %}
-            {% block sidebar_profile %}
-                <a class="list-group-item" href="{% url "qs_accounts:profile" %}">{% trans "Profile" %}</a>
-            {% endblock %}
-        </div>
-    </div>
-{% endblock %}
+{% block menu_profile_class %}active{% endblock %}

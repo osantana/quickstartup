@@ -2,11 +2,9 @@
 
 
 {% block menu_signin %}
-    <a class="nav-item nav-link active" href="{% url "qs_accounts:signin" %}">{% trans "Sign in" %}</a>{% endblock %}
+    <li class="nav-item active"><a class="nav-link" href="{% url "qs_accounts:signin" %}">{% trans "Sign in" %}</a></li>{% endblock %}
 
 {% block body_class %}{{ block.super }} signup{% endblock %}
-
-
 {% block title %}{% trans "Sign in" %}{% endblock %}
 {% block page_title %}{% trans "Sign in" %} — {{ block.super }}{% endblock %}
 

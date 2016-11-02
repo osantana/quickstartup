@@ -1,5 +1,7 @@
 {% load i18n l10n pages widget_tweaks %}
-<div class="form-group{% if field.errors %} has-error{% endif %}">
+<div class="form-group{% if field.errors %} has-danger{% endif %}">
     {% render_field field class+="form-control input-lg" placeholder=field.label %}
-    {% if field.errors %}<span class="help-block">{{ field.errors|join:", " }}</span>{% endif %}
+    {% if field.errors %}
+        <div class="form-control-feedback">{{ field.errors|join:", " }}</div>
+    {% endif %}
 </div>

@@ -1,10 +1,15 @@
 {% load i18n l10n pages widget_tweaks %}
-<div class="form-group{% if field.errors %} has-error{% endif %}">
-    <label class="control-label col-md-{{ label_cols|default:"2" }}" for="{{ field.auto_id }}">{{ field.label }}</label>
-    <div class="col-md-{{ control_cols|default:"10" }}">
-        {% render_field field class+="form-control" %}
-    </div>
-    <div class="col-md-offset-{{ label_cols|default:"2" }} col-md-{{ control_cols|default:"10" }}">
-        {% if field.errors %}<span class="help-block">{{ field.errors|join:", " }}</span>{% endif %}
-    </div>
+<div class="form-group{% if field.errors %} has-danger{% endif %} col-lg-{{ cols|default:"12" }}">
+    <label class="form-control-label" for="{{ field.auto_id }}">{{ field.label }}</label>
+    {% if autofocus %}
+        {% render_field field class+="form-control" placeholder=placeholder autofocus="autofocus" %}
+    {% else %}
+        {% render_field field class+="form-control" placeholder=placeholder %}
+    {% endif %}
+    {% if field.help_text %}
+        <small class="form-text text-muted">{{ field.help_text }}</small>
+    {% endif %}
+    {% if field.errors %}
+        <div class="form-control-feedback">{{ field.errors|join:", " }}</div>
+    {% endif %}
 </div>

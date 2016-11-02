@@ -12,11 +12,11 @@
 
 {% block navbar_right_options %}
     {% block menu_signin %}
-        <a class="nav-item nav-link" href="{% url "qs_accounts:signin" %}">{% trans "Sign in" %}</a>{% endblock %}
+        <li class="nav-item"><a class="nav-link" href="{% url "qs_accounts:signin" %}">{% trans "Sign in" %}</a></li>{% endblock %}
     {% block menu_signup %}
-        <a class="nav-item nav-link" href="{% url "qs_accounts:signup" %}">{% trans "Sign up" %}</a>{% endblock %}
+        <li class="nav-item"><a class="nav-link" href="{% url "qs_accounts:signup" %}">{% trans "Sign up" %}</a></li>{% endblock %}
     {% block menu_contact %}
-        <a class="nav-item nav-link" href="{% url "qs_contacts:contact" %}">{% trans "Contact" %}</a>{% endblock %}
+        <li class="nav-item"><a class="nav-link" href="{% url "qs_contacts:contact" %}">{% trans "Contact" %}</a></li>{% endblock %}
 {% endblock %}
 
 {% block footer_links %}

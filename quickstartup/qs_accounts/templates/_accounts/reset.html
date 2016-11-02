@@ -2,12 +2,11 @@
 
 
 {% block menu_signin %}
-    <li class="active"><a href="{% url "qs_accounts:signin" %}">{% trans "Sign in" %}</a></li>{% endblock %}
+    <li class="nav-item active"><a class="nav-link" href="{% url "qs_accounts:signin" %}">{% trans "Sign in" %}</a></li>{% endblock %}
 
 
 {% block body_class %}{{ block.super }} reset{% endblock %}
-
-
+{% block page_title %}{% trans "Reset password" %} — {{ block.super }}{% endblock %}
 {% block title %}{% trans "Reset password" %}{% endblock %}
 
 

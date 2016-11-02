@@ -5,9 +5,8 @@
     <meta name="robots" content="noindex, nofollow">
 {% endblock %}
 
-
+{% block page_title %}{% trans "Contact" %} — {{ block.super }}{% endblock %}
 {% block body_class %}contact{% endblock %}
-
 
 {% block menu_contact %}
     <a class="nav-item nav-link active" href="{% url "qs_contacts:contact" %}">{% trans "Contact" %}</a>{% endblock %}
@@ -15,17 +14,20 @@
 
 {% block container %}
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                {% include "_includes/message-panels.html" %}
+        <div class="row flex-items-xs-center">
+            <div class="col-xs-9">
+                <div class="flash-messages">
+                    {% include "_includes/message-panels.html" %}
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-offset-4 col-md-4">
+        <div class="row flex-items-xs-center">
+            <div class="col-md-6">
                 <div class="panel">
                     <div class="page-header">
                         <h1>{% trans "Contact" %}</h1>
                     </div>
+
                     {% block contact_form %}
                         <form action="" method="post" role="form">
                             {% csrf_token %}

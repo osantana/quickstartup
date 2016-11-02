@@ -8,55 +8,46 @@
     <div class="container-fluid">
         <div class="jumbotron">
             <h1>{{ PROJECT_NAME }}</h1>
-
             <p>{% blocktrans %}Create your SaaS company quickly.{% endblocktrans %}</p>
-
-            <p><a href="{% url "qs_accounts:signup" %}" class="btn btn-success btn-lg">{% trans "Create your Account!" %}</a></p>
+            <p><a href="{% url "qs_accounts:signup" %}"
+                  class="btn btn-success btn-lg">{% trans "Create your Account!" %}</a></p>
         </div>
     </div>
 
     <div class="container-fluid tour">
         <div class="row">
-            <div class="col-md-offset-2 col-md-4">
-                <div class="box">
-                    <h2>{% trans "Start Now!" %}</h2>
-
-                    <p>
-{% blocktrans %}Quickstartup provides the building blocks to start your application development instantly.{% endblocktrans %}
-                    </p>
-                </div>
+            <div class="col-xs box">
+                <h2>{% trans "Start Now!" %}</h2>
+                <p>
+                    {% blocktrans %}Quickstartup provides the building blocks to start your application development
+                        instantly.{% endblocktrans %}
+                </p>
             </div>
 
-            <div class="col-md-4">
-                <div class="box">
-                    <h2>{% trans "Go Live!" %}</h2>
-
-                    <p>
-{% blocktrans %}Put your application in the air with a few simple steps.{% endblocktrans %}
-                    </p>
-                </div>
+            <div class="col-xs box">
+                <h2>{% trans "Go Live!" %}</h2>
+                <p>
+                    {% blocktrans %}Put your application in the air with a few simple steps.{% endblocktrans %}
+                </p>
             </div>
         </div> <!-- row -->
 
         <div class="row">
-            <div class="col-md-offset-2 col-md-4">
-                <div class="box">
-                    <h2>{% trans "Focus on your business" %}</h2>
-
-                    <p>
-{% blocktrans %}SaaS applications need many side features that deviate developers from the core business. Quickstartup provides these features and allows you to keep focused on main application development.{% endblocktrans %}
-                    </p>
-                </div>
+            <div class="col-xs box">
+                <h2>{% trans "Focus on your business" %}</h2>
+                <p>
+                    {% blocktrans %}SaaS applications need many side features that deviate developers from the core
+                        business. Quickstartup provides these features and allows you to keep focused on main
+                        application development.{% endblocktrans %}
+                </p>
             </div>
 
-            <div class="col-md-4">
-                <div class="box">
-                    <h2>{% trans "Free and Open Source" %}</h2>
-
-                    <p>
-{% blocktrans %}This project is Open Source and allows any entrepreneur starts their own SaaS application business.{% endblocktrans %}
-                    </p>
-                </div>
+            <div class="col-xs box">
+                <h2>{% trans "Free and Open Source" %}</h2>
+                <p>
+                    {% blocktrans %}This project is Open Source and allows any entrepreneur starts their own SaaS
+                        application business.{% endblocktrans %}
+                </p>
             </div>
         </div>  <!-- row -->
     </div> <!-- .tour -->

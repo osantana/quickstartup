@@ -21,3 +21,6 @@ app-messages/
 
 # Sphinx
 docs/_build
+
+# misc
+*.db

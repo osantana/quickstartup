@@ -1,24 +1,17 @@
 {% extends "accounts/base-profile.html" %}{% load i18n l10n pages widget_tweaks %}
 
-{% block sidebar_profile %}
-    <a class="list-group-item active" href="{% url "qs_accounts:profile" %}">{% trans "Profile" %}</a>
-{% endblock %}
-
 {% block content %}
-    <h2 class="page-header content">
+    <h1>
         {% trans "Profile" %}
-
-        <div class="btn-group btn-group-sm pull-right" role="group">
-            <a href="{% url "qs_accounts:email_change" %}" class="btn btn-default btn-sm" role="button">
-                <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+        <div class="btn-group btn-group-sm float-xs-right" role="group">
+            <a href="{% url "qs_accounts:email_change" %}" class="btn btn-sm btn-outline-primary" role="button">
                 {% trans "Change E-Mail" %}
             </a>
-            <a href="{% url "qs_accounts:password_change" %}" class="btn btn-default btn-sm" role="button">
-                <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+            <a href="{% url "qs_accounts:password_change" %}" class="btn btn-sm btn-outline-primary" role="button">
                 {% trans "Change Password" %}
             </a>
         </div>
-    </h2>
+    </h1>
 
     <form action="" method="post" role="form">
         {% csrf_token %}
@@ -28,15 +21,12 @@
         </div>
 
         <div class="row">
-            <div class="col-sm-12">
-                {% include "_includes/horizontal-labeled-big-field.html" with field=form.name|attr:"autofocus" %}
-            </div>
+            {% include "_includes/vertical-labeled-big-field.html" with field=form.name|attr:"autofocus" %}
         </div>
-        <div class="form-panel">
-            <div class="col-sm-offset-2">
-                <button class="btn btn-primary btn-lg" type="submit">{% trans "Update" %}</button>
-                <a href="{% url "app:index" %}" class="btn btn-default btn-lg" role="button">{% trans "Cancel" %}</a>
-            </div>
+
+        <div class="form-button-panel">
+            <button class="btn btn-primary" type="submit">{% trans "Update" %}</button>
+            <a href="{% url "app:index" %}" class="btn btn-link" role="button">{% trans "Cancel" %}</a>
         </div>
     </form>
 {% endblock %}

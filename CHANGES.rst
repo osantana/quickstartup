@@ -3,6 +3,11 @@
 History
 -------
 
+0.10.2
+++++++
+
+* Update more requirements
+
 0.10.1
 ++++++
 

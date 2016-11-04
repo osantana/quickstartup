@@ -38,10 +38,10 @@ release: clean
 	git push origin `python setup.py -q version`
 	python setup.py sdist upload
 
-APPS = core \
-       accounts \
-       website \
-       contacts
+APPS = qs_core \
+       qs_accounts \
+       qs_website \
+       qs_contacts
 
 messages:
 	for app in $(APPS); do \

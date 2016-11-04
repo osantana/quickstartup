@@ -3,6 +3,13 @@
 History
 -------
 
+0.10.1
+++++++
+
+* Update to Django 1.10.2
+* Update to bootstrap4-alpha
+* Update other requirements and fix templates
+
 0.9.5
 +++++
 

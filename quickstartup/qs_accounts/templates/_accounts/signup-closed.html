@@ -21,9 +21,9 @@
                 <div class="message panel">
                     <h1>{% trans "Signup is closed" %}</h1>
                     <p>
-                        {% blocktrans %}This site is currently in closed beta.
-                            If you want to be a beta tester of this service please contact us by contact
-                            form.{% endblocktrans %}</p>
+{% blocktrans %}This site is currently in closed beta.
+If you want to be a beta tester of this service please contact us by contact form.{% endblocktrans %}
+                    </p>
                     <a class="btn btn-primary btn-lg btn-block" href="{% url "qs_contacts:contact" %}">
                         {% trans "Go to Contact" %}
                     </a>

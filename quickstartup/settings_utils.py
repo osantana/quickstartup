@@ -43,6 +43,27 @@ def get_loggers(level, loggers):
     return loggers
 
 
+def get_logging_config(loggers=None):
+    return {
+        'version': 1,
+        'disable_existing_loggers': False,
+        'formatters': {
+            'default': {'format': '%(asctime)s %(levelname)s %(name)s:%(lineno)s %(message)s'},
+        },
+        'handlers': {
+            'console': {
+                'level': 'DEBUG',
+                'class': 'logging.StreamHandler',
+                'formatter': 'default',
+            },
+            'null': {
+                'class': 'logging.NullHandler',
+            },
+        },
+        'loggers': loggers or {},
+    }
+
+
 def get_project_package(project_dir):
     if (project_dir / "project_name").exists():
         project_name = "project_name"
@@ -53,26 +74,6 @@ def get_project_package(project_dir):
         project_name = settings_files[0].parent.name
 
     return project_name
-
-
-def get_static_root(base_dir):
-    try:
-        # noinspection PyUnresolvedReferences
-        from dj_static import Cling
-    except ImportError:
-        return str(base_dir / "static")
-
-    return "staticfiles"
-
-
-def get_media_root(base_dir):
-    try:
-        # noinspection PyUnresolvedReferences
-        from dj_static import MediaCling
-    except ImportError:
-        return str(base_dir / "media")
-
-    return "media"
 
 
 DEFAULT_SETTINGS = {

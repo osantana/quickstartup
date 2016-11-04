@@ -5,7 +5,7 @@ from pathlib import Path
 
 from django.contrib.messages import constants as message_constants
 
-from quickstartup.settings_utils import get_project_package, get_loggers, get_static_root, get_media_root
+from quickstartup.settings_utils import get_project_package, get_loggers, get_logging_config
 
 # Project Structure
 BASE_DIR = Path(__file__).absolute().parents[2]
@@ -82,10 +82,10 @@ WSGI_APPLICATION = "{}.wsgi.application".format(_project_package)
 
 # Media & Static
 MEDIA_URL = "/media/"
-MEDIA_ROOT = get_media_root(BASE_DIR)
+MEDIA_ROOT = str(BASE_DIR / "media")
 
 STATIC_URL = "/static/"
-STATIC_ROOT = get_static_root(BASE_DIR)
+STATIC_ROOT = str(BASE_DIR / "staticfiles")
 STATICFILES_DIRS = (
     str(FRONTEND_DIR / "static"),
 )
@@ -152,22 +152,8 @@ INSTALLED_APPS = (
 )
 
 # Logging
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'formatters': {
-        'default': {'format': '[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s'},
-    },
-    'handlers': {
-        'console': {
-            'class': 'logging.StreamHandler',
-            'formatter': 'default',
-        },
-        'null': {
-            'class': 'logging.NullHandler',
-        },
-    },
-    'loggers': get_loggers("INFO", ""),
-}
+_loggers = get_loggers("INFO", [])
+_logging = get_logging_config(_loggers)
+LOGGING = _logging
 
 MESSAGE_TAGS = {message_constants.ERROR: 'danger'}

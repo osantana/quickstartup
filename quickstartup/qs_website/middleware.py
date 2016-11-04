@@ -7,9 +7,9 @@ from django.http import Http404
 from .views import website_page
 
 
-class WebsitePageMiddleware(object):
-    # noinspection PyMethodMayBeStatic
-    def process_response(self, request, response):
+def website_page_middleware(get_response):
+    def middleware(request):
+        response = get_response(request)
         if response.status_code != 404:
             return response
 
@@ -22,3 +22,5 @@ class WebsitePageMiddleware(object):
             if settings.DEBUG:
                 raise
             return response
+
+    return middleware

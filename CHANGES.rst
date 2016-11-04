@@ -3,6 +3,11 @@
 History
 -------
 
+0.11.0
+++++++
+
+* Remove dj-{static,media} and add log-setting helper
+
 0.10.2
 ++++++
 

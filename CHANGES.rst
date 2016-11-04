@@ -3,6 +3,11 @@
 History
 -------
 
+0.12.0
+++++++
+
+* Update middleware implementation to make it Django 1.10 format
+
 0.11.0
 ++++++
 

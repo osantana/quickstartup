@@ -3,6 +3,11 @@
 History
 -------
 
+0.12.1
+++++++
+
+* Fix a minor CSS class issue in app.html navbar
+
 0.12.0
 ++++++
 

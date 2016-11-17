@@ -3,6 +3,12 @@
 History
 -------
 
+0.12.2
+++++++
+
+* Fix some issues with field includes adding safe filter in help/error
+  messages
+
 0.12.1
 ++++++
 

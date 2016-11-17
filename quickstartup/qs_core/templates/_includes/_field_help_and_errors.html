@@ -1,0 +1,6 @@
+{% if field.help_text %}
+    <small class="form-text text-muted">{{ field.help_text|safe }}</small>
+{% endif %}
+{% if field.errors %}
+    <div class="form-control-feedback">{{ field.errors|join:", "|safe }}</div>
+{% endif %}

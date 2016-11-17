@@ -6,10 +6,5 @@
     {% else %}
         {% render_field field class+="form-control" placeholder=placeholder %}
     {% endif %}
-    {% if field.help_text %}
-        <small class="form-text text-muted">{{ field.help_text }}</small>
-    {% endif %}
-    {% if field.errors %}
-        <div class="form-control-feedback">{{ field.errors|join:", " }}</div>
-    {% endif %}
+    {% include "_includes/_field_help_and_errors.html" with field=field %}
 </div>

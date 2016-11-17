@@ -1,7 +1,10 @@
 {% load i18n l10n pages widget_tweaks %}
-<div class="form-group{% if field.errors %} has-danger{% endif %}">
-    {% render_field field class+="form-control input-lg" placeholder=field.label %}
-    {% if field.errors %}
-        <div class="form-control-feedback">{{ field.errors|join:", " }}</div>
+<div class="form-group{% if field.errors %} has-danger{% endif %} col-lg-{{ cols|default:"12" }}">
+
+    {% if autofocus %}
+        {% render_field field class+="form-control form-control-lg" placeholder=field.label autofocus="autofocus" %}
+    {% else %}
+        {% render_field field class+="form-control form-control-lg" placeholder=field.label %}
     {% endif %}
+    {% include "_includes/_field_help_and_errors.html" with field=field %}
 </div>

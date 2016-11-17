@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: quickstartup 0.1.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-04 00:04-0200\n"
+"POT-Creation-Date: 2016-11-16 23:24-0200\n"
 "PO-Revision-Date: 2013-04-07 01:46-0300\n"
 "Last-Translator: Osvaldo Santana Neto <quickstartup@osantana.me>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
@@ -123,17 +123,17 @@ msgstr "Voltar"
 msgid "Change E-Mail"
 msgstr "Alterar E-Mail"
 
-#: templates/_accounts/email-change.html:13
+#: templates/_accounts/email-change.html:15
 msgid "E-mail"
 msgstr "E-mail"
 
-#: templates/_accounts/email-change.html:23
+#: templates/_accounts/email-change.html:25
 #: templates/_accounts/password-change.html:22
 #: templates/_accounts/profile.html:28
 msgid "Update"
 msgstr "Atualizar"
 
-#: templates/_accounts/email-change.html:25
+#: templates/_accounts/email-change.html:26
 #: templates/_accounts/password-change.html:23
 #: templates/_accounts/profile.html:29
 msgid "Cancel"
@@ -272,14 +272,11 @@ msgstr "clique aqui"
 #: templates/_emails/activation-body-html.html:27
 #: templates/_emails/change_email-body-html.html:18
 #: templates/_emails/password_reset-body-html.html:35
-#, python-format
 msgid ""
-"\n"
 "Thanks,<br>\n"
 "The %(project_name)s team."
 msgstr ""
-"\n"
-"Obrigado,\n"
+"Obrigado,<br>\n"
 "Equipe %(project_name)s."
 
 #: templates/_emails/activation-body-text.html:2

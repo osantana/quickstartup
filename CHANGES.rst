@@ -3,6 +3,13 @@
 History
 -------
 
+0.12.3
+++++++
+
+* Remove explicit reference to view that coud be inexistent
+* Add vertical normal size include fields
+* Add a missing 'safe' mark on error message
+
 0.12.2
 ++++++
 

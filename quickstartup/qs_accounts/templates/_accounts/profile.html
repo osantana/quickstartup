@@ -26,7 +26,7 @@
 
         <div class="form-button-panel">
             <button class="btn btn-primary" type="submit">{% trans "Update" %}</button>
-            <a href="{% url "app:index" %}" class="btn btn-link" role="button">{% trans "Cancel" %}</a>
+            <a href="javascript:history.back()" class="btn btn-link" role="button">{% trans "Cancel" %}</a>
         </div>
     </form>
 {% endblock %}

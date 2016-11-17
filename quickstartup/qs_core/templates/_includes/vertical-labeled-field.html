@@ -1,0 +1,10 @@
+{% load i18n l10n pages widget_tweaks %}
+<div class="form-group{% if field.errors %} has-danger{% endif %} col-lg-{{ cols|default:"12" }}">
+    <label class="form-control-label" for="{{ field.auto_id }}">{{ field.label }}</label>
+    {% if autofocus %}
+        {% render_field field class+="form-control" placeholder=placeholder autofocus="autofocus" %}
+    {% else %}
+        {% render_field field class+="form-control" placeholder=placeholder %}
+    {% endif %}
+    {% include "_includes/_field_help_and_errors.html" with field=field %}
+</div>

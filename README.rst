@@ -2,14 +2,14 @@
 Quickstartup
 =============================
 
-.. image:: https://badge.fury.io/py/quickstartup.png
+.. image:: https://badge.fury.io/py/quickstartup.svg
     :target: https://badge.fury.io/py/quickstartup
 
-.. image:: https://travis-ci.org/osantana/quickstartup.png?branch=master
+.. image:: https://travis-ci.org/osantana/quickstartup.svg?branch=master
     :target: https://travis-ci.org/osantana/quickstartup
 
-.. image:: https://coveralls.io/repos/osantana/quickstartup/badge.png?branch=master
-    :target: https://coveralls.io/r/osantana/quickstartup?branch=master
+.. image:: https://coveralls.io/repos/github/osantana/quickstartup/badge.svg?branch=master
+    :target: https://coveralls.io/github/osantana/quickstartup?branch=master
 
 Documentation
 -------------

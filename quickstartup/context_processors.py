@@ -1,6 +1,3 @@
-# coding: utf-8
-
-
 from django.conf import settings
 
 from quickstartup.settings_utils import get_configuration

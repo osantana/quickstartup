@@ -1,12 +1,10 @@
-# coding: utf-8
 from unittest import mock
 
 from django.core import mail
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 
 from quickstartup.qs_contacts.models import Contact
 from ..base import BaseTestCase, TEST_ROOT_DIR
-
 
 TEMPLATE_DIRS = (
     str(TEST_ROOT_DIR / "templates"),
@@ -37,7 +35,7 @@ class ContactTest(BaseTestCase):
         self.assertEquals(email.extra_headers["Reply-To"], 'john@doe.com')
         self.assertIn("contact@quickstartup.us", email.to)
         self.assertEqual(email.subject, u'New Contact from Django Quickstartup')
-        self.assertIn(u"Contact From: John Doe <john@doe.com>",  email.body)
+        self.assertIn(u"Contact From: John Doe <john@doe.com>", email.body)
         self.assertIn(u"Phone: +1 55 555-1234", email.body)
         self.assertIn(u"Message:\n\n    Hello World!", email.body)
         self.assertIn("https://quickstartup.us/admin/qs_contacts/contact/{}/change/".format(contact.id), email.body)

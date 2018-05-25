@@ -1,1 +1,1 @@
-# coding: utf-8
+default_app_config = 'quickstartup.qs_accounts.apps.AccountConfig'

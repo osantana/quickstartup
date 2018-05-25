@@ -1,6 +1,3 @@
-# coding: utf-8
-
-
 from django import forms
 from django.contrib.auth import forms as django_forms, get_user_model
 from django.contrib.auth import password_validation
@@ -12,7 +9,6 @@ from quickstartup.qs_core.antispam import AntiSpamField
 from quickstartup.qs_core.widgets import EmailInput
 from quickstartup.settings_utils import get_configuration
 from .signals import user_registered
-
 
 UserModel = get_user_model()
 

@@ -1,10 +1,6 @@
-# coding: utf-8
-
-
-from django.conf.urls import include, url
-
+from django.urls import include, path
 
 urlpatterns = [
-    url(r"^app/", include("testproject.testapp", namespace="app")),
-    url(r"^", include("quickstartup.urls")),
+    path("app/", include("testproject.testapp.urls")),
+    path("", include("quickstartup.urls")),
 ]

@@ -1,7 +1,4 @@
-# coding: utf-8
-
-
-from django.core.urlresolvers import NoReverseMatch
+from django.urls import NoReverseMatch
 
 from .models import Page
 

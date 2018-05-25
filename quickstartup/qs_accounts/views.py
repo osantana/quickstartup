@@ -1,14 +1,11 @@
-# coding: utf-8
-
-
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import login as user_login, get_user_model, get_backends
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import login as auth_login
 from django.core.signing import TimestampSigner, SignatureExpired, BadSignature, Signer
-from django.core.urlresolvers import reverse_lazy
 from django.shortcuts import redirect, resolve_url
+from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
@@ -34,7 +31,7 @@ class ProfileMixin(object):
 @csrf_protect
 @never_cache
 def login(request, *args, **kwargs):
-    if request.user.is_authenticated():
+    if request.user.is_authenticated:
         return redirect(resolve_url(settings.LOGIN_REDIRECT_URL))
     return auth_login(request, *args, **kwargs)
 

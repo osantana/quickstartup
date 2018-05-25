@@ -1,10 +1,7 @@
-# coding: utf-8
-
-
-from django.core.urlresolvers import reverse
-from django.views.generic import CreateView
-from django.utils.translation import ugettext_lazy as _
 from django.contrib import messages
+from django.urls import reverse
+from django.utils.translation import ugettext_lazy as _
+from django.views.generic import CreateView
 
 from quickstartup.settings_utils import get_object_from_configuration
 from .forms import ContactForm

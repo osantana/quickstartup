@@ -1,6 +1,3 @@
-# coding: utf-8
-
-
 from pathlib import Path
 
 from django.contrib.messages import constants as message_constants
@@ -129,7 +126,7 @@ MIDDLEWARE = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.gzip.GZipMiddleware',
-    'quickstartup.qs_website.middleware.website_page_middleware',
+    'quickstartup.qs_pages.middleware.website_page_middleware',
 )
 
 INSTALLED_APPS = (
@@ -147,7 +144,7 @@ INSTALLED_APPS = (
     # Quick Startup Apps
     'quickstartup.qs_core',
     'quickstartup.qs_accounts',
-    'quickstartup.qs_website',
+    'quickstartup.qs_pages',
     'quickstartup.qs_contacts',
 )
 

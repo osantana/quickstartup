@@ -1,10 +1,7 @@
-# coding: utf-8
-
-
 from django.apps import AppConfig
 from django.utils.translation import ugettext_lazy as _
 
 
-class AccountConfig(AppConfig):
+class ContactConfig(AppConfig):
     name = 'quickstartup.qs_contacts'
     verbose_name = _("Contacts")

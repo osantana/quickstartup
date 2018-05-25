@@ -1,6 +1,3 @@
-# coding: utf-8
-
-
 from datetime import datetime, timedelta
 from hashlib import sha1
 
@@ -28,7 +25,8 @@ def get_antispam_tokens():
 
 class AntiSpamWidget(forms.widgets.Widget):
     def render(self, name, value, attrs=None):
-        output = '''<script>document.write('<input type="hidden" name="antispam" value="%s"/>')</script>''' % (get_antispam_tokens()[0],)
+        output = '''<script>document.write('<input type="hidden" name="antispam" value="%s"/>')</script>''' % (
+        get_antispam_tokens()[0],)
         return mark_safe(output)
 
 

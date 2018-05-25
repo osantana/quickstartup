@@ -1,16 +1,12 @@
-# coding: utf-8
-
-
 from django.conf import settings
 from django.db import models
 from django.utils.timezone import now
-
 
 YEARS_DAY = 365
 
 
 class TestProfile(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, related_name="profile")
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, related_name="profile", on_delete=models.CASCADE)
     birthday = models.DateField()
 
     @property

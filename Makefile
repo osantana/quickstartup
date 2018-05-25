@@ -40,7 +40,7 @@ release: clean
 
 APPS = qs_core \
        qs_accounts \
-       qs_website \
+       qs_pages \
        qs_contacts
 
 messages:

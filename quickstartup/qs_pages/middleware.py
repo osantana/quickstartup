@@ -1,6 +1,3 @@
-# coding: utf-8
-
-
 from django.conf import settings
 from django.http import Http404
 
@@ -18,7 +15,7 @@ def website_page_middleware(get_response):
             return website_page(request, request.path_info)
         except Http404:
             return response
-        except Exception:
+        except Exception as ex:
             if settings.DEBUG:
                 raise
             return response

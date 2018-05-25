@@ -1,10 +1,6 @@
-# coding: utf-8
-
-
 from django import template
 
-from quickstartup.qs_website.urlresolver import page_reverse
-
+from quickstartup.qs_pages.urlresolver import page_reverse
 
 register = template.Library()
 

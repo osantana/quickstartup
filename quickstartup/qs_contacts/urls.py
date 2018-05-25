@@ -1,10 +1,9 @@
-# coding: utf-8
-
-
-from django.conf.urls import url
+from django.urls import path
 
 from . import views
 
+app_name = "qs_contacts"
+
 urlpatterns = [
-    url(r"^$", views.ContactView.as_view(), name="contact"),
+    path("", views.ContactView.as_view(), name="contact"),
 ]

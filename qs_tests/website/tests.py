@@ -1,12 +1,8 @@
-# coding: utf-8
-
-
-from django.core.urlresolvers import NoReverseMatch
-
 from django.test import override_settings
+from django.urls import NoReverseMatch
 
-from quickstartup.qs_website.models import Page
-from quickstartup.qs_website.urlresolver import page_reverse
+from quickstartup.qs_pages.models import Page
+from quickstartup.qs_pages.urlresolver import page_reverse
 from ..base import BaseTestCase, TEMPLATES
 
 

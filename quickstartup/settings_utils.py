@@ -1,4 +1,3 @@
-# coding: utf-8
 #
 # Extract heavy logic from settings.py, manage.py and wsgi.py
 #

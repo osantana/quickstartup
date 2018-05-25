@@ -1,5 +1,3 @@
-# coding: utf-8
-
 import re
 from unittest import mock
 from urllib.parse import quote
@@ -8,7 +6,7 @@ from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.core import mail
 from django.core.signing import Signer
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.test import override_settings
 
 from ..base import BaseTestCase

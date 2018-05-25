@@ -3,6 +3,12 @@
 History
 -------
 
+0.13.0
+++++++
+
+* Update codebase to work with Django 2
+* Update third-party requirements
+
 0.12.3
 ++++++
 

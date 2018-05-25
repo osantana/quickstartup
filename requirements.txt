@@ -1,6 +1,6 @@
 # WARNING: update requirements on setup.py too!
 django==2.0.5
-django-widget-tweaks==1.4.1
-django-model-utils==2.6
-django-ipware==1.1.6
-djmail==0.13.0
+django-widget-tweaks==1.4.2
+django-model-utils==3.1.2
+django-ipware==2.1.0
+djmail==1.0.1

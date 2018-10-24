@@ -49,11 +49,11 @@ setup(
     ],
     include_package_data=True,
     install_requires=[
-        "django>=2.0,<2.1",
+        "django>=2.1,<2.2",
         "django-widget-tweaks>=1.4,<1.5",
         "django-model-utils>=3.1,<3.2",
         "django-ipware>=2.1,<2.2",
-        "djmail>=1.0,<1.1",
+        "djmail>=1.1,<1.2",
     ],
     license="MIT",
     zip_safe=False,

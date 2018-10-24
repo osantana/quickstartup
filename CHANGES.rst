@@ -3,6 +3,11 @@
 History
 -------
 
+0.14.0
+++++++
+
+* Update requirements for Django 2.1 and fixes deprecation-related issues
+
 0.13.0
 ++++++
 

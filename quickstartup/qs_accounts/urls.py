@@ -9,12 +9,8 @@ app_name = "qs_accounts"
 
 urlpatterns = [
     # Auth
-    path("signin/", views.login,
-         {"template_name": "accounts/signin.html", "authentication_form": forms.AuthenticationForm},
-         name="signin"),
-    path("signout/", auth_views.logout,
-         {"next_page": "/"},
-         name="signout"),
+    path("signin/", views.LoginView.as_view(), name="signin"),
+    path("signout/", views.LogoutView.as_view(), name="signout"),
 
     # Password reset
     path("password/reset/", views.PasswordResetView.as_view(), name="password_reset"),

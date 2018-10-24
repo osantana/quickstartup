@@ -1,21 +1,20 @@
-from django.conf import settings
 from django.contrib import messages
-from django.contrib.auth import login as user_login, get_user_model, get_backends
+from django.contrib.auth import get_backends, get_user_model, login as user_login, views
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.views import login as auth_login
-from django.core.signing import TimestampSigner, SignatureExpired, BadSignature, Signer
-from django.shortcuts import redirect, resolve_url
+from django.core.signing import BadSignature, SignatureExpired, Signer, TimestampSigner
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 from django.views.decorators.cache import never_cache
-from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.debug import sensitive_post_parameters
-from django.views.generic import UpdateView, FormView, TemplateView, RedirectView
+from django.views.generic import FormView, RedirectView, TemplateView, UpdateView
 
 from quickstartup.settings_utils import get_configuration, get_object_from_configuration
 from .signals import user_activated
+from .forms import AuthenticationForm
+
 
 SECONDS_IN_DAY = 24 * 60 * 60
 
@@ -27,13 +26,14 @@ class ProfileMixin(object):
         return self.request.user
 
 
-@sensitive_post_parameters()
-@csrf_protect
-@never_cache
-def login(request, *args, **kwargs):
-    if request.user.is_authenticated:
-        return redirect(resolve_url(settings.LOGIN_REDIRECT_URL))
-    return auth_login(request, *args, **kwargs)
+class LoginView(views.LoginView):
+    redirect_authenticated_user = True
+    template_name = "accounts/signin.html"
+    authentication_form = AuthenticationForm
+
+
+class LogoutView(views.LogoutView):
+    next_page = "/"
 
 
 class PasswordResetView(FormView):

@@ -16,10 +16,14 @@ clean-build:
 	rm -fr build/
 	rm -fr dist/
 	rm -fr *.egg-info
+	rm -fr quickstartup.db
 
 clean-pyc:
 	@find . -iname '*.py[co]' -delete
 	@find . -iname '__pycache__' -delete
+
+setup:
+	pip install -r requirements-local.txt
 
 test:
 	./manage.py test
@@ -33,10 +37,11 @@ coverage:
 	coverage html
 	open htmlcov/index.html
 
-release: clean
+release: setup clean test-all
 	git tag `python setup.py -q version`
 	git push origin `python setup.py -q version`
-	python setup.py sdist upload
+	python setup.py sdist bdist_wheel
+	twine upload -s dist/*
 
 APPS = qs_core \
        qs_accounts \

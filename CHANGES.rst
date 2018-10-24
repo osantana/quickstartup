@@ -3,6 +3,11 @@
 History
 -------
 
+0.14.1
+++++++
+
+* Fix Django requirement rule
+
 0.14.0
 ++++++
 

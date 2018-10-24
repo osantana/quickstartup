@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: quickstartup 0.1.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-16 23:24-0200\n"
+"POT-Creation-Date: 2018-10-24 00:49-0300\n"
 "PO-Revision-Date: 2013-04-07 01:46-0300\n"
 "Last-Translator: Osvaldo Santana Neto <quickstartup@osantana.me>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
@@ -17,84 +17,84 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: admin.py:14 forms.py:21 forms.py:69
+#: admin.py:11 forms.py:17 forms.py:65
 msgid "Password"
 msgstr "Senha"
 
-#: admin.py:15 forms.py:22
+#: admin.py:12 forms.py:18
 msgid "Password (verify)"
 msgstr "Senha (verificação)"
 
-#: apps.py:10
+#: apps.py:7
 msgid "Accounts"
 msgstr "Contas"
 
-#: forms.py:68 forms.py:76
+#: forms.py:64 forms.py:72
 msgid "E-Mail"
 msgstr "E-Mail"
 
-#: forms.py:102 templates/_accounts/reset-confirm.html:11
+#: forms.py:98 templates/_accounts/reset-confirm.html:11
 #: templates/_accounts/reset-confirm.html:12
 msgid "New password"
 msgstr "Nova senha"
 
-#: forms.py:103
+#: forms.py:99
 msgid "New password (verify)"
 msgstr "Nova Senha (verificação)"
 
-#: forms.py:136
+#: forms.py:132
 msgid "Current"
 msgstr "Atual"
 
-#: forms.py:137
+#: forms.py:133
 msgid "New"
 msgstr "Nova"
 
-#: forms.py:139
+#: forms.py:135
 msgid "Confirmation"
 msgstr "Confirmação"
 
-#: forms.py:148
+#: forms.py:144
 msgid "Your old password was entered incorrectly. Please enter it again."
 msgstr "Sua senha antiga está incorreta. Por favor, digite novamente."
 
-#: forms.py:162
+#: forms.py:158
 msgid "The two password fields didn't match."
 msgstr "As duas senhas não conferem."
 
-#: forms.py:175
+#: forms.py:171
 msgid "New E-Mail"
 msgstr "Novo E-Mail"
 
-#: models.py:45
+#: models.py:42
 msgid "e-mail"
 msgstr "e-mail"
 
-#: models.py:46
+#: models.py:43
 msgid "date joined"
 msgstr "data de entrada"
 
-#: models.py:47
+#: models.py:44
 msgid "active"
 msgstr "ativo"
 
-#: models.py:48
+#: models.py:45
 msgid "staff"
 msgstr "equipe"
 
-#: models.py:49
+#: models.py:46
 msgid "superuser"
 msgstr "superusuário"
 
-#: models.py:51
+#: models.py:48
 msgid "new e-mail"
 msgstr "novo e-mail"
 
-#: models.py:74
+#: models.py:71
 msgid "user"
 msgstr "usuário"
 
-#: models.py:75
+#: models.py:72
 msgid "users"
 msgstr "usuários"
 
@@ -272,6 +272,7 @@ msgstr "clique aqui"
 #: templates/_emails/activation-body-html.html:27
 #: templates/_emails/change_email-body-html.html:18
 #: templates/_emails/password_reset-body-html.html:35
+#, python-format
 msgid ""
 "Thanks,<br>\n"
 "The %(project_name)s team."
@@ -376,7 +377,7 @@ msgstr "Por favor, vá para a página a seguir e escolha uma nova senha:"
 msgid "Password reset on %(project_name)s"
 msgstr "Redefinição de senha no %(project_name)s"
 
-#: views.py:51 views.py:124
+#: views.py:48 views.py:121
 msgid ""
 "We've e-mailed you instructions for setting a new password to the e-mail "
 "address you've submitted."
@@ -384,38 +385,38 @@ msgstr ""
 "Nós lhe enviamos um e-mail contendo instruções sobre como definir sua senha "
 "para o endereço solicitado."
 
-#: views.py:67
+#: views.py:64
 msgid "Password reset token expired."
 msgstr "Token para redefinir senha expirou."
 
-#: views.py:70
+#: views.py:67
 msgid "Invalid password reset token."
 msgstr "Token para redefinir senha é inválido."
 
-#: views.py:104
+#: views.py:101
 msgid "Password has been reset successfully."
 msgstr "Senha redefinida com sucesso"
 
-#: views.py:172
+#: views.py:169
 msgid "Succesfully updated profile."
 msgstr "Perfil atualizado com sucesso."
 
-#: views.py:187
+#: views.py:184
 msgid "Succesfully updated your password."
 msgstr "Senha atualizada com sucesso."
 
-#: views.py:197
+#: views.py:194
 msgid "You'll receive an message in your new e-mail to check it."
 msgstr "Você receberá uma mensagem em seu novo e-mail para verificação."
 
-#: views.py:210
+#: views.py:207
 msgid "Invalid e-mail configuration token."
 msgstr "Token para configuração de e-mail é inválido."
 
-#: views.py:216
+#: views.py:213
 msgid "New e-mail has been successfully configured."
 msgstr "Novo e-mail foi configurado com sucesso."
 
-#: views.py:218
+#: views.py:215
 msgid "E-mail not found."
 msgstr "E-mail não encontrado."

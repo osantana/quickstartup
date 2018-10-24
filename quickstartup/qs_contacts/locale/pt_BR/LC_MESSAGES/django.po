@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: quickstartup 0.1.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-16 23:24-0200\n"
+"POT-Creation-Date: 2018-10-24 00:49-0300\n"
 "PO-Revision-Date: 2013-04-07 01:46-0300\n"
 "Last-Translator: Osvaldo Santana Neto <quickstartup@osantana.me>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
@@ -17,75 +17,75 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:10
+#: apps.py:7
 msgid "Contacts"
 msgstr "Contatos"
 
-#: forms.py:17
+#: forms.py:14
 msgid "Name"
 msgstr "Nome"
 
-#: forms.py:18
+#: forms.py:15
 msgid "E-mail"
 msgstr "E-mail"
 
-#: forms.py:19
+#: forms.py:16
 msgid "Phone"
 msgstr "Fone"
 
-#: forms.py:20 templates/_emails/new_contact-body-html.html:16
+#: forms.py:17 templates/_emails/new_contact-body-html.html:16
 msgid "Message"
 msgstr "Mensagem"
 
-#: models.py:10
+#: models.py:7
 msgid "New"
 msgstr "Novo"
 
-#: models.py:11
+#: models.py:8
 msgid "Ongoing"
 msgstr "Em Andamento"
 
-#: models.py:12
+#: models.py:9
 msgid "Resolved"
 msgstr "Resolvido"
 
-#: models.py:13
+#: models.py:10
 msgid "Closed"
 msgstr "Fechado"
 
-#: models.py:14
+#: models.py:11
 msgid "Invalid"
 msgstr "Inválido"
 
-#: models.py:19
+#: models.py:16
 msgid "status"
 msgstr "Situação"
 
-#: models.py:20
+#: models.py:17
 msgid "created at"
 msgstr "criado em"
 
-#: models.py:21
+#: models.py:18
 msgid "updated at"
 msgstr "atualizado em"
 
-#: models.py:22
+#: models.py:19
 msgid "name"
 msgstr "nome"
 
-#: models.py:23
+#: models.py:20
 msgid "e-mail"
 msgstr "e-mail"
 
-#: models.py:24
+#: models.py:21
 msgid "phone"
 msgstr "fone"
 
-#: models.py:25
+#: models.py:22
 msgid "message"
 msgstr "mensagem"
 
-#: models.py:26
+#: models.py:23
 msgid "contact ip"
 msgstr "ip de contato"
 
@@ -128,6 +128,6 @@ msgstr "IP:"
 msgid "Message:"
 msgstr "Mensagem:"
 
-#: views.py:25
+#: views.py:22
 msgid "Your message was sent successfully!"
 msgstr "Sua mensagem foi enviada!"

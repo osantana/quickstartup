@@ -38,7 +38,7 @@ class BaseTestCase(TestCase):
 
     # noinspection PyPep8Naming
     def assertStatusCode(self, response, code):
-        self.assertEquals(response.status_code, code,
+        self.assertEqual(response.status_code, code,
                           "{} != {}\n{}".format(response.status_code, code, response.content))
 
     def get_mail_payloads(self, message):

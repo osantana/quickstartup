@@ -32,7 +32,7 @@ class ContactTest(BaseTestCase):
         email = mail.outbox[0]
         contact = Contact.objects.first()
 
-        self.assertEquals(email.extra_headers["Reply-To"], 'john@doe.com')
+        self.assertEqual(email.extra_headers["Reply-To"], 'john@doe.com')
         self.assertIn("contact@quickstartup.us", email.to)
         self.assertEqual(email.subject, u'New Contact from Django Quickstartup')
         self.assertIn(u"Contact From: John Doe <john@doe.com>", email.body)

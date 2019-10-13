@@ -26,13 +26,13 @@ setup:
 	pip install -r requirements-local.txt
 
 test:
-	./manage.py test
+	pytest
 
 test-all:
 	tox
 
 coverage:
-	coverage run --source quickstartup manage.py test
+	coverage run --source quickstartup setup.py pytest
 	coverage report -m
 	coverage html
 	open htmlcov/index.html

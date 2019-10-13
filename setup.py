@@ -49,9 +49,9 @@ setup(
     ],
     include_package_data=True,
     install_requires=[
-        "django>=2.1,<2.2",
+        "django>=2.2,<2.3",
         "django-widget-tweaks>=1.4,<1.5",
-        "django-model-utils>=3.1,<3.2",
+        "django-model-utils>=3.2,<3.3",
         "django-ipware>=2.1,<2.2",
         "djmail>=1.1,<1.2",
     ],

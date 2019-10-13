@@ -3,6 +3,11 @@
 History
 -------
 
+0.15.0
+++++++
+
+* Update Django requirements
+
 0.14.1
 ++++++
 

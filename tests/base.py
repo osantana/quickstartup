@@ -1,11 +1,9 @@
 from pathlib import Path
 
-from django.apps import apps
-from django.test import TestCase
-
-from quickstartup.qs_pages.bootstrap import bootstrap_website_pages
+from django.test import SimpleTestCase
 
 TEST_ROOT_DIR = Path(__file__).parent
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -32,23 +30,44 @@ TEMPLATES = [
 ]
 
 
-class BaseTestCase(TestCase):
-    def setUp(self):
-        bootstrap_website_pages(apps)
+def get_mail_payloads(message):
+    text = ""
+    html = ""
 
-    # noinspection PyPep8Naming
-    def assertStatusCode(self, response, code):
-        self.assertEqual(response.status_code, code,
-                          "{} != {}\n{}".format(response.status_code, code, response.content))
+    for payload in message.message().get_payload():
+        if payload.get_content_type() == "text/plain":
+            text = payload.as_string()
+        if payload.get_content_type() == "text/html":
+            html = payload.as_string()
 
-    def get_mail_payloads(self, message):
-        text = ""
-        html = ""
+    return text, html
 
-        for payload in message.message().get_payload():
-            if payload.get_content_type() == "text/plain":
-                text = payload.as_string()
-            if payload.get_content_type() == "text/html":
-                html = payload.as_string()
 
-        return text, html
+def check_form_error(response, form_name, field, errors, msg_prefix=''):
+    test_case = SimpleTestCase()
+    test_case.assertFormError(response, form_name, field, errors, msg_prefix)
+    return True
+
+
+def check_redirects(response, expected_url):
+    test_case = SimpleTestCase()
+    test_case.assertRedirects(response, expected_url=expected_url)
+    return True
+
+
+def check_template_used(response, template_name):
+    test_case = SimpleTestCase()
+    test_case.assertTemplateUsed(response, template_name=template_name)
+    return True
+
+
+def check_contains(response, text):
+    test_case = SimpleTestCase()
+    test_case.assertContains(response, text=text)
+    return True
+
+
+def check_in_html(needle, haystack):
+    test_case = SimpleTestCase()
+    test_case.assertInHTML(needle, haystack)
+    return True

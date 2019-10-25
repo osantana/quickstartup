@@ -3,10 +3,11 @@
 History
 -------
 
-0.15.0
+0.15.1
 ++++++
 
 * Update Django requirements
+* Replace default Django unittest with pytest
 
 0.14.1
 ++++++

@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth import forms as django_forms, get_user_model
 from django.contrib.auth import password_validation
 from django.core.signing import TimestampSigner, Signer
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from djmail import template_mail
 
 from quickstartup.qs_core.antispam import AntiSpamField

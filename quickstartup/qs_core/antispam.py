@@ -4,7 +4,7 @@ from hashlib import sha1
 from django import forms
 from django.conf import settings
 from django.utils.safestring import mark_safe
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 ERROR_MESSAGE = _(u'You need to enable JavaScript to complete this form.')
 

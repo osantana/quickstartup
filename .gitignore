@@ -14,7 +14,7 @@ sdist
 .coverage
 .tox
 nosetests.xml
-htmlcov
+htmlcov/
 
 .idea
 app-messages/

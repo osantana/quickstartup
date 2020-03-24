@@ -4,10 +4,8 @@
 import os
 import re
 
-try:
-    from setuptools import setup, Command
-except ImportError:
-    from distutils.core import setup, Command
+from setuptools import setup, Command
+
 
 here = os.path.abspath(os.path.dirname(__file__))
 

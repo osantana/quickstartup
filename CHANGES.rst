@@ -3,7 +3,13 @@
 History
 -------
 
-0.15.1
+0.16.0
+++++++
+
+* Update Django requirements
+* Update Django support to 3.0 major release
+
+*0.15.1
 ++++++
 
 * Update Django requirements

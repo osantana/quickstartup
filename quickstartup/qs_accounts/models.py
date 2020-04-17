@@ -5,7 +5,7 @@ from django.contrib.auth.base_user import (AbstractBaseUser as DjangoAbstractBas
 from django.db import models
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
-
+from django.contrib.auth.models import PermissionsMixin
 
 class BaseUserManager(DjangoBaseUserManager):
     def _create_user(self, email, password, is_staff, is_superuser, **extra_fields):
@@ -36,7 +36,7 @@ class BaseUserManager(DjangoBaseUserManager):
 
 
 # noinspection PyAbstractClass
-class AbstractBaseUser(DjangoAbstractBaseUser):
+class AbstractBaseUser(DjangoAbstractBaseUser,PermissionsMixin):
     objects = BaseUserManager()
 
     email = models.EmailField(_("e-mail"), max_length=255, unique=True, db_index=True)

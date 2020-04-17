@@ -3,6 +3,11 @@
 History
 -------
 
+0.16.2
+++++++
+
+* Add PermissionMixin to the base User model (#38 thanks to @shahabaz)
+
 0.16.1
 ++++++
 

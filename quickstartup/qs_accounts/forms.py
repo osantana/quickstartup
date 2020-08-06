@@ -44,7 +44,7 @@ class SignupForm(forms.ModelForm):
             'activation_key': signer.sign(user.get_username()),
             'project_name': get_configuration("QS_PROJECT_NAME"),
             'project_url': get_configuration("QS_PROJECT_URL"),
-            'expiration_days': get_configuration("QS_SIGNUP_TOKEN_EXPIRATION_DAYS"),
+            'expiration_days': get_configuration("QS_SIGNUP_TOKEN_EXPIRATION"),
         }
         mails = template_mail.MagicMailBuilder()
         email = mails.activation(user, context)

@@ -9,6 +9,8 @@ from django.conf import settings
 from django.core.exceptions import ImproperlyConfigured
 from django.utils.module_loading import import_string
 
+DAYS = 24 * 60 * 60  # in seconds
+
 
 class CustomLoggerAdapter(logging.LoggerAdapter):
     def process(self, msg, kwargs):
@@ -89,7 +91,7 @@ DEFAULT_SETTINGS = {
     'QS_SIGNUP_OPEN': True,
     'QS_SIGNUP_FORM': 'quickstartup.qs_accounts.forms.SignupForm',
     'QS_SIGNUP_AUTO_LOGIN': False,
-    'QS_SIGNUP_TOKEN_EXPIRATION_DAYS': 7,
+    'QS_SIGNUP_TOKEN_EXPIRATION': 7 * DAYS,
     'QS_CONTACT_FORM': 'quickstartup.qs_contacts.forms.ContactForm',
 }
 

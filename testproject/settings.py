@@ -2,7 +2,7 @@ from pathlib import Path
 
 from django.contrib.messages import constants as message_constants
 
-from quickstartup.settings_utils import get_project_package, get_loggers, get_logging_config
+from quickstartup.settings_utils import DAYS, get_project_package, get_loggers, get_logging_config
 
 # Project Structure
 BASE_DIR = Path(__file__).absolute().parents[2]
@@ -50,7 +50,7 @@ LOGIN_REDIRECT_URL = "app:index"
 LOGIN_URL = "qs_accounts:signin"
 QS_SIGNUP_AUTO_LOGIN = True
 QS_SIGNUP_OPEN = True
-QS_SIGNUP_TOKEN_EXPIRATION_DAYS = 7
+QS_SIGNUP_TOKEN_EXPIRATION = 7 * DAYS
 QS_SIGNUP_FORM = "quickstartup.qs_accounts.forms.SignupForm"
 QS_PROFILE_FORM = "quickstartup.qs_accounts.forms.ProfileForm"
 QS_PASSWORD_CHANGE_FORM = 'quickstartup.qs_accounts.forms.PasswordChangeForm'

@@ -1,7 +1,7 @@
 from django import forms
 from django.utils.translation import gettext_lazy as _
 from djmail import template_mail
-from ipware.ip import get_ip
+from ipware import get_client_ip
 
 from quickstartup.qs_core.antispam import AntiSpamField
 from quickstartup.qs_core.widgets import EmailInput, PhoneInput
@@ -35,7 +35,8 @@ class ContactForm(forms.ModelForm):
 
     def finish(self, request):
         contact = super().save(commit=False)
-        contact.ip = get_ip(request)
+        client_ip, _ = get_client_ip(request)
+        contact.ip = client_ip
         contact.save()
         self._send_contact_email(request, contact)
         new_contact.send(sender=self.__class__, contact=contact, request=request)

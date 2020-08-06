@@ -16,9 +16,6 @@ from .signals import user_activated
 from .forms import AuthenticationForm
 
 
-SECONDS_IN_DAY = 24 * 60 * 60
-
-
 # noinspection PyUnresolvedReferences
 class ProfileMixin(object):
     # noinspection PyUnusedLocal
@@ -71,8 +68,8 @@ class PasswordResetConfirmView(FormView):
     def get_username(self):
         reset_token = self.kwargs["reset_token"]
         signer = TimestampSigner()
-        expiration = get_configuration("PASSWORD_RESET_TIMEOUT_DAYS")
-        return signer.unsign(reset_token, max_age=expiration * SECONDS_IN_DAY)
+        expiration = get_configuration("PASSWORD_RESET_TIMEOUT")
+        return signer.unsign(reset_token, max_age=expiration)
 
     def get_user(self):
         user_model = get_user_model()
@@ -133,9 +130,9 @@ class SignupActivationView(TemplateView):
     # noinspection PyMethodOverriding
     def get(self, request, activation_key, *args, **kwargs):
         signer = TimestampSigner()
-        expiration = get_configuration("QS_SIGNUP_TOKEN_EXPIRATION_DAYS")
+        expiration = get_configuration("QS_SIGNUP_TOKEN_EXPIRATION")
         try:
-            username = signer.unsign(activation_key, max_age=expiration * SECONDS_IN_DAY)
+            username = signer.unsign(activation_key, max_age=expiration)
         except (BadSignature, SignatureExpired):
             return super().get(request, *args, **kwargs)
 

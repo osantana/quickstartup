@@ -47,10 +47,10 @@ setup(
     ],
     include_package_data=True,
     install_requires=[
-        "django>=3.0,<3.1",
+        "django>=3.1,<3.2",
         "django-widget-tweaks>=1.4,<1.5",
         "django-model-utils>=4.0,<4.1",
-        "django-ipware>=2.1,<2.2",
+        "django-ipware>=3.0,<3.1",
         "djmail>=2.0,<2.1",
     ],
     license="MIT",

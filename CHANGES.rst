@@ -3,6 +3,13 @@
 History
 -------
 
+0.17.0
+++++++
+
+* Requires Django 3.1
+* Update requirements
+* Fix and remove warnings
+
 0.16.2
 ++++++
 

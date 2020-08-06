@@ -20,7 +20,7 @@ class Contact(models.Model):
     email = models.EmailField(_("e-mail"), max_length=255, blank=False, null=False)
     phone = models.CharField(_("phone"), max_length=100, blank=True)
     message = models.TextField(_("message"), blank=False, null=False)
-    ip = models.GenericIPAddressField(_("contact ip"))
+    ip = models.GenericIPAddressField(_("contact ip"), blank=True, null=True)
 
     @property
     def admin_url(self):

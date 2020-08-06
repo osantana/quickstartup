@@ -3,12 +3,18 @@
 History
 -------
 
+0.17.1
+++++++
+
+* Fix token expiration settings
+
 0.17.0
 ++++++
 
 * Requires Django 3.1
 * Update requirements
 * Fix and remove warnings
+* Change token expiration config to use seconds instead of days
 
 0.16.2
 ++++++

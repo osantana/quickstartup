@@ -3,6 +3,12 @@
 History
 -------
 
+0.18.0
+++++++
+
+* Upgrade bootstrap to 4.5.2
+* Remover tether requirement
+
 0.17.1
 ++++++
 

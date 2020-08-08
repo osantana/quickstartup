@@ -11,26 +11,29 @@
 
 
 {% block html_body %}
-    <div id="wrap">
+    <div class="wrap">
         {% block navbar %}
-            <nav class="navbar {% block navbar_class %}navbar-full navbar-dark bg-inverse{% endblock %}">
-                {% block brand %}
-                    <a class="navbar-brand" href="{% url "qs_pages:index" %}">{{ PROJECT_NAME }}</a>
-                {% endblock %}
-
-                <button class="navbar-toggler hidden-lg-up"
+            <nav class="navbar {% block navbar_class %}navbar-expand navbar-dark bg-dark{% endblock %}">
+                <button class="navbar-toggler"
                         type="button"
                         data-toggle="collapse"
                         data-target="#navbarResponsive"
                         aria-controls="navbarResponsive"
                         aria-expanded="false"
-                        aria-label="Toggle navigation"></button>
-                <div class="collapse navbar-toggleable-md" id="navbarResponsive">
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    {% block brand %}
+                        <a class="navbar-brand" href="{% url "qs_pages:index" %}">{{ PROJECT_NAME }}</a>
+                    {% endblock %}
+
                     {% block navbar_menu %}
-                        <ul class="nav navbar-nav">
+                        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                             {% block navbar_left_options %}{% endblock %}
                         </ul>
-                        <ul class="nav navbar-nav float-xs-right">
+                        <ul class="navbar-nav float-md-right">
                             {% block navbar_right_options %}{% endblock %}
                         </ul>
                     {% endblock %}

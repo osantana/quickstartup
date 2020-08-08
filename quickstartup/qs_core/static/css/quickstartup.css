@@ -50,13 +50,12 @@ body.page {
 }
 
 .page .panel {
-    background-color: rgba(255,255,255,.9);
+    background-color: rgba(255, 255, 255, .9);
     padding: 20px;
 }
 
 /* website->landing */
 .landing .jumbotron {
-    margin-top: 50px;
     background-color: transparent;
 }
 
@@ -72,13 +71,9 @@ body.page {
     text-shadow: 1px 1px 0 #000;
 }
 
-.landing .tour {
-    margin-top: 50px;
-    background-color: rgba(255, 255, 255, .9);
-}
-
 .landing .box {
     padding: 20px;
+    background-color: rgba(255, 255, 255, .9);
 }
 
 /* website->pages */
@@ -124,5 +119,3 @@ body.page {
     padding: 20px;
     background-color: rgba(0, 0, 0, .03);
 }
-
-

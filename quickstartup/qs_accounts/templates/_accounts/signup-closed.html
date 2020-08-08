@@ -15,20 +15,23 @@
 
 
 {% block container %}
-    <div class="container-fluid">
-        <div class="row flex-items-xs-center">
-            <div class="col-xs-6">
+    <div class="container">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-8">
                 <div class="message panel">
                     <h1>{% trans "Signup is closed" %}</h1>
                     <p>
-{% blocktrans %}This site is currently in closed beta.
-If you want to be a beta tester of this service please contact us by contact form.{% endblocktrans %}
+                        {% blocktrans %}This site is currently in closed beta.
+                            If you want to be a beta tester of this service please contact us by contact
+                            form.{% endblocktrans %}
                     </p>
                     <a class="btn btn-primary btn-lg btn-block" href="{% url "qs_contacts:contact" %}">
                         {% trans "Go to Contact" %}
                     </a>
                 </div>
             </div>
+            <div class="col"></div>
         </div>
     </div>
 {% endblock %}

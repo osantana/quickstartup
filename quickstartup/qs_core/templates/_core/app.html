@@ -12,7 +12,7 @@
 
 {% block navbar_right_options %}
     {% block menu_profile %}
-        <li class="nav-item">
+        <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle {% block menu_profile_class %}{% endblock %}"
                id="responsiveNavbarDropdown"
                data-toggle="dropdown"
@@ -34,27 +34,28 @@
 {% block container %}
     <div class="container-fluid">
         <div class="row flash-messages">
-            <div class="col-xs">
+            <div class="col">
                 {% include "_includes/message-panels.html" %}
             </div>
         </div>
-        <div class="row flex-items-xs-top">
+        <div class="row">
             {% block sidebar %}
-                <div class="col-xs-3">
-                    <div class="sidebar sidebar-nav list-group">
-                        {% block sidebar_home %}
-                            <a class="list-group-item" href="{% url "app:index" %}">{% trans "Home" %}</a>
-                        {% endblock %}
-                    </div>
+                <div class="col-xl-2">
+                    <nav class="sidebar">
+                        <ul class="list-group">
+                            {% block sidebar_home %}
+                                <a class="list-group-item"
+                                   href="{% url "app:index" %}">{% trans "Home" %}</a>
+                            {% endblock %}
+                        </ul>
+                    </nav>
                 </div>
             {% endblock %}
-
-            <div class="col-xs-9">
+            <div class="col-xl-10">
                 <div class="content">
                     {% block content %}{% endblock %}
                 </div>
             </div>
-
         </div>
     </div>
 {% endblock %}

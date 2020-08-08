@@ -13,16 +13,20 @@
 
 
 {% block container %}
-    <div class="container-fluid">
-        <div class="row flex-items-xs-center">
-            <div class="col-xs-9">
+    <div class="container">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-9">
                 <div class="flash-messages">
                     {% include "_includes/message-panels.html" %}
                 </div>
             </div>
+            <div class="col"></div>
         </div>
-        <div class="row flex-items-xs-center">
-            <div class="col-md-6">
+        <div class="row">
+            <div class="col"></div>
+
+            <div class="col-9">
                 <div class="panel">
                     <div class="page-header">
                         <h1>{% trans "Contact" %}</h1>
@@ -50,6 +54,8 @@
                     {% endblock %}
                 </div>
             </div>
+            <div class="col"></div>
+
         </div>
     </div>
 {% endblock %}

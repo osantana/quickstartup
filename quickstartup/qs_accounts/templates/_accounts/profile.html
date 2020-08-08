@@ -3,7 +3,7 @@
 {% block content %}
     <h1>
         {% trans "Profile" %}
-        <div class="btn-group btn-group-sm float-xs-right" role="group">
+        <div class="btn-group btn-group-sm float-right" role="group">
             <a href="{% url "qs_accounts:email_change" %}" class="btn btn-sm btn-outline-primary" role="button">
                 {% trans "Change E-Mail" %}
             </a>
@@ -21,7 +21,7 @@
         </div>
 
         <div class="row">
-            {% include "_includes/vertical-labeled-big-field.html" with field=form.name|attr:"autofocus" %}
+            {% include "_includes/vertical-labeled-big-field.html" with field=form.name|attr:"autofocus" cols=6 %}
         </div>
 
         <div class="form-button-panel">

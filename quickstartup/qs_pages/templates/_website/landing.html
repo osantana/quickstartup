@@ -5,7 +5,7 @@
 
 
 {% block container %}
-    <div class="container-fluid">
+    <div class="container">
         <div class="jumbotron">
             <h1>{{ PROJECT_NAME }}</h1>
             <p>{% blocktrans %}Create your SaaS company quickly.{% endblocktrans %}</p>
@@ -14,16 +14,16 @@
         </div>
     </div>
 
-    <div class="container-fluid tour">
+    <div class="container tour">
         <div class="row">
-            <div class="col-xs box">
+            <div class="col box">
                 <h2>{% trans "Start Now!" %}</h2>
                 <p>
 {% blocktrans %}Quickstartup provides the building blocks to start your application development instantly.{% endblocktrans %}
                 </p>
             </div>
 
-            <div class="col-xs box">
+            <div class="col box">
                 <h2>{% trans "Go Live!" %}</h2>
                 <p>
                     {% blocktrans %}Put your application in the air with a few simple steps.{% endblocktrans %}
@@ -32,7 +32,7 @@
         </div> <!-- row -->
 
         <div class="row">
-            <div class="col-xs box">
+            <div class="col box">
                 <h2>{% trans "Focus on your business" %}</h2>
                 <p>
 {% blocktrans %}SaaS applications need many side features that deviate developers from the core
@@ -41,7 +41,7 @@ application development.{% endblocktrans %}
                 </p>
             </div>
 
-            <div class="col-xs box">
+            <div class="col box">
                 <h2>{% trans "Free and Open Source" %}</h2>
                 <p>
 {% blocktrans %}This project is Open Source and allows any entrepreneur starts their own SaaS

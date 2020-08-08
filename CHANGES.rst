@@ -8,6 +8,7 @@ History
 
 * Upgrade bootstrap to 4.5.2
 * Remover tether requirement
+* Fix issue #34 error in expiration time in emails
 
 0.17.1
 ++++++

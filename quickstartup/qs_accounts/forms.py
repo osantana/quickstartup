@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth import forms as django_forms, get_user_model
 from django.contrib.auth import password_validation
-from django.core.signing import TimestampSigner, Signer
+from django.core.signing import Signer, TimestampSigner
 from django.utils.translation import gettext_lazy as _
 from djmail import template_mail
 
@@ -9,6 +9,9 @@ from quickstartup.qs_core.antispam import AntiSpamField
 from quickstartup.qs_core.widgets import EmailInput
 from quickstartup.settings_utils import get_configuration
 from .signals import user_registered
+
+HOUR = 60 * 60  # seconds
+DAY = 24 * HOUR  # seconds
 
 UserModel = get_user_model()
 
@@ -38,13 +41,17 @@ class SignupForm(forms.ModelForm):
 
     def send_activation_email(self, request, user):
         signer = TimestampSigner()
+        expiration_secs = get_configuration("QS_SIGNUP_TOKEN_EXPIRATION")
+
         context = {
             'request': request,
             'user': user,
             'activation_key': signer.sign(user.get_username()),
             'project_name': get_configuration("QS_PROJECT_NAME"),
             'project_url': get_configuration("QS_PROJECT_URL"),
-            'expiration_days': get_configuration("QS_SIGNUP_TOKEN_EXPIRATION"),
+            'expiration_secs': expiration_secs,
+            'expiration_hours': expiration_secs / HOUR,
+            'expiration_days': expiration_secs / DAY,
         }
         mails = template_mail.MagicMailBuilder()
         email = mails.activation(user, context)

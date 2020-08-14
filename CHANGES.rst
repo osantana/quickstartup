@@ -3,6 +3,11 @@
 History
 -------
 
+0.19.0
+++++++
+
+* Add missing migration scripts
+
 0.18.0
 ++++++
 
